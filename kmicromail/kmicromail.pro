@@ -67,7 +67,7 @@ unix : {
 OBJECTS_DIR = obj/unix
 MOC_DIR = moc/unix
 
-LIBS += /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib/x86_64-linux-gnu/libXft.so.2.3.2
+LIBS += /home/my_libs/libfreetype.so /home/my_libs/libXft.so
 #LIBS += /usr/lib/arm-linux-gnueabihf/libfreetype.so /usr/lib/arm-linux-gnueabihf/libXft.so.2.3.2
 }
 win32: {

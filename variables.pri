@@ -5,7 +5,7 @@ unix {
 #for statically linking
 #CONFIG +=  staticlib
 #for raspi font rendering
-LIBS += /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib/x86_64-linux-gnu/libXft.so.2.3.2
+LIBS += /home/my_libs/libfreetype.so /home/my_libs/libXft.so
 }
 win32 {
 #disable importol to make it running on windows ME/98
