@@ -1,0 +1,11 @@
+[Desktop Entry]
+Comment=The convenient way of managing passwords
+Display = 640x480/144dpi,480x640/144dpi
+Exec = pwmpi
+Icon = kdepim/pwmanager/pwmanager
+Name = PWM/Pi
+Type = Application
+CanFastload = 1
+
+#Exec=pwmanager -caption "%c" %i %m
+

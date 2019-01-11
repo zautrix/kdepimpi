@@ -1,0 +1,137 @@
+<========================>
+<  Format of *.pwm file  >
+<========================>
+fileversion: 0x05  revision: 0x01
+
+(note: another revision doesn't change fore- or
+       backward compatibility)
+
+
+The file has a header and a data-body.
+
+****************************************************
+* The header is build from the following elements: *
+****************************************************
+PWM_PASSWORD_FILE
+[FILEVER]
+[KEY-HASH-ALGO]
+[DATA-HASH-ALGO]
+[CRYPT-ALGO]
+[COMPRESSED-FLAG]
+[MPW-FLAG]
+[BYTES-RESERVED]
+[KEY-HASH]
+[DATA-HASH]
+
+
+(note: fields marked with ~ were added _after_
+       revision 0x01)
+
+
+PWM_PASSWORD_FILE is a magic string to indentify the file.
+This string is put directly at offset 0x00 of the file.
+
+[FILEVER] is one byte for holding the file-version.
+This byte is directly appended to the "magic-string".
+(no newline or other separators between these fields)
+
+[HASH-ALGO] is one byte for holding the type of the hash-algorithm
+used to hash the key.
+0x01 => SHA1
+
+[DATA-HASH-ALGO] is one byte for holding the type of the
+hash-algorithm used to hash the raw data-stream.
+0x01 => SHA1
+
+[CRYPT-ALGO] is one byte containing the type of the crypt-algorithm
+used to encrypt the data.
+0x01 => Blowfish
+
+[COMPRESSED-FLAG] is one byte which can be
+0x00 => not compressed
+0x01 => compressed with gzip
+0x02 => compressed with bzip2
+
+[MPW-FLAG] is one byte, either 0x00 if
+we used a master password to encrypt the data,
+or 0x01, if we used a chipcard to encrypt the data.
+
+[BYTES-RESERVED]
+64-bytes reserved for future-use.
+Set all these to 0x00.
+
+[KEY-HASH] is the hash of the key. This field has no constant
+length, because it's length depends on the algorithm
+used in HASH-ALGO.
+
+[DATA-HASH] is a hash of the raw, unencrypted, serialized
+data stream.
+
+
+**************
+* Data-body: *
+**************
+
+The data-body follows the header directly.
+It contains the encrypted serialized data in XML-format.
+It may be compressed.
+For an example
+how to serialize the data, have a look at:
+PwMDoc::serializeDta();
+PwMDoc::deSerializeDta();
+The class "Serializer"
+PwMDoc::encrypt();
+PwMDoc::decrypt();
+
+These functions are called by:
+PwMDoc::saveDoc();
+PwMDoc::openDoc();
+so, please have a look at these two functions, too.
+
+
+
+Example of an XML-data-block:
+
+<PwM-xml-dat ver="0x02">
+	<categories>
+		<cat_0 name="catName">
+			<entry_0>
+				<desc>sampleDesc</desc>
+				<name>sampleName</name>
+				<pw>samplePw</pw>
+				<comment>sampleComment</comment>
+				<url>sampleUrl</url>
+				<launcher>sampleLauncher</launcher>
+				<listViewPos>sampleListViewPos</listViewPos>
+				<b>0</b>
+			</entry_0>
+			<entry_1>
+				<desc>sampleDesc</desc>
+				<name>sampleName</name>
+				<pw>samplePw</pw>
+				<comment>sampleComment</comment>
+				<url>sampleUrl</url>
+				<launcher>sampleLauncher</launcher>
+				<listViewPos>sampleListViewPos</listViewPos>
+				<b>1</b>
+			</entry_1>
+		</cat_0>
+	</categories>
+</PwM-xml-dat>
+
+2004-06-05:
+So I introduced shorter names for the entries. We also have to support
+the old names to be backward compatibel.
+New names are:
+PwM-xml-dat		= P
+<categories>		= <c>
+<cat_X>			= <cX>
+<entry_X>		= <eX>
+<desc>			= <d>
+<name>			= <n>
+<pw>			= <p>
+<comment>		= <c>
+<url>			= <u>
+<launcher>		= <l>
+<listViewPos>		= <v>
+<b>			= <b>

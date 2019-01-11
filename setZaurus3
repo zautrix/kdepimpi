@@ -1,0 +1,26 @@
+# Settings to compile KDE-Pim/Pi with gcc 3.3.2 cross compiler for Zaurus
+# copy this dir to /opt/Qtopia/examples/
+# Now this file should be in the path  /opt/Qtopia/examples/kdepim/setZaurus3
+# add the following line to ~/.bashrc without leading #
+# alias cz='source /opt/Qtopia/examples/kdepim/setZaurus3'
+# then type in terminal cz3<return> to set the variables
+# for cross-compiling
+export QPEDIR=/opt/Qtopia/sharp3
+export OPIEDIR=/kde_dev/opie
+export BUILD_NO_OPIE_PLUGIN=1
+#export BUILD_NO_QTOPIA_PLUGIN=1
+export BUILD_NO_SHARP_PLUGIN=1
+export BUILD_NO_LDAP_PLUGIN=1
+#export BUILD_NO_GAMMU=1
+export QTDIR=/opt/Qtopia/sharp3
+#insert here path to your gcc 3.3.2 compiler 
+export PATH=$QTDIR/bin:/opt/cross/bin:$PATH
+export TMAKEPATH=/opt/Qtopia/tmake/lib/qws/linux-sharp-g++
+export PLATFORM=zaurus3
+export RELEASE_DEBUG=release
+export SHARPDTMSDK=/opt/dtm
+#export RELEASE_DEBUG=debug
+export LIBICAL_PATH=/zaurus
+export GCC3EXTRALIB1=-lpng12
+export GCC3EXTRALIB2=-lz
+export KDEPIM_VERSION=1.9.5c

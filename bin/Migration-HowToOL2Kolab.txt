@@ -1,0 +1,203 @@
+Version 1.0.0
+The latest version of this file can be downloaded from
+http://sourceforge.net/projects/kdepimpi/
+Please choose there package/project/file:
+general Files for KDE/Pim
+MigrationHowTo_OL2KDE
+MigrationHowTo_OL2Kolab.txt.zip
+
+
+This HowTo describes the process of migrating data 
+( emails, contacts and calendar data ) 
+from Outlook 98/200X (TM) to a Kolab server.
+We will call Outlook as OL in this document.
+You will need an IMAP server for migrating emails.
+The Kolab server is an IMAP server.
+We will describe how the PIM data  ( contact and calendar data )
+of OL can be migrated using the Toltec (TM) connector.
+Migration of the OL contact and calendar data to KDE 
+(and using the Kolab server from KDE with the KDE Groupware client Kontact) 
+can be done without using the Toltec Outlook connector. 
+It can be done by using migration tools.
+You can found the HowTo using the migration tools on
+http://sourceforge.net/projects/kdepimpi/
+Please choose there package/project/file:
+general Files for KDE/Pim
+MigrationHowTo_OL2KDE
+MigrationHowTo_OL2KDE.txt.zip
+
+Content:
+
+1) How to start
+2) How to import pst files in Outlook
+3) Choose the migration strategie
+4) How to copy the contact data in OL to the Kolab server.
+5) How to copy the calendar data in OL to the Kolab server.
+6) How to copy the email in OL to the Kolab server.
+
+****************************************
+1) How to start
+****************************************
+
+For the migration we need the actual OL data, which Outlook stores in *.pst files.
+Then we need an installed version of OL to access these  *.pst files.
+
+We assume, that we have an OL version installed that manages emails, contacts and calendar data.
+
+If you have no OL installed please install the Outlook version, you need to a import your *.pst files.
+If you have an OL installed with no email/contact/calendar data available, and you have some  *.pst files please continue with: 2) How to import pst files in Outlook.
+If you have a running Outlook200X already with contact/calendar data available, 
+please continue with: 3) Choose the migration strategie.
+
+****************************************
+2) How to import pst files in Outlook
+****************************************
+
+To open a local *.pst file in Outlook2003, choose menu:
+File - Open - Outlook Data File ...
+Now the data included in this file is shown 
+as folders of a newly added root folder in the Outlook folder view.
+This root folder is probably not accessable from
+the migration tools via OLE. 
+To access data stored in one of the subfolders,
+copy this subfolder to a root folder, 
+which can be accessed from the migration tools via OLE.
+(To know, which folder can be accessed, just perform 5.) or 6.) until
+you get the Oulook import dialog!)
+
+To copy it, right click on that subfolder and choose
+Copy "<subfoldername>"...
+in the popup menu.
+
+****************************************
+3) Choose the migration strategie
+****************************************
+
+We assume, that we have an OL version installed that manages emails, contact and calendar data.
+
+The goal is it to get the emails, contacts and calendar data of OL on a Kolab server.
+
+After having the data on the Kolab server, we have two choices:
+
+(A) Accessing the server from KDE with the KDE-Kolab Client Kontact. 
+(B) Accessing the server from Windows XP Outlook 2003 with Toltec Connector.
+
+Such that do have two strategies for the migration:
+
+	(i) 
+	Use the Toltec Connector for migrating the contact 
+	and calendar data. 
+	Moving the email in OL to the Kolab server.
+
+	This can be used for (A) and (B).
+	Doing this for (A)  might involve installing 
+	the Toltec Connector on the source platform
+	syncing everything freshly on the Kolab Server and then
+	just continue using the KDE client on the new data.
+
+	(ii) 
+	Use the migration tools for migrating the contact 
+	and calendar data.
+	Moving the email in OL to the Kolab server.
+
+	Doing this for (A), there is no need to install the
+	Toltec Connector on the source platform.
+
+
+
+   ***  Choosing  (A) and (ii)
+
+If you choose (A) and (ii), please read 
+6) How to copy the email in OL to the Kolab server.
+You can found the HowTo using the migration tools on
+http://sourceforge.net/projects/kdepimpi/
+Please choose there package/project/file:
+general Files for KDE/Pim
+MigrationHowTo_OL2KDE
+MigrationHowTo_OL2KDE.txt.zip
+
+    *** Choosing (B) and (i) or 
+		 (A) and (i)
+
+If you choose (B) and (i) or if you choose (A) and (i),
+please upgrade to QL XP and install the 
+Toltec Connector. After that, please read
+4) How to copy the contact data in OL to the Kolab server.
+5) How to copy the calendar data in OL to the Kolab server.
+6) How to copy the email in OL to the Kolab server.
+
+
+************************************************************
+4) How to copy the contact data in OL to the Kolab server.
+************************************************************
+
+We assume that you have the Toltec Connector installed and that 
+you have configured it to access the Kolab server.
+
+Select the contacts you want to copy.
+If you want to select all contacts of a folder,
+select the topleft entry, scroll to the right, 
+hold the SHIFT key down and click on the rightbottom entry.
+Now all contact of the folder should be selected.
+Now choose  
+Menu: Edit - Copy to folder.
+Choose your destination folder in the Toltec Connector folder and click OK.
+
+After that, sync your Toltec Connector folder with the server.
+
+
+************************************************************
+5) How to copy the calendar data in OL to the Kolab server.
+************************************************************
+
+We assume that you have the Toltec Connector installed and that 
+you have configured it to access the Kolab server.
+Select the calendar folder you want to copy to the server.
+Right click on it - a popup menu pops up.
+Choose "Advanced find" in this menu.
+An  "Advanced find" dialog pops up. Fill out nothing in this dialog, 
+click on the button "Find now".
+As the search result, you will get all entries of that folder.
+Select now the calendar data, you want to copy.
+If you want to select all calendar data of this folder,
+select the topmost entry, scroll to the bottom, 
+hold the SHIFT key down and click on the bottom entry.
+Now all contact of the folder should be selected.
+Now choose in the "Advanced find" dialog the
+Menu: Edit - Copy to folder.
+Choose your destination folder in the Toltec Connector folder and click OK.
+
+After that, sync your Toltec Connector folder with the server.
+
+
+************************************************************
+6) How to copy the email in OL to the Kolab server.
+************************************************************
+
+Note:
+There is no need to have the Toltec Connector installed to move/copy 
+mails with Outlook to an IMAP server.
+
+We assume that there is already the IMAP account on the Kolab server
+configured in OL.
+You will see there a folder Inbox. (And maybe other folders).
+These folder may contain the subfolders "Calendar", "Tasks", "Journal" and Notes.
+These folders are used by the Kolab Groupware client,
+DO NOT COPY ordinary emails to this folders!
+
+If you do not want to copy your emails in the "Inbox", 
+please create another folder on the server.
+
+Now select your folder with the emails, you want to copy.
+
+Select there the emails, you want to copy.
+If you want to select all emails of this folder,
+select the topmost entry, scroll to the bottom, 
+hold the SHIFT key down and click on the bottom entry.
+Now all emails of the folder should be selected.
+Now choose the
+Menu: Edit - Copy to folder.
+Choose your destination folder in the IMAP Kolab server account and click on OK.
+After that, sync your IMAP Kolab server account with the server.
+
+

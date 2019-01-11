@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment=A small mail program
+Comment[de]=Mail Programm
+Exec=/opt/kdepimpi/ompi
+GenericName=
+GenericName[de]=
+Icon=/opt/kdepimpi/kdepim/kopiemail/kmicromail.png
+MimeType=
+Name=OM/Pi
+Name[de]=KOpieMail/Pi
+ServiceTypes=Application
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

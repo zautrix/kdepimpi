@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment = KAddressbook
+Display = 640x480/144dpi,480x640/144dpi
+Exec = kapi
+Icon = kdepim/kaddressbook/kaddressbook
+Name = KA/Pi
+Type = Application
+CanFastload = 1

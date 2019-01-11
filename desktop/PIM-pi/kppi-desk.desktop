@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=
+Comment=A VoIP SIP softphone
+Comment[de]=VoIP SIP Software-Telefon
+Exec=/opt/kdepimpi/kppi
+GenericName=
+GenericName[de]=
+Icon=/opt/kdepimpi/kdepim/kphone_large.png
+MimeType=
+Name=KPhone/Pi
+Name[de]=KPhone/Pi
+ServiceTypes=Application
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+TryExec=/opt/kdepimpi/kppi
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

@@ -1,0 +1,311 @@
+
+KDE-Pim/Pi is available for four platforms:
+
+1) Windows 32 (not available for all releases)
+2) Zaurus Sharp ROM, gcc 2.95 compiled
+3) OpenZaurus ROM, gcc 3.xx compiled (not available for all releases)
+4) Linux Desktop (SuSE 9.2) (not available for all releases)
+5) Memory stick edition for Win_XP, Win_ME and Linux (not available for all releases)
+
+Contents of the packages and how to install:
+
+
+*****************************************************
+1) Windows 32
+*****************************************************
+
+NOTE:
+There are two version for Windows available:
+The file
+kdepim_X.X.XX_for_Windows_XP.exe.zip, wich is for Windows 2000/XP
+and the file
+kdepim_X.X.XX_for_Windows_ME.exe.zip, wich is for Windows 98/ME.
+The functionality is almost the same, but in the version for Windows 98/ME
+is "Import from Outlook" disabled to make it running on Windows 98/ME.
+
+Filename: kdepim_X.X.XX_for_Windows.exe.zip
+Package contains:
+KO/Pi
+KA/Pi
+Phone access(kammu.exe)
+Libs for file, dir, qtopia resources.
+
+Download file.
+Unzip the file, then you are almost done.
+When installing these package for the first time, 
+you will need to install some needed dlls which are 
+available in an extra package "kdepim334.dll". This additional package contains
+the Qt3 library qt-mt334.dll and the MSVC library msvcr71.dll 
+and the MSVC library mfc71u.dll.
+You can download the "kdepim334.dll" package at:
+http://sourceforge.net/projects/kdepimpi/
+Please choose there package/project/file:
+general Files for KDE/Pim
+Needed Windows Dlls
+kdepim334dll.zip
+ 
+For details read the file
+Migration-Howto.txt in the package.
+
+
+*****************************************************
+2) Zaurus Sharp ROM, gcc 2.95 compiled
+*****************************************************
+
+Filename: kdepim_X.X.X_for_SharpROM.ipk.zip
+Package contains:
+kaddressbook_X.X.X_arm.ipk
+korganizer-alarm_X.X.X_arm.ipk
+kmicrokdelibs_X.X.X_arm.ipk
+kmobilephoneaccess_X.X.X_arm.ipk
+ksharpPIM-DTMaccess_X.X.X_arm.ipk
+kopiemail_X.X.X_arm.ipk
+pimTABicon_X.X.X_arm.ipk
+korganizer_X.X.X_arm.ipk
+pwmanager_X.X.X_arm.ipk
+
+This package is for users of the Sharp ROM and clones.
+Users of old OpenZaurus releases, which are gcc2.95
+compiled can use it as well.
+
+CONTENT:
+
+File kmicrokdelibs_X.X.X_arm.ipk:
+The libs in this file are needed to run
+any of the included programs.
+Install it.
+
+File kaddressbook_X.X.X_arm.ipk:
+Contains KA/Pi addressbook program and needed additional libs.
+
+File korganizer-alarm_X.X.X_arm.ipk:
+Contains KO/Pi calendar program and needed additional libs.
+
+File kopiemail_X.X.X_arm.ipk:
+Contains OM/Pi email program and needed additional libs.
+You need external lib openssl to run OM/Pi.
+
+File pwmanager_X.X.X_arm.ipk:
+Contains PwM/Pi password manager program.
+
+File ksharpPIM-DTMaccess_X.X.X_arm.ipk:
+Contains needed program/lib to sync KA/Pi and KO/Pi
+with the Sharp PIM applications on the Zaurus,
+which use the new Sharp DMT Pim format.
+
+File korganizer-alarm_X.X.X_arm.ipk:
+Provides an alarm applet to get informed about alarms.
+The Zaurus will wake up from suspend
+if an event triggers an alarm.
+
+File kmobilephoneaccess_X.X.X_arm.ipk:
+Contains a command line tool for accessing mobile phones.
+It is used from Kx/Pi to sync with / export to
+mobile phones. It is not working very well, please do not
+expect too much.
+
+File pimTABicon_X.X.X_arm.ipk:
+If you insatll a program of the package, you may get
+a new TAB wchich is called Pim.
+If you did not have had this TAB on your Z, that
+TAB will not display an icon.
+Install this small package to assihn an icon to
+the new Pim TAB.
+
+
+Unzip package and install the apps in the usual way.
+You need external lib openssl to run OM/Pi.
+
+To get the character conversion in OM/Pi working, please download
+at the sourceforge project site the package
+sr-character-conversion_SharpROM_arm.ipk.zip
+from the section "general files for KDE/Pim"
+Instructions how to install this package are in a ReadMe in this file.
+
+NOTE:
+OM/Pi needs openssl, you can download an openssl package for the Z from here:
+http://www.net.lib.utah.edu/zaurus/openssl-0.9.7a_0.9.7a_arm.ipk
+
+*****************************************************
+3) OpenZaurus ROM, gcc 3.xx compiled
+*****************************************************
+
+Filename: kdepim_X.X.X_for_OZ-gcc3xx.ipk.zip
+Package contains:
+kaddressbook_OZ-gcc3xx_X.X.X_arm.ipk
+kmicrokdelibs_OZ-gcc3xx_X.X.X_arm.ipk
+kopiemail_OZ-gcc3xx_X.X.X_arm.ipk
+korganizer-alarm_OZ-gcc3xx_X.X.X_arm.ipk
+korganizer_OZ-gcc3xx_X.X.X_arm.ipk
+kmobilephoneaccess_OZ-gcc3xx_X.X.X_arm.ipk
+pimTABicon_OZ-gcc3xx_X.X.X_arm.ipk
+pwmanager_OZ-gcc3xx_X.X.X_arm.ipk
+
+
+This package is for users of the Open Zaurus ROM 3.3.6,
+compiled by coredump (aka known as Hentges-Rom).
+The programs may run on the new
+Open Zaurus Release 3.5.1 as well, but
+they cannot be installed there properly,
+because the package manager of OZ needs more
+information in the ipk files to install them properly.
+
+If you have Open Zaurus 3.5.1, you should use
+the packages of the OZ 3.5.1 feed,
+compiled and maintained by Hrw.
+Do not ask the OZ people about problems with these
+packages, they cannot help you.
+
+CONTENT:
+
+By the way, I cannot help you as well, because I
+am not using OZ.
+
+File kmicrokdelibs_OZ-gcc3xx_X.X.X_arm.ipk:
+The libs in this file are needed to run
+any of the included programs.
+Install it.
+
+File kaddressbook_OZ-gcc3xx_X.X.X_arm.ipk:
+Contains KA/Pi addressbook program and needed additional libs.
+
+File korganizer-alarm_OZ-gcc3xx_X.X.X_arm.ipk:
+Contains KO/Pi calendar program and needed additional libs.
+
+File kopiemail_OZ-gcc3xx_X.X.X_arm.ipk:
+Contains OM/Pi email program and needed additional libs.
+You need external lib openssl to run OM/Pi.
+
+File pwmanager_OZ-gcc3xx_X.X.X_arm.ipk:
+Contains PwM/Pi password manager program.
+
+File korganizer-alarm_OZ-gcc3xx_X.X.X_arm.ipk:
+Provides an alarm applet to get informed about alarms.
+The Zaurus will wake up from suspend
+if an event triggers an alarm.
+
+File kmobilephoneaccess_OZ-gcc3xx_X.X.X_arm.ipk:
+Contains a command line tool for accessing mobile phones.
+It is used from Kx/Pi to sync with / export to
+mobile phones. It is not working very well, please do not
+expect too much.
+
+File pimTABicon_OZ-gcc3xx_X.X.X_arm.ipk:
+If you insatll a program of the package, you may get
+a new TAB wchich is called Pim.
+If you did not have had this TAB on your Z, that
+TAB will not display an icon.
+Install this small package to assihn an icon to
+the new Pim TAB.
+
+Unzip package and install the apps in the usual way.
+You need external lib openssl to run OM/Pi.
+
+To get the character conversion in OM/Pi working, please download
+at the sourceforge project site the package
+oz-character-conversion_OZ-gcc3xx_arm.ipk.zip
+from the section "general files for KDE/Pim"
+Instructions how to install this package are in a ReadMe in this file.
+
+
+*****************************************************
+4) Linux Desktop (SuSE 9.2)
+*****************************************************
+
+Filename: KDE-Pim-Pi-X.X.XX-SuSE_9.2.i586.rpm
+Package contains:
+KAddessbook/Pi
+KOrganizer/Pi
+PasswordManager/Pi
+KPhone/Pi
+KTimeTracker/Pi
+KOPieMail/Pi
+and the needed microkde libs.
+
+Download file and install it on console with
+su
+rpm -ihv KDE-Pim-Pi-X.X.XX-SuSE_9.2.i586.rpm
+Note:
+If you want to update, please do it with
+rpm -Uhv KDE-Pim-Pi-X.X.XX-SuSE_9.2.i586.rpm
+(Uninstall with rpm -e KDE-Pim-Pi-X.X.XX-SuSE_9.2)
+
+Here is the information,
+provided in the rpm file about the content:
+
+This package contains the platform-independent PIM programs from
+www.rogowski.info, compiled for SuSE 9.2:
+KTimeTacker/Pi
+KPhone/Pi
+KAddressbook/Pi
+KOrganizer/Pi
+PasswordManager/Pi
+KOpieMail/Pi
+
+These applications do not need anything from the KDE-desktop
+at all to run on Linux. However, there is a dependency from
+two KDE libs, because a small command line program is included
+to make it possible to sync with the KDE-desktop applications.
+
+These applications are independent from the KDE-desktop
+environment. That means, nothing of your existing
+KDE-desktop setup will be changed, or any data
+(calendar-addressbook) used by the KDE-desktop
+applications will be changed or accessed.
+These applications stores their data and config in
+$HOME/kdepim/
+However, because the same file format is used,
+an easy exchange of data with the KDE-desktop
+is possible.
+A small command line program is included
+to make it possible to sync with the KDE-desktop applications.
+You do not need to call this program from the commandline,
+it is called from the KDE-Pim/Pi apps when you choose there:
+Sync with KDE_Desktop.
+If something is going wrong, please start the
+KDE-Pim/Pi program itself from the console to get detailed output.
+
+After installation, you should have a
+PIM-pi
+folder in your KDE start menu, where you can
+start the applications from.
+
+These programs makes it possible to sync your Zaurus easily
+(with the KDE-Pim/Pi programs running on the Zaurus)
+with the KDE-desktop calendar/addressbook data.
+If you want to use that, you have to update your
+KDE-desktop to version 3.3.0 or higher.
+SuSE 9.2 contains KDE 3.3.0 such that no update is needed.
+Actually - after the (non difficult) configuration is set up -
+with two mouseklicks on the Zaurus,
+the Zaurus syncs with the corresponding KDE-Pim/Pi
+program on the Linux Desktop which syncs automatically
+with the KDE-desktop data.
+
+If you want to use the KDE-desktop calendar/addressbook applications,
+just install these apps in this package and use them as a syncing tool for the
+Zaurus <-> KDE-desktop sync.
+The sync requires a network connection from your Zaurus to
+the PC. A detailed Sync HowTo is available in the
+Help menu of the applications.
+
+These applications makes it also possible, that you can sync
+(or just export the data to) your mobile phone with your
+data of the KDE-desktop calendar/addressbook applications.
+This is tested and working for Nokia mobile phones,
+it may work with others as well.
+(More info about that: -> Sync HowTo)
+
+NOTE:
+When using SuSE 9.1 you have to update your KDE to 3.3.x
+and you have to make an online update in SuSE 9.1 to make it
+possible to get the infrared connection working, such that
+you can sync your (Nokia) mobile phone via infrared.
+
+
+*****************************************************
+5) Memory Stick edition:
+*****************************************************
+
+If you download the memory stick edition you do not have to download kdepimdll.zip. The memory stick edition contains all needed files! It contains binary files of KO/Pi and KA/Pi for WindowsXP, WindowsME and Linux and the needed libs. In the memory stick edition KO/Pi and KA/Pi are already configured to run from a memory stick and to save the data to the memory stick. You may have problems to run the Linux versions of KO/Pi or KA/Pi on Linux from a MS-Dos formatted memory stick.  That depends on your Linux distribution.
+

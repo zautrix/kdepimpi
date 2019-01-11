@@ -1,0 +1,378 @@
+<!DOCTYPE UI><UI>
+<class>SMTPconfigUI</class>
+<include location="local">tr.h</include>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>SMTPconfigUI</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>266</width>
+            <height>365</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Configure SMTP</string>
+    </property>
+    <property>
+        <name>layoutMargin</name>
+    </property>
+    <property>
+        <name>layoutSpacing</name>
+    </property>
+    <vbox>
+        <property stdset="1">
+            <name>margin</name>
+            <number>5</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>2</number>
+        </property>
+        <widget>
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>accountLabel</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Account</string>
+            </property>
+        </widget>
+        <widget>
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>accountLine</cstring>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Name of the Account</string>
+            </property>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout20</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout18</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>serverLabel</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Server</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>portLabel</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Port</string>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout19</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>serverLine</cstring>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Name of the SMTP Server</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>portLine</cstring>
+                            </property>
+                            <property>
+                                <name>toolTip</name>
+                                <string>Port of the SMTP Server</string>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>TextLabel1</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Use secure sockets:</string>
+            </property>
+        </widget>
+        <widget>
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>ComboBox1</cstring>
+            </property>
+        </widget>
+        <widget>
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>CommandEdit</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>ssh $SERVER exec</string>
+            </property>
+        </widget>
+        <widget>
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>loginBox</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Use Login</string>
+            </property>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout17</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout15</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>userLabel</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>User</string>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLabel</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>passLabel</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>text</name>
+                                <string>Password</string>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+                <widget>
+                    <class>QLayoutWidget</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>Layout16</cstring>
+                    </property>
+                    <vbox>
+                        <property stdset="1">
+                            <name>margin</name>
+                            <number>0</number>
+                        </property>
+                        <property stdset="1">
+                            <name>spacing</name>
+                            <number>6</number>
+                        </property>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>userLine</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget>
+                            <class>QLineEdit</class>
+                            <property stdset="1">
+                                <name>name</name>
+                                <cstring>passLine</cstring>
+                            </property>
+                            <property stdset="1">
+                                <name>enabled</name>
+                                <bool>false</bool>
+                            </property>
+                            <property stdset="1">
+                                <name>echoMode</name>
+                                <enum>Password</enum>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+            </hbox>
+        </widget>
+        <widget>
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout7</cstring>
+            </property>
+            <hbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget>
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel1_2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Signatur File</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>SignaturEdit</cstring>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QPushButton</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>SignaturButton</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>1</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>F</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <spacer>
+            <property>
+                <name>name</name>
+                <cstring>spacer</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+    </vbox>
+</widget>
+<tabstops>
+    <tabstop>accountLine</tabstop>
+    <tabstop>serverLine</tabstop>
+    <tabstop>portLine</tabstop>
+    <tabstop>loginBox</tabstop>
+    <tabstop>userLine</tabstop>
+    <tabstop>passLine</tabstop>
+</tabstops>
+</UI>

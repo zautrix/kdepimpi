@@ -1,0 +1,11 @@
+Files:  bin/ompi apps/Pim/kopiemail.desktop  pics/kdepim/kopiemail/*   lib/libmicromail* lib/libmicrolibetpan*
+Priority: optional
+Section: qpe/pim
+Maintainer: Lutz Rogowski <zautrix@rogowski.info>
+Architecture: arm
+Version: $KDEPIM_VERSION
+License: GPL
+Depends: kmicrokdelibs openssl
+Description: KOPieMail/Pi 
+ The embedded version of KOPieMail/Platform-independend (OM/Pi), 
+     for 640x480 and 320x240 resolution on Zaurus PDA

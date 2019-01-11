@@ -1,0 +1,687 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>configWnd</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>configWnd</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>490</width>
+            <height>318</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>PwManager Configuration</string>
+    </property>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>okButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>280</y>
+                <width>107</width>
+                <height>27</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;OK</string>
+        </property>
+        <property name="accel">
+            <string>Alt+O</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>cancelButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>370</x>
+                <y>280</y>
+                <width>107</width>
+                <height>27</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Cancel</string>
+        </property>
+        <property name="accel">
+            <string>Alt+C</string>
+        </property>
+    </widget>
+    <widget class="QTabWidget">
+        <property name="name">
+            <cstring>tabWidget2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>470</width>
+                <height>260</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Look &amp;&amp; feel</string>
+            </attribute>
+            <widget class="QComboBox">
+                <item>
+                    <property name="text">
+                        <string>Category on top</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>Category-list left</string>
+                    </property>
+                </item>
+                <property name="name">
+                    <cstring>windowStyleComboBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>220</x>
+                        <y>180</y>
+                        <width>210</width>
+                        <height>28</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1_5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>180</y>
+                        <width>180</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Window-style:</string>
+                </property>
+                <property name="alignment">
+                    <set>AlignVCenter|AlignRight</set>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1_4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>40</y>
+                        <width>400</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Font for the password entries:</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>selEntrFontButton</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>90</y>
+                        <width>160</width>
+                        <height>27</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>select Font</string>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>currEntrFont</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>70</y>
+                        <width>230</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string></string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>TabPage</cstring>
+            </property>
+            <attribute name="title">
+                <string>File</string>
+            </attribute>
+            <widget class="QComboBox">
+                <item>
+                    <property name="text">
+                        <string>none</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>gzip</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>bzip2</string>
+                    </property>
+                </item>
+                <property name="name">
+                    <cstring>compressionComboBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>290</x>
+                        <y>50</y>
+                        <width>150</width>
+                        <height>28</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1_6</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>50</y>
+                        <width>270</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>*.pwm file compression:</string>
+                </property>
+                <property name="alignment">
+                    <set>AlignVCenter|AlignRight</set>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1_8</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>90</y>
+                        <width>270</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>permissions:</string>
+                </property>
+                <property name="alignment">
+                    <set>AlignVCenter|AlignRight</set>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>permissionLineEdit</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>290</x>
+                        <y>90</y>
+                        <width>142</width>
+                        <height>27</height>
+                    </rect>
+                </property>
+                <property name="maxLength">
+                    <number>3</number>
+                </property>
+            </widget>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>fileBackupCheckBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>80</x>
+                        <y>140</y>
+                        <width>360</width>
+                        <height>23</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Make file backup before saving</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Timeout</string>
+            </attribute>
+            <widget class="QSpinBox">
+                <property name="name">
+                    <cstring>pwTimeoutSpinBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>390</x>
+                        <y>50</y>
+                        <width>55</width>
+                        <height>23</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>20</y>
+                        <width>370</width>
+                        <height>80</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Password timeout (timeout to hold password in memory, so you don't have to re-enter it, if you already have entered it) [set to 0 to disable]:</string>
+                </property>
+                <property name="alignment">
+                    <set>WordBreak|AlignVCenter</set>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1_7</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>110</y>
+                        <width>370</width>
+                        <height>80</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Auto-lock timeout (auto lock document after this amount of seconds) [set to 0 to disable]:</string>
+                </property>
+                <property name="alignment">
+                    <set>WordBreak|AlignVCenter</set>
+                </property>
+            </widget>
+            <widget class="QSpinBox">
+                <property name="name">
+                    <cstring>lockTimeoutSpinBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>390</x>
+                        <y>140</y>
+                        <width>55</width>
+                        <height>23</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>autoDeepLockCheckBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>60</x>
+                        <y>180</y>
+                        <width>380</width>
+                        <height>25</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>deep-lock on autolock</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Autostart</string>
+            </attribute>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1_3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>30</y>
+                        <width>400</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Open this file automatically on startup:</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>autoStartLineEdit</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>50</y>
+                        <width>360</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>browseAutoStButton</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>400</x>
+                        <y>50</y>
+                        <width>30</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>...</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>autostartDeeplockedCheckBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>40</x>
+                        <y>80</y>
+                        <width>390</width>
+                        <height>25</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>open deeplocked</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>External apps</string>
+            </attribute>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>40</y>
+                        <width>280</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Favourite browser:</string>
+                </property>
+                <property name="alignment">
+                    <set>AlignVCenter|AlignRight</set>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>browserLineEdit</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>310</x>
+                        <y>40</y>
+                        <width>130</width>
+                        <height>27</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>xtermLineEdit</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>310</x>
+                        <y>100</y>
+                        <width>130</width>
+                        <height>27</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>100</y>
+                        <width>280</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Favourite X-terminal:</string>
+                </property>
+                <property name="alignment">
+                    <set>AlignVCenter|AlignRight</set>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab</cstring>
+            </property>
+            <attribute name="title">
+                <string>Miscellaneous</string>
+            </attribute>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>trayCheckBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>30</y>
+                        <width>400</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Show icon in system-tray</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>openUnlockedCheckBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>80</y>
+                        <width>400</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Open document with passwords unlocked</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>autoMinimizeCheckBox</cstring>
+                </property>
+                <property name="enabled">
+                    <bool>false</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>50</x>
+                        <y>50</y>
+                        <width>380</width>
+                        <height>25</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>auto-minimize to tray on startup</string>
+                </property>
+            </widget>
+            <widget class="QComboBox">
+                <item>
+                    <property name="text">
+                        <string>don't lock</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>normal lock</string>
+                    </property>
+                </item>
+                <item>
+                    <property name="text">
+                        <string>deep-lock</string>
+                    </property>
+                </item>
+                <property name="name">
+                    <cstring>minimizeLockComboBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>310</x>
+                        <y>170</y>
+                        <width>120</width>
+                        <height>27</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLabel">
+                <property name="name">
+                    <cstring>textLabel1_9</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>180</y>
+                        <width>270</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>auto-lock on minimize:</string>
+                </property>
+                <property name="alignment">
+                    <set>AlignVCenter|AlignRight</set>
+                </property>
+            </widget>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>kwalletEmuCheckBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>110</y>
+                        <width>400</width>
+                        <height>25</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>KWallet emulation</string>
+                </property>
+            </widget>
+            <widget class="QCheckBox">
+                <property name="name">
+                    <cstring>wndCloseCheckBox</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>30</x>
+                        <y>140</y>
+                        <width>430</width>
+                        <height>24</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Do not minimize windows into tray. (Close the window)</string>
+                </property>
+            </widget>
+        </widget>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>okButton</sender>
+        <signal>clicked()</signal>
+        <receiver>configWnd</receiver>
+        <slot>okButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>cancelButton</sender>
+        <signal>clicked()</signal>
+        <receiver>configWnd</receiver>
+        <slot>cancelButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>browseAutoStButton</sender>
+        <signal>clicked()</signal>
+        <receiver>configWnd</receiver>
+        <slot>browseAutoStButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>selEntrFontButton</sender>
+        <signal>clicked()</signal>
+        <receiver>configWnd</receiver>
+        <slot>selEntrFontButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>trayCheckBox</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>autoMinimizeCheckBox</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>pwTimeoutSpinBox</tabstop>
+    <tabstop>trayCheckBox</tabstop>
+    <tabstop>okButton</tabstop>
+    <tabstop>cancelButton</tabstop>
+</tabstops>
+<slots>
+    <slot>okButton_slot()</slot>
+    <slot>cancelButton_slot()</slot>
+    <slot>browseBgButton_slot()</slot>
+    <slot>browseAutoStButton_slot()</slot>
+    <slot>selEntrFontButton_slot()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

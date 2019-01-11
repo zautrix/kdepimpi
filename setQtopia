@@ -1,0 +1,21 @@
+# add the following line to ~/.bashrc without leading #
+# alias cq='source /opt/Qtopia/examples/korge-1.0.9r.sharp/setQtopia'
+# then type in terminal cq<return> to set the variables
+# for desktop version in virtual framebuffer
+export QPEDIR=/opt/Qtopia
+export OPIEDIR=/kde_dev/opie
+export BUILD_NO_OPIE_PLUGIN=1
+export BUILD_NO_LDAP_PLUGIN=1
+#export BUILD_NO_GAMMU=1
+export QTDIR=/opt/Qtopia
+export PATH=$QTDIR/bin:$PATH   
+#export BUILD_NO_PWMANAGER=1
+export TMAKEPATH=/opt/Qtopia/tmake/lib/qws/linux-generic-g++
+export LD_LIBRARY_PATH=$QTDIR/lib:$OPIEDIR/lib:$LD_LIBRARY_PATH
+export PLATFORM=qtopia
+export QTOPIALIB=-lqtopia
+export LIBICAL_PATH=/qtopia
+#export RELEASE_DEBUG=release
+export RELEASE_DEBUG=debug
+
+ 

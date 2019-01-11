@@ -1,0 +1,14 @@
+Files: bin/pwmpi  apps/Pim/pwmanager.desktop   pics/kdepim/pwmanager/*  
+
+Priority: optional
+Section: qpe/pim
+Maintainer: Ulf Schenk
+Architecture: arm
+Version: $KDEPIM_VERSION
+License: GPL
+Depends: kmicrokdelibs
+Description: PwManager/Pi
+ The embedded version of PwManager/Platform-independend, 
+    the KDE password management program
+  optimized for 640x480 and 320x240 resolution
+    on Zaurus PDA

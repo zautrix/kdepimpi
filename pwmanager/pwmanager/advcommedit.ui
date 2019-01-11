@@ -1,0 +1,274 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>advCommEdit</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>advCommEdit</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>685</width>
+            <height>326</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Advanced HTML-comment editor</string>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>10</y>
+                <width>310</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Global title:</string>
+        </property>
+        <property name="alignment">
+            <set>AlignCenter</set>
+        </property>
+    </widget>
+    <widget class="QGroupBox">
+        <property name="name">
+            <cstring>groupBox1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>360</x>
+                <y>10</y>
+                <width>310</width>
+                <height>250</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>preview</string>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>previewDummy</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>20</y>
+                    <width>290</width>
+                    <height>220</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string></string>
+            </property>
+        </widget>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>okButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>280</y>
+                <width>180</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;OK</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>cancelButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>490</x>
+                <y>280</y>
+                <width>180</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Cancel</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>refreshPreviewButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>240</x>
+                <y>280</y>
+                <width>210</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Refresh preview</string>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>titleLineEdit</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>30</y>
+                <width>310</width>
+                <height>26</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel3</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>70</y>
+                <width>310</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="frameShape">
+            <enum>NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+            <enum>Plain</enum>
+        </property>
+        <property name="text">
+            <string>Current entries:</string>
+        </property>
+        <property name="alignment">
+            <set>AlignCenter</set>
+        </property>
+    </widget>
+    <widget class="QListBox">
+        <property name="name">
+            <cstring>entryListBox</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>90</y>
+                <width>180</width>
+                <height>130</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>editButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>210</x>
+                <y>140</y>
+                <width>121</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>edit</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>delButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>210</x>
+                <y>180</y>
+                <width>121</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>delete</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>addTblButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>210</x>
+                <y>100</y>
+                <width>120</width>
+                <height>31</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Add</string>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>okButton</sender>
+        <signal>clicked()</signal>
+        <receiver>advCommEdit</receiver>
+        <slot>okButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>cancelButton</sender>
+        <signal>clicked()</signal>
+        <receiver>advCommEdit</receiver>
+        <slot>cancelButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>refreshPreviewButton</sender>
+        <signal>clicked()</signal>
+        <receiver>advCommEdit</receiver>
+        <slot>updatePreview()</slot>
+    </connection>
+    <connection>
+        <sender>addTblButton</sender>
+        <signal>clicked()</signal>
+        <receiver>advCommEdit</receiver>
+        <slot>addSubtblButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>editButton</sender>
+        <signal>clicked()</signal>
+        <receiver>advCommEdit</receiver>
+        <slot>editButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>delButton</sender>
+        <signal>clicked()</signal>
+        <receiver>advCommEdit</receiver>
+        <slot>delButton_slot()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>titleLineEdit</tabstop>
+    <tabstop>entryListBox</tabstop>
+    <tabstop>addTblButton</tabstop>
+    <tabstop>editButton</tabstop>
+    <tabstop>delButton</tabstop>
+    <tabstop>okButton</tabstop>
+    <tabstop>refreshPreviewButton</tabstop>
+    <tabstop>cancelButton</tabstop>
+</tabstops>
+<slots>
+    <slot>okButton_slot()</slot>
+    <slot>cancelButton_slot()</slot>
+    <slot>updatePreview()</slot>
+    <slot>addSubtblButton_slot()</slot>
+    <slot>editButton_slot()</slot>
+    <slot>delButton_slot()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

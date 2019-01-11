@@ -1,0 +1,385 @@
+export KDEPIMDIR = $(shell pwd)
+
+export KDEPIM_VERSION=$(shell sed -e 's/.*\"\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/' < version)
+
+ifeq ($(PLATFORM) , zaurus)
+  BUILD_NO_LDAP_PLUGIN=1
+endif
+
+ifneq ($(PLATFORM) , zaurus)
+  BUILD_NO_SHARP_PLUGIN=1
+endif
+
+#opie plugin is deprecated. The qtopia plugin handles the task from now on.
+BUILD_NO_OPIE_PLUGIN=1
+
+SUBDIRS_MICROKDE = \
+   libical/src/libical \
+   libical/src/libicalss \
+   qtcompat \
+   microkde \
+   libkcal \
+   libkdepim \
+   kabc \
+   kabc/formats/binary \
+   kabc/plugins/file \
+   kabc/plugins/dir \
+   korganizer \
+   kalarmd \
+   kaddressbook
+
+SUBDIRS_QTOPIA_PLUGIN = \
+   kabc/plugins/qtopia
+
+SUBDIRS_OPIE_PLUGIN = \
+   kabc/plugins/opie
+
+SUBDIRS_SHARP_PLUGIN = \
+   kabc/plugins/sharpdtm
+
+SUBDIRS_LDAP_PLUGIN = \
+   kabc/plugins/ldap
+
+SUBDIRS_MICROMAIL = \
+   libetpan \
+   kmicromail/libmailwrapper \
+   kmicromail
+
+SUBDIRS_GAMMU = \
+   gammu/emb/common \
+   gammu/emb/gammu
+
+SUBDIRS_PWMANAGER = \
+   pwmanager/libcrypt/mpi  \
+   pwmanager/libcrypt/error  \
+   pwmanager/libcrypt/cipher  \
+   pwmanager/libcrypt/zlib \
+   pwmanager/pwmanager
+
+SUBDIRS = \
+   $(SUBDIRS_MICROKDE) \
+   $(SUBDIRS_QTOPIA_PLUGIN) \
+   $(SUBDIRS_OPIE_PLUGIN) \
+   $(SUBDIRS_SHARP_PLUGIN) \
+   $(SUBDIRS_LDAP_PLUGIN) \
+   $(SUBDIRS_MICROMAIL) \
+   $(SUBDIRS_GAMMU) \
+   $(SUBDIRS_PWMANAGER) 
+
+
+all: build_microkde \
+     build_qtopia_plugin \
+     build_opie_plugin \
+     build_sharp_plugin \
+     build_ldap_plugin \
+     build_micromail \
+     build_gammu \
+     build_pwmanager
+
+
+build_microkde: variable_test tmake
+	for i in $(SUBDIRS_MICROKDE); do pushd $$i; \
+          make -f Makefile$(PLATFORM) || exit 1; popd; \
+          done
+
+build_qtopia_plugin: build_microkde
+  ifdef BUILD_NO_QTOPIA_PLUGIN
+	@echo == qtopia plugin not build.
+  else
+	for i in $(SUBDIRS_QTOPIA_PLUGIN); do pushd $$i; \
+          make -f Makefile$(PLATFORM) || exit 1; popd; \
+          done
+  endif
+
+build_opie_plugin: build_microkde
+  ifdef BUILD_NO_OPIE_PLUGIN
+	@echo == opie plugin not build.
+  else
+	for i in $(SUBDIRS_OPIE_PLUGIN); do pushd $$i; \
+          make -f Makefile$(PLATFORM) || exit 1; popd; \
+          done
+  endif
+
+build_sharp_plugin: build_microkde
+  ifdef BUILD_NO_SHARP_PLUGIN
+	@echo == ldap plugin not build.
+  else
+	for i in $(SUBDIRS_SHARP_PLUGIN); do pushd $$i; \
+          make -f Makefile$(PLATFORM) || exit 1; popd; \
+          done
+  endif
+  
+build_ldap_plugin: build_microkde
+  ifdef BUILD_NO_LDAP_PLUGIN
+	@echo == ldap plugin not build.
+  else
+	  for i in $(SUBDIRS_LDAP_PLUGIN); do pushd $$i; \
+            make -f Makefile$(PLATFORM) || exit 1; popd; \
+          done
+  endif
+
+
+build_micromail: build_microkde
+  ifdef BUILD_NO_MICROMAIL
+	@echo == kmicromail not build.
+  else
+	for i in $(SUBDIRS_MICROMAIL); do pushd $$i; \
+          make -f Makefile$(PLATFORM) || exit 1; popd; \
+          done
+  endif
+
+build_gammu: variable_test tmake
+  ifdef BUILD_NO_GAMMU
+	@echo == gammu not build.
+  else
+	for i in $(SUBDIRS_GAMMU); do pushd $$i; \
+          make -f Makefile$(PLATFORM) || exit 1; popd; \
+          done
+  endif
+
+build_pwmanager: build_microkde
+  ifdef BUILD_NO_PWMANAGER
+	@echo == pwmanager not build.
+  else
+	for i in $(SUBDIRS_PWMANAGER); do pushd $$i; \
+          make -f Makefile$(PLATFORM) || exit 1; popd; \
+          done
+  endif
+
+
+variable_info:
+	@echo --------------------------------------
+	@echo KDEPIM buildsystem, variableinfo...
+	@echo KDEPIMDIR=$(KDEPIMDIR)
+	@echo QTDIR=$(QTDIR)
+	@echo QPEDIR=$(QPEDIR)
+	@echo OPIEDIR=$(OPIEDIR)
+	@echo PLATFORM=$(PLATFORM)
+	@echo RELEASE_DEBUG=$(RELEASE_DEBUG)
+	@echo BUILD_NO_MICROMAIL=$(BUILD_NO_MICROMAIL)
+	@echo BUILD_NO_LDAP_PLUGIN=$(BUILD_NO_LDAP_PLUGIN)
+	@echo BUILD_NO_OPIE_PLUGIN=$(BUILD_NO_OPIE_PLUGIN)
+	@echo BUILD_NO_QTOPIA_PLUGIN=$(BUILD_NO_QTOPIA_PLUGIN)
+	@echo BUILD_NO_SHARP_PLUGIN=$(BUILD_NO_SHARP_PLUGIN)
+        ifndef BUILD_NO_SHARP_PLUGIN
+	@echo SHARPDTMSDK=$(SHARPDTMSDK)
+        endif
+	@echo BUILD_NO_GAMMU=$(BUILD_NO_GAMMU)
+	@echo BUILD_NO_PWMANAGER=$(BUILD_NO_PWMANAGER)
+	@echo --------------------------------------
+
+variable_test: variable_info
+	@echo KDEPIM buildsystem, variablecheck...
+  ifndef KDEPIMDIR
+	@echo KDEPIMDIR is not defined.
+	$(error KDEPIMDIR is not defined)
+  endif
+  ifndef PLATFORM
+	@echo PLATFORM is not defined.
+	$(error PLATFORM is not defined)
+  endif
+  ifdef BUILD_NO_LDAP_PLUGIN
+	@echo LDAP PLUGIN will not be build, because BUILD_NO_LDAP_PLUGIN is set to $(BUILD_NO_LDAP_PLUGIN)
+  endif
+  ifdef BUILD_NO_OPIE_PLUGIN
+	@echo OPIE PLUGIN will not be build, because BUILD_NO_OPIE_PLUGIN is set to $(BUILD_NO_OPIE_PLUGIN)
+  endif
+  ifdef BUILD_NO_QTOPIA_PLUGIN
+	@echo QTOPIA PLUGIN will not be build, because BUILD_NO__QTOPIA_PLUGIN is set to $(BUILD_NO__QTOPIA_PLUGIN)
+  endif
+  ifdef BUILD_NO_MICROMAIL
+	@echo MICROMAIL will not be build, because BUILD_NO_MICROMAIL is set to $(BUILD_NO_MICROMAIL)
+  endif
+  ifdef BUILD_NO_SHARP_PLUGIN
+	@echo SHARP PLUGIN will not be build, because BUILD_NO_SHARP_PLUGIN is set to $(BUILD_NO_SHARP_PLUGIN)
+  else
+  ifndef SHARPDTMSDK
+	@echo SHARP PLUGIN can not be build, because SHARPDTMSDK is set to $(SHARPDTMSDK)
+	$(error SHARPDTMSDK is not defined)
+  endif
+  endif
+  ifdef BUILD_NO_GAMMU
+	@echo GAMMU will not be build, because BUILD_NO_GAMMU is set to $(BUILD_NO_GAMMU)
+  endif
+  ifdef BUILD_NO_PWMANAGER
+	@echo PWMANAGER will not be build, because BUILD_NO_PWMANAGER is set to $(BUILD_NO_PWMANAGER)
+  endif
+	@echo --------------------------------------
+
+
+objects:
+	for i in $(SUBDIRS); do mkdir -p $$i/obj/$(PLATFORM); done
+	for i in $(SUBDIRS); do mkdir -p $$i/moc/$(PLATFORM); done
+	mkdir -p libical/lib/$(PLATFORM)
+	mkdir -p dest
+	mkdir -p dest$(LIBICAL_PATH)
+	mkdir -p pwmanager/libcrypt/$(PLATFORM)
+
+clean:
+	rm -rf libical/lib/$(PLATFORM)/*;
+	rm -rf pwmanager/libcrypt/$(PLATFORM)/*;
+	for i in $(SUBDIRS); do pushd $$i; make clean; rm -f *~;\
+          rm -f obj/$(PLATFORM)/*; rm -f moc/$(PLATFORM)/*; rm Makefile$(PLATFORM); popd; \
+          done 
+
+pac:
+	rm -f $(QPEDIR)/lib/libmicro*
+	rm -f $(QPEDIR)/plugins/applets/libkopi*
+	make
+	make install
+	make dist
+install:
+
+	cd bin/kdepim; make install
+	cp -r Pim $(QPEDIR)/apps
+	cp db2file/db2file $(QPEDIR)/bin/db2file
+	chmod ugo+x $(QPEDIR)/bin/db2file
+	cp korganizer/korganizer.desktop $(QPEDIR)/apps/Pim/korganizer.desktop
+	cp kaddressbook/kaddressbook.desktop $(QPEDIR)/apps/Pim/kaddressbook.desktop
+	cp kmicromail/kmicromail.desktop $(QPEDIR)/apps/Pim/kopiemail.desktop
+	cp pwmanager/pwmanager/pwmanager.desktop $(QPEDIR)/apps/Pim/pwmanager.desktop
+    
+dist: 
+	@echo Dont forget to do "make install" before "make dist"
+	rm -f *arm.ipk
+	rm -f *ipk.zip
+	rm -rf ../kdepimpi_$(KDEPIM_VERSION)/*
+	rm -f *~
+	cd ..;mkdir -p kdepimpi_$(KDEPIM_VERSION)
+	cd ../kdepimpi_$(KDEPIM_VERSION);mkdir -p ipk
+	cd ..; tar czf kdepimpi-$(KDEPIM_VERSION).tar.gz --exclude=obj --exclude=moc --exclude=CVS --exclude=Makefilezaurus --exclude=Makefileqtopia  kdepim
+	mkipks kmicrokdelibs.control
+	mkipks korganizer.control
+	mkipks kaddressbook.control
+  ifndef BUILD_NO_MICROMAIL
+	mkipks kopiemail.control
+  endif
+  ifndef BUILD_NO_SHARP_PLUGIN
+	mkipks ksharpPIM-DTMaccess.control
+  endif
+	mkipks korganizer-alarm.control
+  ifndef BUILD_NO_GAMMU
+	mkipks kmobilephoneaccess.control
+  endif
+  ifndef BUILD_NO_PWMANAGER
+	mkipks pwmanager.control
+  endif
+	mkipks pimTABicon.control
+	zip kdepim_$(KDEPIM_VERSION)_for_SharpRom.ipk.zip *.ipk ReleaseNotes.txt
+	mv *.ipk ../kdepimpi_$(KDEPIM_VERSION)/ipk/
+	mv *for_SharpRom.ipk.zip ../kdepimpi_$(KDEPIM_VERSION)/
+	mv ../kdepimpi-$(KDEPIM_VERSION).tar.gz ../kdepimpi_$(KDEPIM_VERSION)/
+
+tmake: objects \
+       qtcompat/Makefile$(PLATFORM) \
+       microkde/Makefile$(PLATFORM) \
+       libkcal/Makefile$(PLATFORM) \
+       libkdepim/Makefile$(PLATFORM) \
+       korganizer/Makefile$(PLATFORM) \
+       kalarmd/Makefile$(PLATFORM) \
+       libical/src/libical/Makefile$(PLATFORM) \
+       libical/src/libicalss/Makefile$(PLATFORM) \
+       kabc/Makefile$(PLATFORM) \
+       kabc/formats/binary/Makefile$(PLATFORM) \
+       kabc/plugins/file/Makefile$(PLATFORM) \
+       kabc/plugins/dir/Makefile$(PLATFORM) \
+       kabc/plugins/ldap/Makefile$(PLATFORM) \
+       kabc/plugins/opie/Makefile$(PLATFORM) \
+       kabc/plugins/qtopia/Makefile$(PLATFORM) \
+       kabc/plugins/sharpdtm/Makefile$(PLATFORM) \
+       kaddressbook/Makefile$(PLATFORM) \
+       kmicromail/Makefile$(PLATFORM) \
+       libetpan/Makefile$(PLATFORM) \
+       kmicromail/libmailwrapper/Makefile$(PLATFORM) \
+       gammu/emb/common/Makefile$(PLATFORM) \
+       gammu/emb/gammu/Makefile$(PLATFORM) \
+       pwmanager/pwmanager/Makefile$(PLATFORM) \
+       pwmanager/libcrypt/mpi/Makefile$(PLATFORM) \
+       pwmanager/libcrypt/error/Makefile$(PLATFORM) \
+       pwmanager/libcrypt/cipher/Makefile$(PLATFORM) \
+       pwmanager/libcrypt/zlib/Makefile$(PLATFORM)
+
+qtcompat/Makefile$(PLATFORM): qtcompat/qtcompat.pro
+	cd qtcompat; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" qtcompat.pro -o Makefile$(PLATFORM)
+
+microkde/Makefile$(PLATFORM): microkde/microkdeE.pro
+	cd microkde; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" microkdeE.pro -o Makefile$(PLATFORM)
+
+libkcal/Makefile$(PLATFORM): libkcal/libkcalE.pro
+	cd libkcal; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" libkcalE.pro -o Makefile$(PLATFORM)
+
+
+libkdepim/Makefile$(PLATFORM): libkdepim/libkdepimE.pro
+	cd libkdepim; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" libkdepimE.pro -o Makefile$(PLATFORM)
+
+kalarmd/Makefile$(PLATFORM): kalarmd/kalarmdE.pro
+	cd kalarmd; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" kalarmdE.pro -o Makefile$(PLATFORM)
+
+korganizer/Makefile$(PLATFORM): korganizer/korganizerE.pro
+	cd korganizer; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" korganizerE.pro -o Makefile$(PLATFORM)
+
+libical/src/libical/Makefile$(PLATFORM): libical/src/libical/libicalE.pro
+	cd libical/src/libical; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" libicalE.pro -o Makefile$(PLATFORM)
+
+libical/src/libicalss/Makefile$(PLATFORM): libical/src/libicalss/libicalssE.pro
+	cd libical/src/libicalss; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" libicalssE.pro -o Makefile$(PLATFORM)
+
+kabc/Makefile$(PLATFORM): kabc/kabcE.pro
+	cd kabc; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" kabcE.pro -o Makefile$(PLATFORM)
+
+kabc/formats/binary/Makefile$(PLATFORM): kabc/formats/binary/kabcformat_binaryE.pro
+	cd kabc/formats/binary; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" kabcformat_binaryE.pro -o Makefile$(PLATFORM)
+
+kabc/plugins/file/Makefile$(PLATFORM): kabc/plugins/file/fileE.pro
+	cd kabc/plugins/file; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" fileE.pro -o Makefile$(PLATFORM)
+
+kabc/plugins/dir/Makefile$(PLATFORM): kabc/plugins/dir/dirE.pro
+	cd kabc/plugins/dir; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" dirE.pro -o Makefile$(PLATFORM)
+
+kabc/plugins/ldap/Makefile$(PLATFORM): kabc/plugins/ldap/ldapE.pro
+	cd kabc/plugins/ldap; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" ldapE.pro -o Makefile$(PLATFORM)
+
+kabc/plugins/opie/Makefile$(PLATFORM): kabc/plugins/opie/opieE.pro
+	cd kabc/plugins/opie; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" opieE.pro -o Makefile$(PLATFORM)
+
+kabc/plugins/qtopia/Makefile$(PLATFORM): kabc/plugins/qtopia/qtopiaE.pro
+	cd kabc/plugins/qtopia; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" qtopiaE.pro -o Makefile$(PLATFORM)
+
+kabc/plugins/sharpdtm/Makefile$(PLATFORM): kabc/plugins/sharpdtm/sharpdtmE.pro
+	cd kabc/plugins/sharpdtm; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" sharpdtmE.pro -o Makefile$(PLATFORM)
+
+kaddressbook/Makefile$(PLATFORM): kaddressbook/kaddressbookE.pro
+	cd kaddressbook; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" kaddressbookE.pro -o Makefile$(PLATFORM)
+
+kmicromail/Makefile$(PLATFORM): kmicromail/kmicromailE.pro
+	cd kmicromail; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" kmicromailE.pro -o Makefile$(PLATFORM)
+
+libetpan/Makefile$(PLATFORM): libetpan/libetpanE.pro
+	cd libetpan; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" libetpanE.pro -o Makefile$(PLATFORM)
+
+kmicromail/libmailwrapper/Makefile$(PLATFORM): kmicromail/libmailwrapper/libmailwrapperE.pro
+	cd kmicromail/libmailwrapper; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" libmailwrapperE.pro -o Makefile$(PLATFORM)
+
+gammu/emb/common/Makefile$(PLATFORM): gammu/emb/common/commonE.pro
+	cd gammu/emb/common; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" commonE.pro -o Makefile$(PLATFORM)
+
+gammu/emb/gammu/Makefile$(PLATFORM): gammu/emb/gammu/gammuE.pro
+	cd gammu/emb/gammu; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" gammuE.pro -o Makefile$(PLATFORM)
+
+pwmanager/pwmanager/Makefile$(PLATFORM): pwmanager/pwmanager/pwmanagerE.pro
+	cd pwmanager/pwmanager; tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" pwmanagerE.pro -o Makefile$(PLATFORM)
+
+
+pwmanager/libcrypt/mpi/Makefile$(PLATFORM): pwmanager/libcrypt/mpi/mpi.pro
+	cd pwmanager/libcrypt/mpi;tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" mpi.pro -o Makefile$(PLATFORM)
+
+pwmanager/libcrypt/error/Makefile$(PLATFORM): pwmanager/libcrypt/error/error.pro
+	cd pwmanager/libcrypt/error;tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" error.pro -o Makefile$(PLATFORM)
+
+pwmanager/libcrypt/cipher/Makefile$(PLATFORM): pwmanager/libcrypt/cipher/cipher.pro
+	cd pwmanager/libcrypt/cipher;tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" cipher.pro -o Makefile$(PLATFORM)
+
+pwmanager/libcrypt/zlib/Makefile$(PLATFORM): pwmanager/libcrypt/zlib/zlib.pro
+	cd pwmanager/libcrypt/zlib;tmake "CONFIG+=$(RELEASE_DEBUG)" "VERSION=$(KDEPIM_VERSION)" zlib.pro -o Makefile$(PLATFORM)
+
+

@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=
+Comment=An addressbook 
+Comment[de]=Adressbuch
+Exec=/opt/kdepimpi/kapi
+GenericName=
+GenericName[de]=
+Icon=/opt/kdepimpi/kdepim/kaddressbook/kaddressbook.png
+MimeType=
+Name=KAddressBook/Pi
+Name[de]=KAdressBuch/Pi
+ServiceTypes=Application
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+TryExec=/opt/kdepimpi/kapi
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

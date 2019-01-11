@@ -1,0 +1,420 @@
+
+Migration HowTo Outlook 200X -> KDE 
+
+Version 1.0.6
+The latest version of this file can be downloaded from
+http://sourceforge.net/projects/kdepimpi/
+Please choose there package/project/file:
+general Files for KDE/Pim
+MigrationHowTo_OL2KDE
+MigrationHowTo_OL2KDE.txt.zip
+
+
+This HowTo describes the process of migrating data ( contact and calendar data ) from Outlook 98/200X (TM) to the PIM programs of the KDE-Desktop-Environment. 
+We will call Outlook as OL in this document.
+The PIM programs  migrating to are KAdddressbook and KOrganizer, which may be used embedded in the Kontact PIM management framework.
+This HowTo describes version 1.9.20 of the migration tools.
+The migration tools are the platform independent versions of KAdddressbook and KOrganizer: KAdddressbook/Pi and KOrganizer/Pi.
+If you want to migrate emails, you can do that via an IMAP server.
+A Kolab server is an IMAP server.
+A HowTo how to migrate emails and contact and calendar data to a Kolab server using the Toltec (TM) Outlook(TM)  plugin is available as well.
+You can found it on
+http://sourceforge.net/projects/kdepimpi/
+Please choose there package/project/file:
+general Files for KDE/Pim
+MigrationHowTo_OL2KDE
+MigrationHowTo_OL2Kolab.txt.zip
+
+Content:
+
+1) How to start
+2) How to import pst files in Outlook
+3) Where to get the migration tools
+4) How to install the migration tools
+5) How to get the contact data out of Outlook200X
+6) How to get the calendar data out of Outlook200X
+7) How to import your contact data into Kontact
+8) How to import your calendar data into Kontact
+
+APPENDIX A) Problems and solutions when reading contact data
+APPENDIX B) Problems and solutions when reading calendar data
+
+****************************************
+1) How to start
+****************************************
+
+For the migration we need the actual Outlook 200X data, which Outlook stores in *.pst files.
+Then we need an installed version of Outlook 200X to access these  *.pst files.
+When we have an Outllook 200X running with all data accessable, we need the migration tools.
+
+If you have no Outlook200X installed please install the Outlook version, you need to a import your *.pst files.
+If you have an Outlook200X installed with no contact/calendar data available, and you have some  *.pst files please continue with: 2) How to import pst files in Outlook.
+If you have a running Outlook200X already with contact/calendar data available, please continue with: 3) Where to get the migration tools.
+
+
+****************************************
+2) How to import pst files in Outlook
+****************************************
+
+To open a local *.pst file in Outlook2003, choose menu:
+File - Open - Outlook Data File ...
+Now the data included in this file is shown 
+as folders of a newly added root folder in the Outlook folder view.
+This root folder is probably not accessable from
+the migration tools via OLE. 
+To access data stored in one of the subfolders,
+copy this subfolder to a root folder, 
+which can be accessed from the migration tools via OLE.
+(To know, which folder can be accessed, just perform 5.) or 6.) until
+you get the Oulook import dialog!)
+
+To copy it, right click on that subfolder and choose
+Copy "<subfoldername>"...
+in the popup menu.
+
+****************************************
+3) Where to get the migration tools
+****************************************
+
+The data migration is is performed with the Windows versions of KAdddressbook/Pi and KOrganizer/Pi.
+Pi stands for platform-independend - platform-independend because the same program is available for different platforms, like Windows, Linux desktop and for embedded devices like the Sharp-Zaurus PDA.
+Note: The Linux desktop versions of KOrganizer/Pi and KOrganizer/KDE-desktop are two different programs! You cannot use  KOrganizer/Pi together with, or embedded in, the KDE-desktop environment. The same is valid for KAdddressbook/Pi.
+
+The programs you need for the migration are: 
+a) KAdddressbook/Pi executeable + 3dlls + icons
+b) KOrganizer/Pi executeable + icons
+c) The Qt3 library qt-mt334.dll and the MSVC library msvcr71.dll and the MSVC library mfc71u.dll
+You can download all of them at:
+
+http://sourceforge.net/projects/kdepimpi/
+
+Download of a) and b)
+Please choose there package/project with name KDE/Pim
+(Direct link: http://sourceforge.net/project/showfiles.php?group_id=104103&package_id=112604 )
+Choose there the topmost latest version and the files
+kdepim_X.X.X_for_Windows.exe.zip
+Such that the files to download is
+kdepim_X.X.X_for_Windows.exe.zip
+
+NOTE:
+There may be a file with the name "kdepim_X.X.X_for_Windows_98-ME.exe.zip" available as well.
+The programs of that package do not contain the import from Outlook functionality.
+
+To download c)
+Please choose there package/project/file:
+general Files for KDE/Pim
+Needed Windows Dlls
+kdepim334dll.zip
+
+(Direct link: http://sourceforge.net/project/showfiles.php?group_id=104103&package_id=122438&release_id=256700 )
+Choose there the file:
+kdepim334dll.zip
+
+Now you have downloaded the files
+
+kdepim_X.X.X_for_Windows.exe.zip
+kdepim334dll.zip
+
+and we can continue to install the files, which is simply unzipping them.
+
+
+****************************************
+4) How to install the migration tools
+****************************************
+
+You have downloaded the files
+ 
+kdepim_X.X.X_for_Windows.exe.zip
+kdepim334dll.zip
+
+Unzip these files.
+Now choose an arbitrary installation directory, where to copy all the needed files together.
+You should have now the following files and the directory "kdepim" in the same directory:
+kopi.exe  
+kapi.exe  
+microkabc_dir.dll  
+microkabc_file.dll
+microkabc_qtopia.dll
+msvcr71.dll
+mfc71u.dll
+qt-mt334.dll  
+ReadMich.txt
+kdepim (directory)
+
+The directory "kdepim" should contain subdirectories 
+kaddressbook  
+korganizer
+which itself contain some subdirectories with icons and help text.
+
+Now the migration tools are ready for use.
+
+
+NOTE AND HINT for performing migration on many workstations:
+Just burn the content of the installation dir on a CD.
+Then you can put the CD in every workstation and execute the migration tools from that CD directly.
+
+
+*************************************************************
+5) How to get the contact data out of Outlook200X
+*************************************************************
+
+Note: When accessing Outlook to read the data, it should not be possible, that there is any data lost in Outlook, because the progam accesses Outlook only Read-Only.
+
+You have the file
+kapi.exe  
+and the other needed files accessable on your workstation.
+
+Getting the contact data
+
+Please start kapi.exe.
+Choose menu:
+File - Import - Import from Outlook...
+You will get a dialog which shows all "Personal Folders" of Outlook.
+Choose the Contact Folder(s) you want to import and select them with a hook.
+(All other folder but the contact containing folders are shown, but disabled).
+(If the data you want to import is not stored in one of the shown folders,
+please read step 2.) and click on "close" ).
+Click the "import" button.
+Now Outlook asks you to allow access to the contact data.
+Select "Allow access" amd click "Yes" in this dialog.
+Now the importing is performed and KA/Pi will show a progress bar.
+After importing, KA/Pi shows a dialog, how much contacts are imported.
+If you press a second time "import" , already imported contacts are not imported again.
+After importing you can choose another "Contact Folder" to import or close the import dialog.
+Please close the import dialog.
+Now you see the imported contacts in KA/Pi on the left in the list view.
+Please verify, that the import was correct.
+About problems of mapping particular Outlook-data-fields to KAdressbook-data-fields see Appendix A).
+
+Choose menu:
+File - Save
+and close KA/Pi.
+Now you should have the contact data in the file std.vcf in your home directory in the path
+(YOURHOMEDIR)\kdepim\apps\kabc\std.vcf
+
+Copy that file to a moveable disk or memory stick or just copy it via network to the destination.
+Import that file into KAddressbook/Kontact via Import - Import vcard.
+Details about importing you can read at: 7) How to import your contact data into Kontact
+
+Now you have your Outlook200X contact data on the KDE desktop available and you are done with the migration of contacts.
+
+*************************************************************
+6) How to get the calendar data out of Outlook200X
+*************************************************************
+
+Note: When accessing Outlook to read the data, it should not be possible, that there is any data lost in Outlook, because the progam accesses Outlook only Read-Only.
+
+You have the file
+kopi.exe  
+and the other needed files accessable on your workstation.
+
+Getting the calendar data
+
+NOTE: Before extracting the calendar data, it is recommended to extract the contact data first.
+If you extract the contact data first, the identity (UID) of attendees of a meeting can be mapped correctly in the newly created appointments, such that you can access the attendee contact data later directly from KOrganizer.
+
+Please start kopi.exe.
+
+You will see a dialog, that you started KO/Pi for the first time and that the timezone configuration will be shown now. Confirm with "Ok".
+
+Now you will see the configuration dialog of KO/Pi.
+Please choose your timezone and adjust the daylight saving settings.
+The dialog shows defaults for CET (Central European Time), such that users located in central Europe simply can press "OK" in that dialog.
+(Note: Don't forget to set the timezone in KDE KOrganizer before importing data there. The timezone in KDE KOrganizer is set per default to UTC (GMT), that is -1h of CET).
+
+Now you will see the KO/Pi main window.
+Choose menu:
+File - Import from OL
+You will get a dialog which shows all "Personal Folders" of Outlook.
+Choose the Calendar Folder(s) you want to import and select them with a hook.
+(All other folder but the calendar data containing folders are shown, but disabled).
+(If the data you want to import is not stored in one of the shown folders,
+please read step 2.) and click on "close" ).
+Click the "import" button.
+Now Outllok asks you to allow access to the contact data.
+Select "Allow access" amd click "Yes" in this dialog.
+Now the importing is performed and KO/Pi will show a progress bar.
+After importing, KO/Pi shows a dialog, how much calendar items are imported.
+If you press a second time "import" , already imported calendar items are not imported again.
+After importing you can choose another "Calendar Folder" to import or close the import dialog.
+Please close the import dialog.
+Now you see the imported calendar items in KO/Pi.
+Please verify, that the import was correct.
+About problems of mapping particular Outlook-data-fields to KOrganizer-data-fields see Appendix B).
+Close KO/Pi - data will be saved automatically.
+
+Now you should have the calendar data in the file mycalendar.ics in your home directory in the path
+(YOURHOMEDIR)\kdepim\apps\korganizer\mycalendar.ics
+
+Copy that file to a moveable disk or memory stick or just copy it via network to the destination.
+Import that file into KOrganizer/Kontact.
+Details about importing your calendar data you can read at: 8) How to import your calendar data into Kontact.
+(Warning again: Don't forget to set the timezone in KDE KOrganizer before importing data there. The timezone in KDE KOrganizer is set per default to UTC (GMT), that is -1h of CET).
+Now you have your Outlook200X calendar data on the KDE desktop available and you are done with the migration.
+
+Hint:
+If you want to use KO/Pi and KA/Pi on your windows desktop, you should read all the help information available in the KO/Pi Help menu. One Highlight of KO/Pi is the easy syncing with another *.ics file.
+(Information about syncing available in the KO/Pi help menu).
+Another hint:
+KO/Pi + KA/Pi ( = KDE-Pim/Pi ) are available for the Sharp Zaurus PDA.
+Syncing data works for KO/Pi ( version 1.9.3) but not yet for KA/Pi.
+
+
+*************************************************************
+7) How to import your contact data into Kontact
+*************************************************************
+
+We want to import and upload our contacts to a Kolab server.
+You should have access to a properly configured Kolab client.
+This Kolab client is Kontact in KDE.
+Make sure, you have the needed IMAP resources configured in KAddressbook.
+To configure IMAP resources, you should do:
+
+   Open KDE control center, choose there
+   KDE Components - KDE Resource Configuration
+   Choose there:
+   Resources: contact
+   and then:
+   Add...
+   IMAP
+
+Now start Kontact and select the Contacts icon on the left side.
+Choose menu: 
+File... - Import - Import VCard...
+Select the imap resource as destination of the import
+and choose the file to import.
+Now the contacts should be imported and you are done.
+
+Don't forget to sync the IMAP account to upload to contacts to the server.
+
+*************************************************************
+8) How to import your calendar data into Kontact
+*************************************************************
+
+We want to import and upload our calendar data to a Kolab server.
+You should have access to a properly configured Kolab client.
+This Kolab client is Kontact in KDE.
+Make sure, you have the needed IMAP resources configured in KOrganizer.
+To configure IMAP resources, you should do:
+
+   Open KDE control center, choose there
+   KDE Components - KDE Resource Configuration
+   Choose there:
+   Resources: calendar
+   and then:
+   Add...
+   Calendar on IMAP-server via KMail
+
+Now start Kontact and select the Calendar icon on the left side.
+Choose menu: 
+File... - Import - Merge Calendar...
+Select the imap resource as destination of the import
+and choose the file to import.
+Now the calendar data should be imported and you are done.
+
+Don't forget to sync the IMAP account to upload the calendar data to the server.
+
+*************************************************************
+APPENDIX A) Problems and solutions when reading contact data
+*************************************************************
+
+All data, which can be displayed and accessed in KAddressbook is imported from Outlook.
+
+1) Addresses
+
+In Outlook you can assign an attribute "This is the mailing address" to one of the addresses.
+This address shows up in KAddressbook twice.
+The first time with the original attribute from Outlook ( e.g. "work" for "business" in OL ).
+The second time with the  attribute "postal".
+
+2) Telephone Numbers
+
+All telephone numbers of OL are imported.
+OL offers special case telephone numbers, like "Assistant", which have no counterpart in KAdressbook.
+In that case, the imported number has special combined attributes in KAddressbook.
+Here is the mapping of types in OL to attributes in KA:
+
+OL type                 Attributes in KA
+
+Assistant               Work + Voice
+Business                Work
+Business2               Work
+BusinessFax             Work + Fax
+Car                     Car
+Home                    Home 
+Home2                   Home
+HomeFax                 Home + Fax 
+ISDN                    Isdn 
+Mobile                  Cell (displayed as Mobile Phone)
+OtherFax                Fax 
+OtherTelephone          Voice
+Pager                   Pager
+PrimaryTelephone        Pref ( displayed as typeless, with attribute preferred )
+TTYTDD                  Modem
+Telex                   Fax + Bbs (Bbs displayed as MailBox - not very senseful, sorry ...)
+CompanyMain             Work + Pref
+Radio                   Video 
+Callback                Voice + Pref
+ 
+Some mapping may not be very senseful, but it helps to identify the original OL types.
+
+3) Additional fields
+
+For some contact fields in Outlook there is no corresponding field in KAddressbook.
+The following contact fields are imported to KAddressbook and the field name and content is
+prepended the notes information of the contact item in the notes field.
+The following fields of Outlook are mapped to the notes field:
+Language, Hobby, Homepage, Billing information, Customer ID, User1, User2, User3, User4
+
+Example:
++++++++++++++++++++++++++++
+Additonal fields created
+by KA/Pi Outlook import:
+Language: Swedish
+Hobby: Golf,fishing
+End additonal fields created
+by KA/Pi Outlook import!
++++++++++++++++++++++++++++
+<Below that are your notes of this contact>
+
+
+*************************************************************
+APPENDIX B) Problems and solutions when reading calendar data
+*************************************************************
+
+Almost all data, which can be displayed and accessed in KOrganizer is imported from Outlook.
+Attachments of appointments are not imported.
+KOrganizer may crash, when reading some kinds of attachments.
+These may be changed in future versions.
+
+Attendee lists of meetings and their state are imported in KOrganizer.
+
+A problem is importing some kinds of recurring events:
+
+First problem:
+OL offers a recurrence like
+- Yearly recurrence, every second Tuesday of July.
+KOrganizer ( in versions < 3.3.0 ) does not offer that kind of recurrence.
+Such that  
+"Yearly recurrence, every second Tuesday of July." 
+is converted to
+"Monthly recurrence, every 12. month, second Tuesday in month, StartMonth = July."
+which can be edited in KO.
+
+Second problem:
+OL offers an exception in a recurrence with other data/time.
+KO offers only an exception in a recurrence , where the exception is deleted from the row of all occurences.
+Such that  
+"Recurring event with exception, that  date XX should be at date YY" 
+in OL is converted to  two events in KO:
+"Recurring event with exception, that  date XX is not included" 
+"Non-recurring event at date YY with same data like the recurring event (e.g. Summary, location, attendee list, ...)"
+
+
+
+
+
+
+
+
+

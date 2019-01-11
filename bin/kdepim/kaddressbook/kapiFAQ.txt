@@ -1,0 +1,76 @@
+Q:  
+For which platform is KA/Pi available?
+Q:
+I can not install KA/Pi on the SD card (ext2 formated), 
+it can be installed only in the internal memory. 
+What can I do ? 
+Q:
+KA/Pi startup is time very slow. What can I do ?
+Q:
+Can I receive contacts via infrared (IR) directly with KA/Pi?
+Q:
+It looks like I can not import the original addressbook into Ka/Pi
+There is no menu entry that supports my ROM.   
+
+
+*************************************************************************
+Q:  
+For which platform is KA/Pi available?
+A: 
+KA/Pi is the platform-independend version of KAddressbook and it 
+includes a replacement for the KDE libraries called microkde.
+It can be compiled to any platform, where Qt is available.
+The source code  compiles without modifications on Windows, 
+Linux Desktop and Sharp Zaurus PDA. 
+Precompiled versions and the source code cvs can be found at:
+http://sourceforge.net/projects/kdepimpi/
+*************************************************************************
+Q:
+I can not install KA/Pi on the SD card (ext2 formated), 
+it can be installed only in the internal memory. 
+What can I do ? 
+A:
+KA/Pi and friends are now installable on SD-Card!
+It is recommended to install all libs and apps
+on the SD card or all in the internal storage.
+There may be problems, if this is mixed.
+If you get an error when installing,
+simply install the other packages and try again.
+*************************************************************************
+Q:
+KA/Pi startup time is very slow. What can I do ?
+A:
+If not neede, disable all extensions in
+Settings/Configure KAddressbook/Addressbook/General
+and restart Ka/Pi.
+*************************************************************************
+Q:
+Can I receive contacts via infrared (IR) directly with KA/Pi?
+A:
+Yes, KA/Pi can receice data via IR when it is running!
+
+You have to do:
+- disable FastLoad for the original addressbook application and close it
+- start KA/Pi
+- enable IR beam/receive
+
+Note: When FastLoad is enabled for KA/Pi, KA/Pi is always running and
+you do not need to "start" KA/Pi.
+*************************************************************************
+Q:
+It looks like I can not import the original addressbook into Ka/Pi
+There is no menu entry that supports my ROM.   
+A:
+When Ka/Pi starts, it tries to load all existing addressbook access
+libraries. Those libraries again are trying to load ROM dependent libs.
+If one of those related libs is missing, the menu will not inlcude an entry
+for that addressbook type.
+The following access libraries are available:
+
+ROM: OpenZaurus and old Sharp format (qtopia, XML format)
+libname: libmicrokabc_qtopia.so
+linked to: no external libs needed
+
+ROM: new Sharp format (DTM database format)
+libname: libmicrokabc_sharpdtm.so
+linked to: libqpe, libqte, libzdtm, libsl  

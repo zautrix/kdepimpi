@@ -1,0 +1,110 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>getMasterPwWnd</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>getMasterPwWnd</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>361</width>
+            <height>119</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Master-password</string>
+    </property>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>okButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>80</y>
+                <width>107</width>
+                <height>27</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;OK</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>cancelButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>240</x>
+                <y>80</y>
+                <width>107</width>
+                <height>27</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Cancel</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>20</y>
+                <width>340</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Please enter the master-password:</string>
+        </property>
+        <property name="alignment">
+            <set>WordBreak|AlignCenter</set>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>pwLineEdit</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>50</y>
+                <width>340</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="echoMode">
+            <enum>Password</enum>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>okButton</sender>
+        <signal>clicked()</signal>
+        <receiver>getMasterPwWnd</receiver>
+        <slot>okButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>cancelButton</sender>
+        <signal>clicked()</signal>
+        <receiver>getMasterPwWnd</receiver>
+        <slot>cancelButton_slot()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>pwLineEdit</tabstop>
+    <tabstop>okButton</tabstop>
+    <tabstop>cancelButton</tabstop>
+</tabstops>
+<slots>
+    <slot>okButton_slot()</slot>
+    <slot>cancelButton_slot()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

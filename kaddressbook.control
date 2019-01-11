@@ -1,0 +1,13 @@
+Files: bin/kapi  apps/Pim/kaddressbook.desktop  pics/kdepim/kaddressbook/*  lib/libmicrokabc_q* lib/libmicrokabc_f* lib/libmicrokabc_d*  lib/libmicrokabc.* 
+Priority: optional
+Section: qpe/pim
+Maintainer: Lutz Rogowski <zautrix@rogowski.info>
+Architecture: arm
+Version: $KDEPIM_VERSION
+License: GPL
+Depends: kmicrokdelibs
+Description: KOrganizer/Pi and Kaddressbook/Pi
+ The embedded version of KOrganizer/Platform-independend, 
+    the KDE calendar and scheduling program
+  optimized for 640x480 and 320x240 resolution
+    on Zaurus PDA

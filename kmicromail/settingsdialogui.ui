@@ -1,0 +1,265 @@
+<!DOCTYPE UI><UI>
+<class>SettingsDialogUI</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>SettingsDialogUI</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>261</width>
+            <height>298</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Settings Dialog</string>
+    </property>
+    <property>
+        <name>layoutMargin</name>
+    </property>
+    <property>
+        <name>layoutSpacing</name>
+    </property>
+    <vbox>
+        <property stdset="1">
+            <name>margin</name>
+            <number>3</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>3</number>
+        </property>
+        <widget>
+            <class>QTabWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>TabWidget2</cstring>
+            </property>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>true</bool>
+            </property>
+            <property>
+                <name>layoutMargin</name>
+            </property>
+            <property>
+                <name>layoutSpacing</name>
+            </property>
+            <widget>
+                <class>QWidget</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>tab</cstring>
+                </property>
+                <attribute>
+                    <name>title</name>
+                    <string>Mail</string>
+                </attribute>
+                <vbox>
+                    <property stdset="1">
+                        <name>margin</name>
+                        <number>11</number>
+                    </property>
+                    <property stdset="1">
+                        <name>spacing</name>
+                        <number>6</number>
+                    </property>
+                    <widget>
+                        <class>QCheckBox</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>showHtmlButton</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>text</name>
+                            <string>View mail as Html</string>
+                        </property>
+                    </widget>
+                    <widget>
+                        <class>QCheckBox</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>checkBoxLater</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>text</name>
+                            <string>Send mails later ( enqueue in outbox )</string>
+                        </property>
+                    </widget>
+                    <spacer>
+                        <property>
+                            <name>name</name>
+                            <cstring>Spacer1</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>orientation</name>
+                            <enum>Vertical</enum>
+                        </property>
+                        <property stdset="1">
+                            <name>sizeType</name>
+                            <enum>Expanding</enum>
+                        </property>
+                        <property>
+                            <name>sizeHint</name>
+                            <size>
+                                <width>20</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </vbox>
+            </widget>
+            <widget>
+                <class>QWidget</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>tab</cstring>
+                </property>
+                <attribute>
+                    <name>title</name>
+                    <string>Fonts</string>
+                </attribute>
+            </widget>
+            <widget>
+                <class>QWidget</class>
+                <property stdset="1">
+                    <name>name</name>
+                    <cstring>tab</cstring>
+                </property>
+                <attribute>
+                    <name>title</name>
+                    <string>Taskbar Applet</string>
+                </attribute>
+                <vbox>
+                    <property stdset="1">
+                        <name>margin</name>
+                        <number>3</number>
+                    </property>
+                    <property stdset="1">
+                        <name>spacing</name>
+                        <number>3</number>
+                    </property>
+                    <widget>
+                        <class>QCheckBox</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>cbEnableTaskbarApplet</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>enabled</name>
+                            <bool>false</bool>
+                        </property>
+                        <property stdset="1">
+                            <name>text</name>
+                            <string>Disable Taskbar Applet</string>
+                        </property>
+                    </widget>
+                    <widget>
+                        <class>QLayoutWidget</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>Layout2</cstring>
+                        </property>
+                        <hbox>
+                            <property stdset="1">
+                                <name>margin</name>
+                                <number>0</number>
+                            </property>
+                            <property stdset="1">
+                                <name>spacing</name>
+                                <number>6</number>
+                            </property>
+                            <widget>
+                                <class>QSpinBox</class>
+                                <property stdset="1">
+                                    <name>name</name>
+                                    <cstring>spCheckOften</cstring>
+                                </property>
+                                <property stdset="1">
+                                    <name>enabled</name>
+                                    <bool>false</bool>
+                                </property>
+                                <property stdset="1">
+                                    <name>suffix</name>
+                                    <string> min</string>
+                                </property>
+                                <property stdset="1">
+                                    <name>value</name>
+                                    <number>5</number>
+                                </property>
+                            </widget>
+                            <widget>
+                                <class>QLabel</class>
+                                <property stdset="1">
+                                    <name>name</name>
+                                    <cstring>TextLabel1</cstring>
+                                </property>
+                                <property stdset="1">
+                                    <name>text</name>
+                                    <string>Check how often</string>
+                                </property>
+                            </widget>
+                        </hbox>
+                    </widget>
+                    <widget>
+                        <class>QCheckBox</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>cbBlinkLed</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>enabled</name>
+                            <bool>false</bool>
+                        </property>
+                        <property stdset="1">
+                            <name>text</name>
+                            <string>Blink Led when new mails arrive</string>
+                        </property>
+                    </widget>
+                    <widget>
+                        <class>QCheckBox</class>
+                        <property stdset="1">
+                            <name>name</name>
+                            <cstring>cbPlaySound</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>enabled</name>
+                            <bool>false</bool>
+                        </property>
+                        <property stdset="1">
+                            <name>text</name>
+                            <string>Play Sound when new mails arrive</string>
+                        </property>
+                    </widget>
+                    <spacer>
+                        <property>
+                            <name>name</name>
+                            <cstring>Spacer3</cstring>
+                        </property>
+                        <property stdset="1">
+                            <name>orientation</name>
+                            <enum>Vertical</enum>
+                        </property>
+                        <property stdset="1">
+                            <name>sizeType</name>
+                            <enum>Expanding</enum>
+                        </property>
+                        <property>
+                            <name>sizeHint</name>
+                            <size>
+                                <width>20</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </vbox>
+            </widget>
+        </widget>
+    </vbox>
+</widget>
+</UI>

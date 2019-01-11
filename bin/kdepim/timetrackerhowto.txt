@@ -1,0 +1,68 @@
+
+KO/Pi timetracker HowTo
+
+In KO/Pi you can set a todo in a "running" state to track your working time on that todo.
+This Howto is about to use that timetracking feature.
+
+CONTENT:
+
+0) Tracking time - setting a todo to started and stopped
+1) Getting the time information
+2) Overview and analysis of the timetracking data
+
+********************************************
+0) Tracking time - setting a todo to started
+********************************************
+
+To track time open the todo view in KO/Pi.
+There you can set a todo to the "running" state.
+You can do this by choosing "Start/Stop todo.." from the context menu for that todo or by double clicking on the start time or start date column of that todo. 
+A started todo is displayed green and the start time and date values in the todo list are displaying the start time.
+If a parent todo with a running sub todo is displayed closed in the todo view that parent todo is displayed green as well.
+If a todo is running the running information is stored every five minutes (not configureable).
+(Nothing is changed in the todo itself: If the todo has a start datetime set only the display changes for the time this todo is set to running.)
+You can edit a running todo as usual.
+If you delete a  running todo its running information is saved automatically
+You can set the todo to "stopped" in the same way.
+If a todo is set to "stopped" within 30 seconds after the start, nothing is stored.
+If a todo is set to stopped, its running information is stored in the directory
+<yourhome>/kdepim/apps/timetrackerdir/
+If you close the application all running todos are set to stopped and the running information is stored automatically.
+That does mean: If you start KO/Pi there will be no todo in the "running" state.
+
+********************************************
+1) Getting the time information
+********************************************
+
+All data is stored in the dir
+<yourhome>/kdepim/apps/timetrackerdir/
+
+There are two kind of files:
+E.g. 
+20050417-090628-libkcal-1503885238.271.ics
+and
+libkcal-1387036159.309.ics
+
+The filenames with the datetime at the beginning contains the actual tracking data:
+The datetime part of the filename is the start datetime of this run of that todo.
+The same value you can find in the file as "DTSTART" value.
+The end datetime of the tracking you can find in the file as the "DUE" value.
+
+A file without a datetime at the beginning 
+(libkcal-1387036159.309.ics in our example)
+contains no timetracking information and contains only information about a parent todo of a todo with timetracking information.
+This file is needed to display the parent-child relationchip you can see in the KO/Pi todo view in the timetracking overview application: 
+
+********************************************
+2) Overview and analysis of the timetracking data
+********************************************
+
+Because every timetracking run is stored in a single file it is easy to merge the data from several computers of the same person or from several persons by copying all the files into the same directory.
+There is an application which reads the content of that directory and displays the running information of each todo in a so called timetable "Gantt" view.
+It makes it possible to create and print reports for specific time frames.
+The default display is exactly like the parent-child relationchip displayed in the KO/Pi todo view, but it is possible to sort items by categories and by attendees.
+This program will only be available for the desktop (Windows and Linux).
+This program is not free open source software.
+There are no decisions about the distribution model (licence model and price) yet.
+You can find more information about that program after the beginning of June 2005 at www.pi-sync.net. 
+  

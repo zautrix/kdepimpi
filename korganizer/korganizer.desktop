@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment = KO/PI
+Display = 640x480/144dpi,480x640/144dpi
+Exec = kopi
+Icon = kdepim/korganizer/korganizer
+Name = KO/Pi
+Type = Application
+CanFastload = 1

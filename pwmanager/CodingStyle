@@ -1,0 +1,36 @@
+
+		PwManager coding style
+
+This program is being developed with the linux-kernel coding-style
+in mind. Please read these guidelines first, to get a basic
+knowledge of the style. You can find it in
+/usr/src/linux/Documentation/CodingStyle for example.
+
+A few other guidelines apply to this program, too:
+
+- Please use new-style C++ casts, if you need to make a cast.
+
+- The class PwMDoc is _only_ for internal document-data-
+  management. Don't put any view- or user-interface-stuff in
+  it. Not even a MessageBox. You may use the class PwMDocUi
+  to add UI-functionality to the document.
+
+- Don't add any document related stuff to another class
+  than PwMDoc. Exception: Put it into its own class and
+  invoke this class from within PwMDoc.
+
+- This program makes extensive use of inline functions, for
+  example to access data-members from outside of the class.
+  Please try to do so, too.
+
+- Don't try to optimize code for speed, where speed doesn't
+  matter. Instead optimize it for readability.
+
+- In the code we use the string "PwM" instead of "PwManager",
+  where needed. This has two reasons. The original name of
+  this program was "PwM". The second reason is that it's shorter.
+
+- It's an absolute requirement to have fun while developing
+  code for this application.
+
+		Michael Buesch

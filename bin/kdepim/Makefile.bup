@@ -1,0 +1,19 @@
+install:
+	rm -rf  $(QPEDIR)/pics/kdepim
+	cp -r . $(QPEDIR)/pics/kdepim
+	rm -rf  $(QPEDIR)/pics/kdepim/*~
+	rm  $(QPEDIR)/pics/kdepim/Makefile*
+	rm -r  $(QPEDIR)/pics/kdepim/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/pwmanager/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/pwmanager/icons16/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/pwmanager/icons22/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/korganizer/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/korganizer/icons16/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/korganizer/iconsmini/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/kaddressbook/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/kaddressbook/icons16/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/kaddressbook/icons22/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/kopiemail/CVS
+	rm -r  $(QPEDIR)/pics/kdepim/kopiemail/icons22/CVS
+	cp korganizer/ko*.png $(QPEDIR)/pics
+	cp korganizer/ko24.png $(QPEDIR)/pics/ko24ti.png

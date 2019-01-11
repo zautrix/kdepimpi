@@ -1,0 +1,318 @@
+<!DOCTYPE UI><UI>
+<class>selectstoreui</class>
+<include location="local">tr.h</include>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>selectstoreui</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>230</width>
+            <height>307</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Select target box</string>
+    </property>
+    <property>
+        <name>layoutMargin</name>
+    </property>
+    <property>
+        <name>layoutSpacing</name>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="0"  column="0"  rowspan="1"  colspan="2" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>headlabel</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&lt;b&gt;Store mail(s) to&lt;/b&gt;</string>
+            </property>
+            <property stdset="1">
+                <name>alignment</name>
+                <set>AlignCenter</set>
+            </property>
+            <property>
+                <name>hAlign</name>
+            </property>
+        </widget>
+        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
+            <class>QLayoutWidget</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Layout2</cstring>
+            </property>
+            <grid>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>0</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget row="1"  column="1" >
+                    <class>QComboBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>folderSelection</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                </widget>
+                <widget row="1"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>folderLabel</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Folder:</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignVCenter|AlignRight</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                </widget>
+                <widget row="0"  column="1" >
+                    <class>QComboBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>accountSelection</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                        </sizepolicy>
+                    </property>
+                </widget>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>accountlabel</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>1</vsizetype>
+                        </sizepolicy>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Account:</string>
+                    </property>
+                    <property stdset="1">
+                        <name>alignment</name>
+                        <set>AlignVCenter|AlignRight</set>
+                    </property>
+                    <property>
+                        <name>hAlign</name>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget row="2"  column="0"  rowspan="1"  colspan="2" >
+            <class>Line</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Line1</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget row="3"  column="0"  rowspan="1"  colspan="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>newFoldersel</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Create new folder</string>
+            </property>
+        </widget>
+        <widget row="4"  column="0"  rowspan="1"  colspan="2" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>newFolderedit</cstring>
+            </property>
+            <property stdset="1">
+                <name>enabled</name>
+                <bool>false</bool>
+            </property>
+        </widget>
+        <widget row="5"  column="0"  rowspan="1"  colspan="2" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>newFolderLabel</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Prefix will prepend, do not enter</string>
+            </property>
+            <property stdset="1">
+                <name>alignment</name>
+                <set>WordBreak|AlignCenter</set>
+            </property>
+            <property>
+                <name>hAlign</name>
+            </property>
+            <property>
+                <name>wordwrap</name>
+            </property>
+        </widget>
+        <widget row="6"  column="0"  rowspan="1"  colspan="2" >
+            <class>Line</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Line2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <spacer row="9"  column="0" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="8"  column="0"  rowspan="1"  colspan="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>selMove</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Move mail(s)</string>
+            </property>
+        </widget>
+        <widget row="7"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>useSize</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>only mails smaller</string>
+            </property>
+        </widget>
+        <widget row="7"  column="1" >
+            <class>QSpinBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>sizeSpinBox</cstring>
+            </property>
+            <property stdset="1">
+                <name>suffix</name>
+                <string> kB</string>
+            </property>
+            <property stdset="1">
+                <name>maxValue</name>
+                <number>8192</number>
+            </property>
+            <property stdset="1">
+                <name>minValue</name>
+                <number>1</number>
+            </property>
+            <property stdset="1">
+                <name>lineStep</name>
+                <number>1</number>
+            </property>
+            <property stdset="1">
+                <name>value</name>
+                <number>5</number>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>selMove</sender>
+        <signal>clicked()</signal>
+        <receiver>selectstoreui</receiver>
+        <slot>slotMoveMail()</slot>
+    </connection>
+    <connection>
+        <sender>newFoldersel</sender>
+        <signal>clicked()</signal>
+        <receiver>selectstoreui</receiver>
+        <slot>slotCreateNewFolder()</slot>
+    </connection>
+    <connection>
+        <sender>accountSelection</sender>
+        <signal>activated(int)</signal>
+        <receiver>selectstoreui</receiver>
+        <slot>slotAccountselected(int)</slot>
+    </connection>
+    <connection>
+        <sender>folderSelection</sender>
+        <signal>activated(int)</signal>
+        <receiver>selectstoreui</receiver>
+        <slot>slotFolderSelected(int)</slot>
+    </connection>
+    <slot access="protected">slotFolderSelected(int)</slot>
+    <slot access="protected">slotAccountselected(int)</slot>
+    <slot access="protected">slotCreateNewFolder()</slot>
+    <slot access="protected">slotMoveMail()</slot>
+</connections>
+<tabstops>
+    <tabstop>accountSelection</tabstop>
+    <tabstop>folderSelection</tabstop>
+    <tabstop>newFoldersel</tabstop>
+    <tabstop>newFolderedit</tabstop>
+    <tabstop>selMove</tabstop>
+</tabstops>
+</UI>

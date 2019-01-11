@@ -1,0 +1,190 @@
+Multi Sync HowTo 
+
+With KDE-Pim/Pi you can sync several devices "in one go". That means you choose on one device (where everything is confgured in the right way) "Multiple Sync" and all devices will be synced. All devices must be reachable via network.
+
+In this HowTo we will give an explicit example what to set up and how configure.
+
+We assume, that we have four devices which should be synced:
+A Sharp Zaurus PDA with KDE-Pim/Pi installed..
+A Windows laptop with KDE-Pim/Pi installed.
+A Linux Desktop with KDE installed.
+A Linux Laptop with KDE installed.
+
+NOTE: Your KDE version must be 3.3.0 or higher for sncing with.
+      Please read KDE Sync HowTo how to update your SuSE 9.1 to KDE 3.3.x
+      (KDE Sync HowTo is available in the help menu of KO/Pi and KA/Pi).
+
+The Zaurus is connected to the  Linux Desktop via USB cable.
+
+All calendar addressbook data should be synced with the other devices. That means in particular, that the calendar/address data of KDE on the Linux laptop and desktop is synced with the other devices.
+
+First we have to install the needed programs, then we have to configure the programs. 
+
+*****************************************
+(1) Installing the programs:
+*****************************************
+
+Download the files from
+http://sourceforge.net/projects/kdepimpi/
+project name KDE/Pim. 
+Download the latest release.
+You will find in every file a ReadMe, 
+where you can read how to install.
+(a) Installing KDE-Pim/Pi on the Windows laptop:
+    Download file  kdepim_X.X.X_for_Windows.exe.zip
+(b) Installing KDE-Pim/Pi on the Linux laptop and desktop:
+    Download file KDE-Pim-Pi-2.0.8-SuSE_9.2.i586.rpm.zip 
+(c) Installing KDE-Pim/Pi on the Sharp Zaurus PDA:
+    Depending on your Rom:
+    Download file kdepim_X.X.X_for_SharpROM.ipk.zip
+    or file kdepim_X.X.X_for_OZ-gcc3xx.ipk.zip for OpenZaurus users.
+    If unsure, download kdepim_X.X.X_for_SharpROM.ipk.zip
+
+We assume that we have now on every device KDE-Pim/Pi installed.
+To learn more about syncing, please read now the
+Sync HowTo
+KDE Sync HowTo 
+available in the help menu of KO/Pi and KA/Pi.
+
+
+*****************************************
+(2) Configuring KDE-Pim/Pi for Multiple sync:
+*****************************************
+
+In mutiple sync, we have one aktive sync device and many other passive sync devices.
+
+We use the Linux desktop as the active sync device. But there is no limitation. In general, you can choose any device as active sync device. The Zaurus is connected to the  Linux Desktop via USB cable. Please read the KDE Sync HowTo to know how to set up this connection.
+
+We assume, that the devices have the following IP numbers:
+Windows laptop: 192.168.0.40
+Linux laptop: 192.168.0.88
+Zaurus: 192.168.129.201
+Linux desktop: 192.168.0.99
+
+*****************************************
+(2a) Configuring the passive sync devices:
+*****************************************
+
+(i) Windows laptop: 192.168.0.40: Name: XP
+Start KO/Pi
+Choose menu: Synchronize - Enable PiSync
+Leave port as the default 9197.
+Choose password xyz.
+Click OK.
+
+(ii) Linux laptop: 192.168.0.88: Name: BUG
+Start KO/Pi
+Choose menu: Synchronize - Enable PiSync
+Leave port as the default 9197.
+Check the box "Automatically sync with KDE-Desktop when receiving sync request".
+Choose password xyz.
+Click OK.
+
+(iii) Zaurus: 192.168.129.201: Name: Z760
+Start KO/Pi
+Choose menu: Synchronize - Enable PiSync
+Leave port as the default 9197.
+Choose password xyz.
+Click OK.
+
+The configuration of the passive sync devices is done.
+
+*****************************************
+(2b) Configuring the aktive sync device:
+*****************************************
+
+Linux desktop: 192.168.0.99: Name: K7
+Start KO/Pi
+Choose menu: Synchronize - Configure...
+
+Set "Local device name" to "K7"
+
+Choose profile: KDE_Desktop
+Check "Include in multiple calendar sync".
+
+Create new profile.
+Set name from "noName" to "XP".
+Check "Include in multiple calendar sync".
+Set "Profile kind" to "Pi-sync".
+Set Calendar: Password for remote access to "xyz"
+Set Calendar: Remote IP address to "192.168.0.40"
+Do not change: Calendar: Remote port number
+
+Create new profile.
+Set name from "noName" to "BUG".
+Check "Include in multiple calendar sync".
+Set "Profile kind" to "Pi-sync".
+Set Calendar: Password for remote access to "xyz"
+Set Calendar: Remote IP address to "192.168.0.88"
+Do not change: Calendar: Remote port number
+
+
+Create new profile.
+Set name from "noName" to "Z760".
+Check "Include in multiple calendar sync".
+Set "Profile kind" to "Pi-sync".
+Set Calendar: Password for remote access to "xyz"
+Set Calendar: Remote IP address to "192.168.129.201"
+Do not change: Calendar: Remote port number
+
+Click on OK in the sync config dialog to save settings.
+
+
+*****************************************************
+3) Test Setup
+*****************************************************
+
+Choose menu: Synchronize - XP
+Now the Windows laptop should be syncronized.
+
+Choose menu: Synchronize - Z760
+Now the Zaurus should be syncronized.
+
+Choose menu: Synchronize - BUG 
+Now the Linux laptop (and KDE there) should be syncronized.
+
+Choose menu: Synchronize - KDE_Desktop
+Now KDE on the Linux desptop (your device you are syncing from) 
+should be syncronized with KO/Pi.
+
+
+*****************************************************
+4) Sync all devices
+*****************************************************
+
+Choose menu: Synchronize - Multiple Sync
+
+Watch the devices interchanging the calendar data ...
+
+Wait until you get the message in the KO/Pi header:
+
+4 profiles synced. Multiple sync complete!
+
+NOTE:
+If you want to test syncing, you may get wrong results, 
+if the clocks of the synced devices have too much difference.
+
+Example: Your clocks have a difference of 2 minutes.
+You sync.
+You edit an appointment on two devices.
+You sync again.
+You should get a conflict - but you do not get it.
+The reason is: On one device the "last modified" 
+datetime entry of the editet appointment is before the
+last sync event datetime on the local device.
+Such that the rule is:
+If you have a clock difference of X seconds, you may get
+wrong results, if you edit the same event within that
+X seconds on two devices.
+Same is valid for creating a new event, of course.
+If creation datetime is before the last sync, it is assumed that there was
+an existing event on the local device and the newly created remote
+event is deleted.
+
+
+*****************************************************
+5) Sync KA/Pi
+*****************************************************
+
+Setup KA/Pi in the same way like KO/Pi.
+

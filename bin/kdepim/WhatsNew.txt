@@ -1,0 +1,189 @@
+Info about the changes in new versions of KDE-Pim/Pi
+
+
+********** VERSION 2.3.0 ************ (02-2017)
+
+Linux desktop version compiled for 
+q4os with trinity desktop environment running on Raspberry/pi.
+
+********** VERSION 2.2.12 ************
+
+Minor fixes for display of cancelled items in KO/Pi:
+Added config option "Show cancelled events/todos" for What's Next View.
+
+Started porting to Qt4. 
+
+********** VERSION 2.2.11 ************
+
+Fixed some problems in the multi resource pi-sync mode for calendars.(KO/Pi sync).
+Implemented the multi resource pi-sync mode for contact data.(KA/Pi sync).
+Added more information to the pi-sync mode dialog boxes to make syncing easier to understand.
+
+Added in KO/Pi a "Show next alarm" to the action menu.
+
+Reordered the menu structure of the KO/Pi alarm applet for the Zaurus.
+Now important funtionality is easier to access.
+
+********** VERSION 2.2.10 ************
+
+Fixed some compilation issues on Suse 10.3.
+(i.e. with gcc (GCC) 4.2.1 (SUSE Linux))
+
+Changed display of cancelled todos in What'sNextView:
+Now a cancelled todo is not shown in What'sNextView.
+
+Fixed a problem when syncing recurrent todos.
+
+********** VERSION 2.2.9 ************
+
+Again I added some features I was missing...
+
+Added in KO/Pi alarm applet for the zaurus the possibility to
+- set the suspend duration for the next suspended alarm
+- display the currently suspended alarm and remove it
+
+Fixed in KO/Pi What'sNext view the display of recurring multiday and allday events.
+
+Changed in KO/Pi What'sNext view the display of multiday events.
+Now for events longer than 3 days only the start date and the end date of the event is displayed.
+Fixed in  What'sNext view some problems with recurring todos.
+Added to the action menu the possibility to change quickly the number of displayed days in the What'sNext view.
+
+Added to overdue todos in  What'sNext view the info about how many days that todo is overdue.
+
+Added to the list view and search list a column "proi" which display the priority of todos.
+
+Added to the print dialog (only available in desktop versions) when printing todos another feature: Now you can specify the number of topmost prios of todos you want to print out. E.g. you can print only your todos of priority 1-2.
+
+
+********** VERSION 2.2.8 ************
+
+
+I forgot what I fixed...
+
+Some minor fixes in KA/Pi and KO/Pi.
+
+KA/Pi uses popup menu now for quick category selection in contact edit dialog.
+
+In the Pi-syc mode of KO/Pi it is now possible to define specific resources which can be synced with the remote pi-sync server.
+This feature must be considered as unstable - it still needs some more testing.
+
+On Wintendo now KA/Pi can sync with Outlook. The configuration of the sync needs some moer tweking.
+Fixed some gcc 4.xx compilation probs.
+Fixed an annoying cursor focus reset problem when editing and (auto-)saving journal enries in KO/Pi.
+
+
+********** VERSION 2.2.7 ************
+
+Added for Desktop Versions (Windows + Linux) the possibility to specify an email client to call if the user clicks on an emailaddress.
+(Menu: Config->Global Settings->Extern.Applications: E-mail).
+Added as default (and example) Mozilla Thunderbird settings.
+If the path to the binary in this  Mozilla Thunderbird example is not matching your environment you can take these settings as an template and configure "User defined email client".
+
+********** VERSION 2.2.6 ************
+
+KO/Pi:
+Made navigation in datepicker more userfriendly when using keyboard for scrolling.
+KO/Pi Alarm applet:
+Made font size for the two popup menus with larger font configurable:
+Change size with menu:
+Play Beeps->Font Size
+Save settings such that it will be restored after next reboot with menu:
+Play Beeps->Config->Save.
+KA/Pi:
+Big change! Needed for the upcoming Outlook sync:
+(Outlook sync available appr. end of 2005)
+Telephone number types are now fixed in KA/Pi 
+(but still compatible with the vCard standard, of cource)
+and they are compatible with the types used by the evil empire.
+That makes syncing with OL possible and make it possible to sync better with mobile devices.
+NOTE:
+All your telephone types will be converted automatically at loading/importing!
+Such that it may be a good idea to make a backup of the data before starting KA/Pi.
+But the editing of phone numbers and types has changed completely such that it is now much faster to edit/change types and numbers.
+HINT:
+To see whether there was some number for some contact not converted senseful, choose
+Menu: View->Modify view
+and add "Other Phone" ( in German "Sonst. Telefon") to the view.
+If a type was not converted senseful to some of the 18 new, fixed types, it will get the "Other" type.
+
+********** VERSION 2.2.5 ************
+
+Bugfixes in KO/Pi, KA/Pi and OM/Pi.
+Added possibility to disable auto saving in KO/Pi.
+How to disable it? Good question! Next question, please?
+Added info about count of events/todos/journals to calendar info.
+
+
+********** VERSION 2.2.4 ************
+
+KO/Pi alarm applet: Made font smaller and added a dealy before starting KO/Pi to avoid problems accessing data storage when an alarm did wake up the Z.
+Added 3 sec notification about a started timer.
+
+KO/Pi: 
+Added export option for all data to File->Export menu.
+Better management if a save error occours.
+Added 15 sec delay in automatic saving when Z wake up from suspend and the automatic save timer did expire -  to avoid problems accessing data storage directly after wake up.
+Fix for displaying month names of an utf8 translated language (like Russian). I hope a Russian version of KO/Pi will be available soon.
+
+Added duration info about multiday events.
+Changed behaviour of "Set complete" in Todo viewer: Now Todo viewer closes not automatically.
+
+KA/Pi:
+Added for vCard import the option to import contact data in Latin1 format.
+
+********** VERSION 2.2.3 ************
+
+KO/Pi:
+Fixed a problem with (non empty) exception dates in the exception date edit dialog of recurring events for newly created events.
+
+Fixed usability problem in KA/Pi:
+Now searching works for "all phone numbers and all addresses" if "all fields" is selected as search option. 
+
+Changed some behaviour in OM/Pi mail management to make it more usable.
+
+
+********** VERSION 2.2.2 ************
+
+KO/Pi:
+Fixed a problem with the sort order of last modified date in list view. 
+KA/Pi:
+Fixed a resource config read problem on windows. 
+
+
+********** VERSION 2.2.1 ************
+
+KO/Pi:
+Fixed a problem displaying very long allday events in agenda view in single day mode.
+Fixed a problem with the default settings for new todos.
+Added an error message dialog if saving of calendar files is not possible.
+Made it impossible to close KO/Pi if saving fails.
+Fixed a problem adding calendars on windows such that these calendars can be used on the memory stick.
+Added config options for conflict detection.
+
+KA/Pi:
+Added a config option to turn on asking before a contact is deleted.
+Fixed a problem with the default view and view selection at startup.
+Formatted name is now set on import, if formatted name is empty.
+Fixed a problem of displaying images in the contact details view:
+Now the wid/hei ratio is not changed. 
+I a picture is larger than 128 pixels in wid or hei it is downscaled to
+max 128 pixels wid/hei.
+
+********** VERSION 2.2.0 ************
+
+New stable release!
+Fixed some minor usability problems.
+Added writing of next alarm to a file for usage on pdaXrom.
+
+
+*************************************
+
+You can find the complete changelog 
+from version 1.7.7 to  2.2.0 
+in the source package or on 
+
+http://www.pi-sync.net/html/changelog.html
+
+
+

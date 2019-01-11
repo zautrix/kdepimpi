@@ -1,0 +1,29 @@
+
+#ifndef MINIKDE_KDIALOG_H
+
+#ifndef DEFINE_QDIALOG_HACK
+#define DEFINE_QDIALOG_HACK
+#warning call of include <qdialog.h>
+#warning including /usr/local/qt/include/qdialog.h
+#warning if you get a compiling error 
+#warning please adjust your path here!
+
+#include "/usr/local/qt3r/include/qdialog.h"
+class QDialog_hacked : public QDialog
+{
+    //Q__OBJECT
+
+ public:
+    QDialog_hacked ( QWidget * parent=0, const char * name=0, bool modal=true, WFlags f=0 );
+    
+};
+
+#define QDialog QDialog_hacked
+
+#endif
+
+#else
+#warning "/usr/local/qt/include/qdialog.h" for KDialog
+#include "/usr/local/qt3r/include/qdialog.h"
+
+#endif

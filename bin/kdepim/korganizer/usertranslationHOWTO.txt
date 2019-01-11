@@ -1,0 +1,75 @@
+Now it is possible, that you as a user can make a translation 
+and see the result immediately in KO/Pi.
+
+If you want to translate a language from western europe (with Latin1 characters)
+you should set the language to German and translate the file germantranslation.txt.
+
+If you want to translate a language which needs utf8 support
+you should set the language to "usertranslation.txt" and translate the file usertranslation.txt.
+Propably the file usertranslation.txt is not up to date - such that it is recommended to
+copy the file germantranslation.txt over the file usertranslation.txt.
+The file germantranslation.txt always includes the latest strings to translate.
+
+To choose the language, please do:
+
+Choose menu Actions-Configure. There the TAB Locale.
+Choose "User defined" as language (or German) and restart.
+Now all the text is translated using the file usertranslation.txt (or germantranslation.txt).
+This file is located on Zaurus in 
+/home/QtPalmtop/pics/kdepim/korganizer/usertranslation.txt.
+On Windows, it is in 
+(your install dir)\kdepim\korganizer\usertranslation.txt.
+This file includes as a default the complete German translation of KO/Pi.
+(NOTE don't forget to copy germantranslation.txt over the file usertranslation.txt before you start).
+I.e. if you start KO/Pi for the first time with option
+"User defined", you will get the German Version.
+Just replace the German words in the file usertranslation.txt 
+by words of your own language.
+You can check the results immedialtely by starting KO/Pi.
+You can do the translation on Windows
+with the Windows KO/Pi Version to test.
+Or on the zaurus, if you have some spare time somewhere ...
+
+Howto translate:
+
+An entry is of the kind
+{ "&Addressbook","&Adressbuch" },
+i.e. 
+{ "englishtext","translatettext" },
+Note, that the separation mark between the two texts MUST be  "," ,
+not " ," or ", " or  " , " or something other!
+
+The & in &Addressbook stands for an 'a' as keyboard shortcut. 
+Please place the & in front of the same char in your translation or leave it out.
+
+Note, that the text should fit on the small display of an 5500.
+The given english text and german translation does fit.
+
+In messageboxes, there is sometimes long text used.
+Do make text using a new line, you have to use '\n'.
+Example:
+{ "Backup file\nalready exists!\nOld backup file from:\n%1\nOverwrite?\n","Backup Datei\nexistiert bereits!\nAlte Backup Datei vom:\n%1\nÜberschreiben?\n" },
+
+You can set the '\n' in the text where you want, 
+but you have to make shure, that the text does 
+fit on the small display of an 5500.
+
+Sometimes translation texts have a parameter or two, 
+where some text is inserted at runtime. 
+These parameters are %1, %2 and so on.
+In the example above we have the parameter %1, 
+which stands for the file name. 
+You can place this parameter in the pext where you want. 
+But don't forget to use it. 
+And be aware, that the parameter text has some length 
+and the parameter text should fit on the small display of an 5500.
+Sometimes only a number is filled in for a parameter. 
+In this case, the length of the parameter is not a big problem.
+
+To use a " itself as a char in the translated text, you have to put a \ in front of it, like in the example: 
+{ "Color for Sundays + category \"Holiday\"","Farbe für Sonntag + Kateg.\" Feiertag\"" },
+
+Please send the translated text to
+zautrix@rogowski.info
+such that I can add it to the program package and 
+other users can benefit from your translation work.

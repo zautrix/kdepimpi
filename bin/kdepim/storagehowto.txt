@@ -1,0 +1,80 @@
+
+KDE-Pim/Pi Storage HowTo
+
+As a default KDE-Pim/Pi is storing it's configuration and application (contacts and calendar) data in the directory <yourHome>/kdepim/.
+This Howto is about to change these settings.
+
+CONTENT:
+
+0) General problems
+1) Zaurus and desktop settings
+2) Additional settings for the desktop
+3) Technical background information
+
+********************************************
+0) General problems
+********************************************
+
+There is no problem if you start KDE-Pim/Pi, set the storage dir and restart KDE-Pim/Pi and import all your data.
+In general you can copy your data to another directory and set this a the new storage dir. The only problem are the absolute paths in the KA/Pi resource configuration.
+KA/Pi stores it's resource information in the file <storageDir>/config/kabcrc.
+Change the absolute paths there if you changed your storageDir or (that is recommended) change the path of the resources in the KA/Pi resource configuration directly.
+
+********************************************
+1) Zaurus and desktop settings
+********************************************
+
+You can access the global settings from KA/Pi and from KO/Pi.
+To change the storage dir go to configure dialog. Choose there the "Global" TAB and there the "Data storage path" TAB.
+Change the value of the current storage path to a new (absolute) path and press the button "Save settings".
+Restart the application.
+Import your data to the application or copy the old storage dir to the new dir. Solve the KA/Pi resource path problem as in 0).
+
+********************************************
+2) Additional settings for the desktop
+********************************************
+
+The LOCAL option:
+In the desktop versions (NOT on the Zaurus) you have the possibility to set the storage dir relative to the executable binary.
+That does mean: You can copy all the data (binaries, config data, application data) of the directory where the binaries are to another directory and it will find all files without needing to change anything. NO resource path change is needed.
+In this LOCAL mode only resource files are supported (no resource directories) and only in the <storageDir>/apps/kabc/ directory (the default directory).
+
+To set the LOCAL mode go to configure dialog. Choose there the "Global" TAB and there the "Data storage path" TAB.
+Press there the button "Save using LOCAL storage".
+Restart the application.
+
+This LOCAL mode makes it possible to run KO/Pi and KA/Pi from a USB stick:
+All data is read from and written to the stick.
+Just put KDE-Pim/Pi on a memory stick and you can access all your PIM data on every computer with Windows XP. It will work with the ME and Linux versions as well.
+
+********************************************
+3) Technical background information
+********************************************
+
+Directly after the start KDE-Pim/Pi looks for the evironment variable MICROKDEHOME.
+If the variable is set, the path in the MICROKDEHOME is used as the storage dir. End.
+
+If MICROKDEHOME is not set ( what is usually the case ), then
+
+###DESKTOP_VERSION ONLY###
+It looks for the file .microkdehome in the directory of the binary.
+(That file is written by pressing the "Save using LOCAL storage" button in the "Data storage path" TAB ).
+If this file is found, it sets the path in the this file  as the storage dir.End.
+If the path starts with a LOCAL:
+it sets the environment variable LOCALMICROKDEHOME to the path of the binary
+and takes that path as storage dir.End.
+
+If the file .microkdehome in the directory of the binary is not found: 
+###DESKTOP_VERSION ONLY END###
+
+It looks for the file .microkdehome in the home directory of the user.
+(That file is written by pressing the "Save settings" button in the "Data storage path" TAB ).
+If this file is found, it sets the path in this file as the storage dir.End.
+
+If the file .microkdehome in the home directory of the user is not found, it sets the
+<yourHome>/kdepim/ directory as the storage dir.
+End of setting the storage dir.
+
+If KA/Pi opens a resource it looks for the  environment variable LOCALMICROKDEHOME.
+If the variable is set, the file resource takes the path in LOCALMICROKDEHOME to find it's file.
+

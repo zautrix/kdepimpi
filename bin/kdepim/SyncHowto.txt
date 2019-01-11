@@ -1,0 +1,534 @@
+WARNING:
+YOU MAY GET UNEXPECTED (I.E. WRONG) SYNCHRONIZATION RESULTS, IF YOU CHANGE AN EVENT ON THE FIRST DEVICE AND SYNC IMMEDIATELY FROM THE OTHER DEVICE WITH THIS DEVICE, IF THE CLOCKS OF THE TWO DEVICES HAVE TOO MUCH DIFFERENCE.
+
+In other words: Please make sure, that the clocks of the devices you want to sync have only a difference of some seconds!
+
+
+CONTENT:
+
+0) How syncing works
+1) Qick overview of settings
+2) Sync settings in sync dialog
+3) Syncing background
+4) Sync preferences
+5) How a filter works
+6) Details about sync profile kinds
+
+*************************************************************************
+0) How syncing works
+*************************************************************************
+
+Note:
+The recommended and easiest way to syncronize two devices where KO/Pi, KA/Pi or PWM/Pi is installed, is the profile kind "Pi-Sync".
+Details about that in 6) b).
+
+In KDE-Pim/Pi you can synchronize ( sync ) your 
+calendar/addressbook/passwordfile with another c
+alendar/addressbook/passwordfile,
+by syncing  your (local) 
+calendar/addressbook/passwordfile 
+with a (remote) file. 
+This remote file may on your local filesystem
+or on another (remote) device.
+
+If you want to sync with another remote device, you have to create
+a sync profile.
+You have two choices for choosing the profil kind:
+I)  You can choose profile kind "Remote file" and specify a 
+    command line download/upload command ( like scp, ftp, ...) to 
+    a) download the remote file to your local machine to a temp file
+    b) sync with this temp file
+    c) upload the synced file to the remote device
+II) If you want to sync with a device, where KO/Pi( or KA/Pi, PWM/Pi) is
+    installed, you can easily get the remote file via network 
+    with the build in file transfer feature:
+    Choose profile kind "Pi-Sync" and
+    a) Start KO/Pi,KA/Pi or PWM/Pi on remote device and
+       enable "Pi-Sync" on remote device with password and port.
+    b) Specify password, port and IP address in your profile.
+
+
+You can sync with your mobile phone as well.
+Everything is explained in more details below.
+
+NOTE:
+If you do not use profile kind "Pi-Sync", it is recommended to close a running KO/Pi (KA/Pi, PWM/Pi) on the remote device.
+(Note: KO/Pi(KA/Pi, PWM/Pi) running on Zaurus with 
+FastLoad enabled will never be closed!)
+After syncing with a running KO/Pi on the remote device, a "save" on the remote device will tell you that it needs to merge (sync).
+After merging (just a syncing with the changed file) you will get the new data showing in remote KO/Pi. 
+
+*************************************************************************
+1) Qick overview of settings
+*************************************************************************
+
+a) Open sync settings dialog (Menu Synchronize - Configure...)
+b) Give your device a unique name.
+   (unique in the set of all devices you want to sync with).
+   If you have already configured another devive and created 
+   there a sync profile to sync with this device, give your device
+   the same name as this sync profile! The same name is important, 
+   because it makes it possible to sync first A->B 
+   (A local device, that performs the sync, B remote device) 
+   and then B->A. Such that the B->A sync knows about the 
+   already performed A->B sync.
+   That means: It is unimportant if you sync A->B or B->A,
+   the devices A and B will be synced properly. 
+c) Create a new sync profile and give it a unique name.
+   (unique in the set of all sync profiles on this device).
+   If you want to sync with a device, where KO/Pi is already installed
+   and which has a given unique device name, use this device name as
+   your profile name ( refer to b) ).
+d) Choose the profile kind of your syncing method:
+      (i) Local file or
+     (ii) Pi-Sync or
+    (iii) Remote file or
+   (iiii) Mobile Phone.
+   Detailed explanation in 6) 
+e) Choose the other profile options.
+   Detailed explanation in 2) 
+f) Close sync dialog with OK.
+g) Sync.
+
+NOTE:
+AFTER SYNCING THERE ARE "SYNC EVENTS" CREATED 
+(OR UPDATED, IF IT ALREADY EXITS) FOR EACH SYNC PROFILE.
+YOU MAY NOT DELETE OR CHANGE THESE EVENTS. 
+
+*************************************************************************
+2) Sync settings in sync dialog
+*************************************************************************
+
+a) Local device name:
+   -> 1) b)
+b) Profile:
+   -> 1) c)
+c) Multiple Sync options: Include in multiple sync:
+   In the Synchronize menu, there is a multiple sync menu entry.
+   If you choose this menu entry, all user defined profiles with this
+   'Include in multiple sync' option enabled will be  synced 
+   one after another. And this twice. This will take some time.
+   After that sync, on all devices should be the same data.
+
+d)- j) Sync algo options:
+
+d) Ask for preferences before sync:
+   Check this to be asked for "Sync preferences" settings before each sync.
+   If the profile kind is "Pi-Sync" you will be asked to confirm
+   the "Pi-Sync" specific settings (Password,IP address, port number)
+   as well. That makes it possible to use that profile for a
+   device that is connected via DHCP to the network and gets different
+   IP addresses when connecting to the network.
+e) Sync preferences:
+   Choose here your sync preferences.
+   Details -> 4)
+f) Show summary after sync:
+   Check this to get a small summary dialog after sync 
+   about number of added/changed/deleted events on local/remote.
+g) Apply filter when adding data to local:
+   What is a filter? You can read this in -> 5)
+   With this option you can specify a filter for events/contacts, 
+   which should be added to the local database, because they are
+   in the remote database and not in the local database.
+   (Database = calendar file or addressbook file).
+   Note that the filter is NOT applied to the remote
+   database before syncing. It is only applied to a particular
+   item which should be added to the local database.
+   Well, but what is the difference?
+   The differnce is: If the remote database AND the local database contain
+   an already synced item, which does not match the filter, then this item is synced.
+   If the remote database contains an item which does not match the filter
+   and the local database does not contain this item, then this item is not added
+   to the local database, but it is still in the remote database after syncing.
+g) Write back synced data:
+   Uncheck this to update the local calendar only.
+   I.e. your local calendar is synced with the remote calendar
+   but nothing on the remote calendar is changed.
+   If you uncheck "Write back synced data", the settings
+   under h) and i) are ignored, of course.
+
+h) - j) Write back options:
+
+h) Write back (on remote) existing entries only:
+   Check this to update the remote data only.
+   I.e. no data from yor local calendar/addressbook is added to the
+   remote device. You may use this option to 
+   sync against some kind of "public calendar/addressbook" without 
+   adding anything of your personal data.
+   But in this case, you cannot add an item to the remoet device.
+i) Apply filter when adding data to remote:
+   What is a filter? You can read this in -> 5)
+   With this option you can specify a filter for events/contacts, 
+   which should be added to the remote database, because they are
+   in the local database and not in the remote database.
+   (Database = calendar file or addressbook file).
+   Note that the filter is NOT applied to the local
+   database before syncing. It is only applied to a particular
+   item of the local database which should be added to the remote database.
+   Well, but what is the difference?
+   The differnce is: If the local database AND the remote database contain
+   an already synced item, which does not match the filter, then this item is synced.
+   If the local database contains an item which does not match the filter
+   and the remote database does not contain this item, then this item is not added
+   to the remote database, but it is still in the local database after syncing.
+   Example:
+     You have specified a calendar filter "only public events".
+     You specify this filter as the outgoing filter for syncing.
+     If there is an event in the local database which is not "public", but "private",
+     this event is not added to the remote database.
+     If there is an event in the local database and in the remote database which is
+     "private" (maybe added by someone else) then this event is synced and 
+     it is in the local database and in the remote database after syncing.
+     That means in particular you cannot remove an event from the remote
+     database but setting it to "private". 
+     If you want to remove the event you can clone it, set it to private and delete the
+     original event. Then the original event is deleted in the remote database after sync and
+     the cloned event is not added to the remote database, because it is private.
+j) Write back (calendar) entries for time period only:
+   Check this to write back only calendar entries for a given time period.
+   (Useful when syncing with mobile phones.)
+   You can specify the date range in weeks for the weeks in the past to the weeks in the future.
+
+k) Profile kind:
+   Details -> 6)
+
+*************************************************************************
+3) Syncing background
+*************************************************************************
+
+The same mentioned for calendars is valid for addressbooks as well.
+
+Synchronizing calendars ( i.e. files ) means, to merge two calendars in a useful way. If the two calendars are completely different, there is no problem, the resulting calendar contains all data from the local and from the remote calendar.
+
+Problems will occur, if you have edited items from the local calendar on the remote machine. Then it could be, that items are in conflict. Two items are "in conflict", if they have the same unique ID (which get an item at time of creation and owns it until it is deleted ) and they both are modified after the last synchronization.
+
+At first sync of two calendars there is no item deleted. If the calendars are synced before and there is an item, which is not edited after the last sync and is only available in one calendar, then this item is deleted in this calendar.
+
+But when was the last synchronization between two calendars?
+
+To know that, KO/Pi creates at first syncing of two files an unique event "<profile name> - sync Event" on the remote and the local calendar. After syncing, the start time of this event is set to the time of syncing. The event is read only and the user may not change it.
+
+If two such files are synced, that both have an event "<profile name> - sync Event" and the events have the same start time, then deleted items on the one calendar are deleted on the other as well.
+
+
+*************************************************************************
+4) Sync preferences
+*************************************************************************
+
+Two items are "in conflict", if they have the same unique ID and they both are  modified after the last synchronization.
+(Details -> 3) ).
+
+If an item is not modified after the last sync and it is not found in the other calendar, it is deleted.
+
+On the first sync, there is no item deleted.
+
+SYNC PREFERENCES:
+ -Take local entry on conflict:
+  Takes the local entry on conflict. 
+  If it is the first sync, 
+  "Ask for every entry" 
+  is chosen automatically, 
+  if this is selected.
+
+ -Take remote entry on conflict:
+  Takes the remote entry on conflict. 
+  If it is the first sync, 
+  "Ask for every entry" 
+  is chosen automatically, 
+  if this is selected.
+
+ -Take newest entry on conflict:
+  This takes the newest entry on conflict. 
+  May be the most useful syncing mode.
+
+ -Ask for every entry on conflict:
+  Pops up an event viewer dialog and 
+  shows the two conflicting entries there. 
+  The user can chose, which entry he would like to take.
+  The button for the newest entry 
+  is automatically set as default button.
+  The color for the newest entry is green.
+
+ -Force: Take local entry always:
+  Even if the calendars are already synced
+  there is no item deleted on local. 
+
+ -Force: Take remote entry always:
+  Analogous to  
+  "Force: Take local entry always"
+
+*************************************************************************
+5) How a filter works
+*************************************************************************
+
+A filter is a rule to decide if a particular item (calendar iten item or contact item) belongs to a set of items.
+For example, you can specify a set as:
+Only items, that belongs to that category.
+Or: Only items, that does not belong to that category.
+Or: Only items, that are public.
+
+If you specify a filter in a syncing profile, you can set the rules of adding items to the local or remote database.
+
+Example:
+You have a public calendar in your company, which contains all company relevant data.
+
+You have different projects in the company and for project specific events is always set the project name as a category: 
+E.g. all events of the project PRO_ABC do have set the categorie PRO_ABC. But you are not interested in events of PRO_ABC, because you are not working on it. Then you can specify a filter: All, but not with categoroy PRO_ABC. When you specify this filter as an incoming filter for your sync profile, all events of the company are synced and added to your local calendar, but not the evenst of the project PRO_ABC.
+
+You do not want that your private data can be seen in the public calendar of your company. Well, set the property to "private" for all your private data and specify an outgoing filter: Only " public" and "confidential". Then you can sync your personal calendar with the calendar of the company, but your private data is not added to the public calendar. 
+ 
+*************************************************************************
+6) Details about sync profile kinds
+*************************************************************************
+
+a) Local file
+   Please specify a local file you want to sync with.
+   Note:  If you are syncing a file, which is used by KA/Pi, please check the
+          "Addressbook file (*.vcf) is used by KA/Pi".
+          If you are syncing with a file from KAddressbook or another program, 
+          please uncheck "Addressbook file (*.vcf) is used by KA/Pi".
+          To set this properly is important! KA/Pi uses a "last modified" property, 
+          which is not supported by KAddressbook.
+
+b) Pi-Sync (direct Kx/Pi to Kx/Pi sync)
+   We mention here only KO/Pi, but the same is valid for KA/Pi.
+   If you want to sync with a device, where KO/Pi is
+   installed, you can easily get the remote file via network 
+   with the build in file transfer feature "Pi-Sync":
+   You have first to enable file transfer on the remote device:
+   - Start KO/Pi on the remote device.
+   - Choose Menu Synchronize-Enable Pi-Sync.
+   - Choose a port number, where KO/Pi should listen for 
+     file sending requests. Valid port numbers are numbers
+     between 1 and 65565. Do not specify port numbers, that are
+     used by other applications. A port number between 9000 and 9999
+     is most likely not used by another application.
+     The default port number is 9197 for KO/Pi.
+     If you specify a port number, which is already in use,
+     you will get an error message when closing this dialog.
+   - Choose a password.
+   - Click OK.
+     Now KO/Pi will send the calendar data via the network, 
+     if some other device is sending a "please send calendar"
+     request on the given port using the given password.
+     If you want to be sure, nobody can access your calendar
+     data, simply disable the file transfer feature on the 
+     remote device after the syncing is done by choosing:
+     Menu Synchronize-Disable Pi-Sync.
+
+   Note: If you want to sync with a remote device that gets different 
+         IPaddresses each time connected to the network
+         (this may be the case, if you use DHCP for connection 
+         of the remote device to the network) simply enable
+         "Ask for preferences before sync".  
+         Then you will be asked to confirm the
+         "Pi-Sync" specific settings 
+         (Password,IP address, port number)
+         and you can easily change the IP address before each sync.
+
+   On your local device, create a new profile and choose
+   profile kind "Pi-Sync".
+   Fill in the needed values:
+   - Password for remote access:
+     The password you specified on the remote device.
+   - Remote IP address:
+     The IP address of the remote device.
+   - Remote port number:
+     The port number you specified on the remote device.
+   
+   Now you can syncronize your local device easily with your 
+   remote device. This works well for all platforms KO/Pi is 
+   running on, e.g. syncing a KO/Pi on Zaurus with KO/Pi on Windows
+   is now very easy.  
+
+c) Remote file
+   Note:  If you are syncing a file, which is used by KA/Pi, please check the
+          "Addressbook file (*.vcf) is used by KA/Pi".
+          If you are syncing with a file from KAddressbook or another program, 
+          please uncheck "Addressbook file (*.vcf) is used by KA/Pi".
+          To set this properly is important! KA/Pi uses a "last modified" property, 
+          which is not supported by KAddressbook.
+
+   Syncing with the profile kind "Remote file" is performed in three steps:
+   i) download the remote file to your local machine to a temp file
+   ii) sync with this temp file
+   iii) upload the synced file to the remote device
+
+   The down-/uploading if i) and iii) is done via a command line command.
+   Please specify the download/upload command ( like scp, ftp, ...) and the
+   file name of the temp file in the corresponding fields.  
+
+d) Mobile device (cell phone)
+   Note: On the Zaurus you have to install the phoneaccess_xxx_arm.ipk package
+         to be able to access mobile phones.
+   We mention here only KO/Pi, but the same is valid for KA/Pi.
+   Note:
+   It is only possible to sync a mobile phone with one particular device
+   running KO/Pi. If you want to be able to write data of more than one device
+   to the mobile phone (e.g. from your Zaurus and from your Windows Laptop)
+   do not sync with the mobile phone at all, but use the 
+   "Export to phone" functionality from the different devices.
+   Using "Export to phone" makes it not possible to get back data from the
+   phone, if it was changed there, of course.
+   If you sync with the phone, do not use "Export to phone" from any device.
+   (And do not sync, as mentioned above, from any other device with that phone). 
+   It would delete the needed information for syncing with that phone!
+
+   We are using Gammu (Version: 0.98.9) ( http://freshmeat.net/projects/gammu/ ) 
+   for accessing the phones. 
+   Note: You cannot use the original Gammu for syncing KDE-Pim/Pi, because 
+   we have modified the original version to make it useable for syncing!
+   Gammu allows access to many phones in many ways (Irda, Bluetooth, serial,...).
+   The recommended phone access using Gammu with KDE-Pim/Pi is Irda (infrared).
+   Bluetooth access is disabled on the Zaurus, but may work on Windows.
+   Please look at the Gammu homepage and documentation about more details 
+   configuring Gammu how to access your phone.
+   If you have problems accessing your phone, start KO/Pi from the konsole
+   and you will get a more detailed output what went wrong.
+   About Gammu from the Gammu homepage:
+       Gammu (formerly known as MyGnokii2) is a cellular 
+       manager for various mobile phones/modems. 
+       It supports the Nokia 2100, 3100, 32xx, 33xx, 
+       3410, 35xx, 51xx, 5210, 5510, 61xx, 62xx,
+       63xx, 6510, 6610, 6800, 71xx, 7210, 7250, 
+       7250i, 82xx, 83xx, 8910, 9110, 9210 
+       and compatible and AT devices (Siemens, Alcatel, 
+       Falcom, WaveCom, IPAQ, Samsung, SE, and others) 
+       over cables/infrared/BlueTooth.
+   
+   Here is an example what to specify to access a Nokia 6310i via infrared:
+   On Linux (Zaurus):
+     I/O device: /dev/ircomm
+     Connection: irda
+     Model: <leave empty>
+   
+   On Windows:
+     I/O device: <ignored - i.e. leave empty>
+     Connection: irda
+     Model: <leave empty>
+
+   Here is the overview from the Gammu documentation, 
+   how to specify the connection settings  for
+     I/O device: 
+     Connection: 
+     Model:
+ 
+   Note: The documentation uses the term "port", 
+         where we use the term "I/O device".
+   Note: You do not have to create/change the gammurc configuration file.
+         That will do KO/Pi for you.  
+   Note: For a known model, leave "Model:" always empty, 
+         such that Gammu can auto detect the model.
+
+# This is a sample ~/.gammurc file.
+# In Unix/Linux  copy it into your home directory and name it .gammurc
+#                or into /etc and name it gammurc
+# In Win32       copy it into directory with Gammu.exe and name gammurc
+# More about parameters later
+# -----------------------------------------------------------------------------
+
+[gammu]
+
+port = com8:
+#model = 6110
+connection = fbusblue
+#synchronizetime = yes
+#logfile = gammulog
+#logformat = textall
+#use_locking = yes
+#gammuloc = locfile
+#startinfo = yes
+#gammucoding = utf8
+
+[gammu1]
+
+port = com8:
+#model = 6110
+connection = fbusblue
+#synchronizetime = yes
+#logfile = gammulog
+#logformat = textall
+#use_locking = yes
+#gammuloc = locfile
+#startinfo = yes
+#gammucoding = utf8
+
+# -----------------------------------------------------------------------------
+# Now info about "Connection" parameter and connected with it port type
+# (more about port types later)
+# -----------------------------------------------------------------------------
+# "Connection" parameter | Port type | More details
+# -----------------------|-----------|-----------------------------------------
+# "fbus"                 | serial    | Nokia FBUS2
+# "fbusirda"/"infrared"  | serial    | Nokia FBUS2 over direct infrared device
+# "fbusdlr3"/"dlr3"      | serial    | Nokia FBUS2 with DLR3 cable
+# "fbusdku5"             | dku5      | Nokia FBUS2 with DKU5 cable. WIN32 ONLY
+# "fbuspl2303"           | usb       | Nokia FBUS2 with USB cable based on
+#                        |           | PL2303 chip.
+# "fbusblue"             | serial    | Nokia FBUS2 over Bluetooth serial device
+# "phonetblue"           | serial    | Nokia PHONET FBUS over Bluetooth serial
+#                        |           | device
+# "mrouterblue"          | serial    |
+# "mbus"                 | serial    | Nokia MBUS2
+# "at19200"/"at115200"/..| serial    | AT commands.8 bits, None parity, 1 stop
+#                        |           | bit, no flow control
+# -----------------------|-----------|-----------------------------------------
+# "irdaphonet"/"irda"    | irda      | Nokia PHONET FBUS over socket infrared
+# "irdaat"               | irda      | AT commands with socket infrared
+# "irdaobex"             | irda      | OBEX over socket infrared. MODEL "obex"
+# -----------------------|-----------|-----------------------------------------
+# "bluephonet"           | BT        | Nokia PHONET FBUS with Bluetooth stack
+# "bluefbus"/"dlr3blue"  | BT        | Nokia FBUS2 with Bluetooth stack
+# "blueat"/"atblue"      | BT        | AT commands with Bluetooth stack
+# "blueobex"             | BT        | OBEX with Bluetooth. MODEL "obex"
+#
+# Now more about port types and connected with it "Port" parameter
+# -----------------------------------------------------------------------------
+# Port type | "Port" parameter in Windows/DOS | "Port" parameter in Linux/Unix
+# ----------|---------------------------------|--------------------------------
+# serial    | "com*:"                         | "/dev/ttyS*"
+#           | (example "com1:")               | (example "/dev/ttyS1")
+#           |                                 | or "/dev/tts/**" (with DevFS)
+# ----------|---------------------------------|--------------------------------
+# irda      | ignored (can be empty)          | "/dev/ircomm*"
+# ----------|---------------------------------|--------------------------------
+# BT        |                 Bluetooth device address
+#           |                 (example "")
+# ----------|---------------------------------|--------------------------------
+# dku5      | ignored (can be empty)          | connection with it not possible
+# ----------|---------------------------------|--------------------------------
+# usb       | connection with it not possible | "/dev/ttyUSB*"
+#
+# Other config parameters
+# -----------------------------------------------------------------------------
+# Parameter name  | Description
+# ----------------|------------------------------------------------------------
+# Model           | use only, when Gammu doesn't recognize your phone model.
+#                 | Put it here. Example values: "6110", "6150", "6210", "8210"
+# SynchronizeTime | if you want to set time from computer to phone during
+#                 | starting connection. Do not rather use this option when
+#                 | when to reset phone during connection (in some phones need
+#                 | to set time again after restart)
+# GammuLoc        | name of localisation file
+# StartInfo       | this option allow to set, that you want (setting "yes")
+#                 | to see message on the phone screen or phone should enable
+#                 | light for a moment during starting connection. Phone
+#                 | WON'T beep during starting connection with this option.
+# GammuCoding     | forces using specified codepage (in win32 - for example
+#                 | "1250" will force CP1250) or UTF8 (in Linux - "utf8")
+# ----------------|------------------------------------------------------------
+# Logfile         | Use, when want to have logfile from communication.
+# Logformat       | What debug info and format should be used:
+#                 |   "nothing" - no debug level (default)
+#                 |   "text"    - transmission dump in text format
+#                 |   "textall" - all possible info in text format
+#                 |   "errors"  - errors in text format
+#                 |   "binary"  - transmission dump in binary format
+# ----------------|------------------------------------------------------------
+# Use_Locking     | under Unix/Linux use "yes", if want to lock used device
+#                 | to prevent using it by other applications. In win32 ignored
+
+   
+   
+   
+   

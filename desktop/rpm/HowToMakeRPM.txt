@@ -1,0 +1,9 @@
+build with
+
+su
+rpmbuild -bb kdepim_rpm
+
+You will see, where the created file is written.
+If buildroot related errors occur, add a line
+%define __check_files %{nil} 
+to kdepim_rpm.

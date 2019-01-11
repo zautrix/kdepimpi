@@ -1,0 +1,91 @@
+Q:
+What is PWM/Pi?
+Q:  
+For which platform is PWM/Pi available?
+Q:  
+How can I create categories in PWM/Pi?
+Q:
+Can I exchange the password files from PWM/Pi and PwManager?
+Q:
+Does Export/Import keep sync information in place?
+Q:
+Can PWM/Pi sync categories?
+Q:
+Which crypto, hash and compress algorithm is applied to the remote file
+while syncing?
+Q:
+What is the format of the CSV format to import passwords?
+
+*************************************************************************
+Q:
+What is PWM/Pi
+A:
+PWM/Pi is the platform-independend version of PwManager 1.0.1, written by
+Michael Buesch and the PwManager Team (http://passwordmanager.sourceforge.net)
+*************************************************************************
+Q:  
+For which platform is PWM/Pi available?
+A: 
+PWM/Pi is the platform-independend version of PWManager and it 
+includes a replacement for the KDE libraries called microkde.
+Precompiled versions are available 
+on www.rogowski.info for Linux and Sharp Zaurus PDA.
+Latest versions and the source code cvs can be found at:
+http://sourceforge.net/projects/kdepimpi/
+*************************************************************************
+Q:  
+How can I create categories in PWM/Pi?
+A:
+In PWM/Pi you cannot create categories.
+You can set (or change) a category for a specific password entry.
+PwM/Pi reads all categories from all password entries and creates a category list from that.
+*************************************************************************
+Q:
+Can I exchange the password files from PWM/Pi and PwManager
+A:
+The password files of PWM/Pi can not be exchanged with all versions up
+to 1.0.1 of PwManager.
+However, Michael will integrate our changes into a PwManager release
+1.1, and the password files of that release will then be interchangable
+with PWM/Pi
+*************************************************************************
+Q:
+Does Export/Import keep sync information in place
+A:
+Exporting data from PwManager removes all sync related information 
+(Meta information) from the data. Because of that, a subsequent import
+results in "new" entries that will be handled as new entries when
+syncing them with an existing password file.
+*************************************************************************
+Q:
+Can PWM/Pi sync categories?
+A:
+No. PWM/Pi does not sync categories. It syncs all pw entries of the file
+without checking for the entries categories. 
+A sync operation does not move modified entries from one category to another.
+Only if the sync operation has to create a new pw entry, it checks for the
+existance of the category and creates it if not existent.
+*************************************************************************
+Q:
+Which crypto, hash and compress algorithm is applied to the remote file
+while syncing?
+A: The sync operation applies the local crypt, hash and compress algorithm   
+to both, the local and remote copy of the passwordfile and with thus
+overwrites the settings of the remote PwManager application.
+*************************************************************************
+Q:
+What is the format of the CSV file to import passwords?
+A:
+"Category 1",, "Desc 1", "Username 1", "Password 1", "URL 1", "Launcher 1", "Comment 1"
+"Category 1",, "Desc 2", "Username 2", "Password 2", "URL 2", "Launcher 2", "Comment 2"
+...
+
+
+-The empty "" is neccessary, because in future versions PwManager will
+support nested Categories.
+-The first line must !!not!! contain the field names.
+
+
+
+
+ 

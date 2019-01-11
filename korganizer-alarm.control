@@ -1,0 +1,9 @@
+Files: plugins/applets/libkopialarmapplet.* pics/ko16.png  pics/ko24.png 
+Priority: optional
+Section: qpe/applications
+Maintainer: Lutz Rogowski <zautrix@rogowski.info>
+Architecture: arm
+Version: $KDEPIM_VERSION
+License: GPL
+Description: KOrganizer/Pi Alarm Daemon
+ The alarm daemon needed by KOrganizer/Platform-independend showing alarms.

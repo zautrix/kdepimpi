@@ -1,0 +1,295 @@
+
+Sync HowTo Zaurus <-> KDE
+
+
+This is a
+Sync HowTo Zaurus <-> K-Desktop Environment(KDE)
+using the KDE-Pim/Pi applications 
+KAddressbook/Pi (KA/Pi) and KOrganizer/Pi (KO/Pi)
+on the Zaurus (Z).
+
+You can now easily sync your Z with the 
+PIM data of the KDE.
+(addressbook and calendar data).
+You need to install the desktop versions 
+of KA/Pi+KO/Pi on the desktop.
+You need KDE version 3.3.0 or higher on your desktop.
+You need KA/Pi+KO/Pi version 1.9.11 or higher on the desktop
+and on the Z.
+
+NOTE: Almost the same procedure will make it possible to
+sync KA/Pi+KO/Pi running on Windows with KDE via network.
+
+The setup+sync procedure is:
+
+0) How the syncing works
+1) Installing KA/Pi+KO/Pi on the Z
+2) Installing desktop version of KA/Pi+KO/Pi on the desktop
+3) Connection your Z to the desktop via network
+   (network connection can be set up via USB cable or (W)Lan
+4) Configuring KA/Pi+KO/Pi on Z for Sync
+5) Enable remote sync in KA/Pi+KO/Pi on the desktop
+6) Sync
+
+*****************************************************
+0) How the syncing works
+*****************************************************
+
+After setting up everything, the following actions will
+be performed when syncing:
+User enables "remote pi-sync" on desktop.
+User chooses "sync with configured desktop profile" on the Z.
+Z sends sync request via network to configured IP/port/password.
+KO/Pi on desktop detects sync request and syncs with KDE (configurable!).
+A window pops up, that KO/Pi on desktop is in "remote syncing mode".
+If a conflict occurs when syncing KO/PI<->KDE on the desktop, 
+automatically the newest entry is choosen.
+(To avoid the need of user interaction)
+KO/Pi on desktop sends synced file to Zaurus.
+KO/Pi on desktop is in "waiting mode" to get synced file back.
+Zaurus is syncing it's own calendar with the received file.
+Here can be some user interaction needed, i.e.
+if the sync profile is configured as
+"ask for every entry on conflict" and a conflict occurs. 
+Zaurus sends back synced file to desktop.
+Syncing on Zaurus is complete now.
+KO/Pi on desktop gets back synced file.
+KO/Pi on desktop removes all entries in its own calendar and
+reloads the synced file.
+KO/Pi on desktop syncs with KDE.
+After syncing  with KDE is finished, KO/Pi closes
+the "remote syncing mode" window and displays 
+a "syncing complete" message in the headline.
+
+The actual syncing KO/Pi on desktop <-> KDE is 
+performed by a small command line tool "kdecaldump", 
+which writes/reads the complete KDE calendar resources to 
+a file/from a file.
+KO/Pi tags changed entries such that an unchanged entry
+is not changed in KDE by kdecaldump. That is important for 
+calendar entries in KDE, stored in a "disconnected IMAP" calendar resource.
+
+
+Same way is KA/Pi working.
+
+
+*****************************************************
+1) Installing KA/Pi+KO/Pi on the Z
+*****************************************************
+
+Download latest version of KA/Pi+KO/Pi from
+http://sourceforge.net/projects/kdepimpi/
+Project KDE/Pim.
+Direct link is:
+http://sourceforge.net/project/showfiles.php?group_id=104103&package_id=112604
+Click on the version number to read the release notes/change log.
+Choose there the right precompiled package for your Z:
+For Sharp ROM
+-File: kdepim_1.x.xx_for_SharpROM.ipk.zip
+For Open Zaurus ROM:
+-File: kdepim_1.x.xx_for_OZ-gcc3xx.ipk.zip
+If unsure, choose:
+-File: kdepim_1.x.xx_for_SharpROM.ipk.zip
+
+Unzip the file and install the packages as usual on your Z.
+In order to intstall KA/Pi+KO/Pi on your Z,
+you need to install the following files:
+kmicrokdelibs_1.x.xx_arm.ipk  
+kaddressbook_1.x.xx_arm.ipk
+korganizer_1.x.xx_arm.ipk
+
+*****************************************************
+2) Installing desktop version of KA/Pi+KO/Pi on the desktop
+*****************************************************
+
+Precompiled packages are available for SuSE 9.1.
+Choose on the above download location:
+File: KDE-Pim-Pi-1.9.11-SuSE9.1.i586.rpm
+Download file and install it on console with
+su
+rpm -ihv KDE-Pim-Pi-1.9.11-SuSE_9.1.i586.rpm
+NOTE:update with 
+            rpm -Uhv KDE-Pim-Pi-1.9.11-SuSE_9.1.i586.rpm
+     erase (uninstall) with
+            rpm -e KDE-Pim-Pi-1.9.11-SuSE_9.1     
+NOTE for users of SuSE 9.1:
+You need KDE version 3.3.0 or higher on your desktop.
+Plese make an online update in SuSE (YAST), then update
+your KDE to version 3.3.0 or higher.
+You can find links to updated precompiled versions of KDE 
+for SuSE 9.1 on the SusE web site, 
+a direct link is for example:
+ftp://ftp.gwdg.de/pub/linux/suse/ftp.suse.com/suse/i386/supplementary/KDE/update_for_9.1
+HOWTO UPDATE KDE:
+Download there the packages in "base".
+And the needed package for your language in "internationalization".
+Put all downloaded files in one "installation" directory.
+Open console and go to the downloaded "installation" directory.
+Do there a
+su
+and then perform a test for the update:
+rpm -Uhv --test *.rpm
+
+If no dependencies are shown, you can do the actual update with 
+rpm -Uhv *.rpm
+
+If there are missing dependencies, you can resolve them by
+- download the needed updated KDE package from the 
+    "applications" or from the "development" folder on the server.
+- adding a needed rpm package from the SuSE install DVD
+- remove the package that has dependencies from your "installation" directory.
+
+Do the 
+rpm -Uhv --test *.rpm
+until you get no dependencies and no errors, then do a
+rpm -Uhv *.rpm
+Run
+SuSEconfig
+after installing with rpm is finished.
+Restart KDE.
+
+*****************************************************
+3) Connection your Z to the desktop via network
+   (network connection can be set up via USB cable or (W)Lan
+*****************************************************
+
+a) Connection via network cable/(W)Lan cards
+   Connect your desktop to the network.
+   Set up networking on the Z.
+   Make sure, you can ping the desktop from Z.
+b) Connection via USB cable:(is working for Z 7x0 and Z5500)
+   (i) Open console on desktop and type
+           su
+           tail -f /var/log/messages
+   (ii) Connect your Z with the USB cable to your desktop
+        You should get as output in the above console 
+        something like this:
+        ("BUG" is the name of the desktop computer!)
+            Oct 26 12:49:37 BUG kernel: usb 2-2: new full speed USB device using address 2
+            Oct 26 12:49:37 BUG kernel: usb 2-2: Product: SL-C860
+            Oct 26 12:49:37 BUG kernel: usb 2-2: Manufacturer: Sharp
+            Oct 26 12:49:37 BUG /etc/hotplug/usb.agent[22659]: need a device for this command
+            Oct 26 12:49:43 BUG kernel: usb0: register usbnet at usb-0000:00:1d.0-2, Sharp Zaurus, PXA-2xx based
+            Oct 26 12:49:43 BUG kernel: usbcore: registered new driver usbnet
+        You see in the 5. line ("BUG kernel: usb0: register"), that usb device usb0 is used.
+   (iii) Create a network startup entry in /etc/sysconfig/network
+         Depending of the number X of the used usb device, create a file 
+         /etc/sysconfig/network/ifcfg-usbX
+         (in our case /etc/sysconfig/network/ifcfg-usb0 )
+         with the following content:
+               # usbX config for Zaurus
+               IPADDR='192.168.129.200'
+               NETMASK='255.255.255.0'
+               NETWORK='192.168.129.0'
+               BROADCAST='192.168.129.255'
+               STARTMODE='hotplug'
+   (iv) Disconnect the Z and connect the Z again to the desktop.
+        Now you should be able to ping the Z from the desktop, try in console on desktop:
+        ping 192.168.129.201
+        Now you should be able to ping the desktop from the Z, try in console on Z:
+        ping 192.168.129.200
+
+        Now you will get a network connection automatically, 
+        if you connect your Z to the desktop via the USB cable.
+
+
+In the following, we assume, that 
+the desktop has the IP address:  192.168.129.200
+and that 
+the Z has the IP address:  192.168.129.201
+        
+*****************************************************
+4) Configuring KA/Pi+KO/Pi on Z for Sync
+*****************************************************
+
+Start KO/Pi on the Z.
+Choose Menu: Synchronize - Configure
+Fill in name for "Local device name:", e.g. "Z760"
+Click on "New profile"
+Set name of "Profile:", e.g. "BUG".
+(that is the above name of the desktop computer)
+Choose "Profile kind": Pi-Sync.
+Set "Password for remote access", e.g. "xyz" for
+Calendar and Addressbook.
+Set Remote IP address to 192.168.129.200 for
+Calendar and Addressbook.
+(Note: That is the IP address of the desktop!).
+The "Remote port number" is 9197/9198  for
+Calendar and Addressbook.
+You do not have to change the
+"Remote port number" or any other settings.
+Click "OK" button to save your settings.
+
+Now you have configured KA/Pi+KO/Pi sync on the Z,
+no need to configure anything in KA/Pi.
+
+
+*****************************************************
+5) Enable remote sync in KA/Pi+KO/Pi on the desktop
+*****************************************************
+
+Start KO/Pi on the desktop.
+Do a "test" sync with KDE, choose menu:
+Synchronize - KDE_Desktop
+After syncing, you should have the same data in KDE
+and in KO/Pi.
+NOTE:
+The KO/Pi version 1.9.10 had the bug, that on the first
+sync with KDE, all data in KDE was deleted.
+DO NOT USE VERSION 1.9.10!
+
+The bevaviour on the first sync is
+(in versions >= 1.9.11)
+that no data is deleted, the data in KO/Pi and in 
+KDE is merged into one calendar.
+
+When the first sync was ok, please choose menu:
+Synchronize - Enable Pi-sync
+Fill in the values for port ("9197" in our examle) 
+and for the password ( "xyz" in our example)
+that you did configure on the Z for that computer.
+Enable "Automatically start at application start"
+and "Automatically sync with KDE-Desktop when receiving sync request"
+by checking the two boxes.
+Close KO/Pi.
+
+Configure / test KA/Pi on the desktop in the same way.
+Fill in the right value for the port (9198 in our examle)
+in KA/Pi! 
+
+*****************************************************
+6) Sync
+*****************************************************
+
+After configuring everything as above, you have to do
+the following, if you want to sync your Zaurus with KDE:
+(It syncs will all resources in KDE, that are not "readonly").
+
+Start KO/Pi on the desktop.
+If Kontact or KOrganizer is running, save the calendar!
+Connect the Z with the USB cable to your desktop.
+(Or to the local network).
+Choose on the Z the menu:
+Syncronize - <your name for the desktop sync profile>
+( that was "BUG" in our example ).
+That's all.
+
+Do the same with KA/Pi.
+
+NOTE:
+If an appointment/addressee is created on the Z, it is added to the
+standard resource in KDE.
+
+If you have todos with subtodos in your calendar, you will get on
+every sync (after you restartet KOrganizer or Kontact in KDE)
+the message "xx items changed on local", where
+xx is greater or equal to the number of todos.
+That behaviour is caused by a bug in KDE.
+(In KDE, everytime a subtodo is loaded, 
+it's "last modified" settings are set to the current time - ouch!)
+I hope I can fix this bug in KDE soon.
+
+
+
+
+

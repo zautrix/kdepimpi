@@ -1,0 +1,97 @@
+<!DOCTYPE UI><UI>
+<class>KOFilterView_base</class>
+<include location="local">tr.h</include>
+<widget>
+    <class>QWidget</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>KOFilterView_base</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>124</width>
+            <height>100</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Form2</string>
+    </property>
+    <property>
+        <name>layoutMargin</name>
+    </property>
+    <property>
+        <name>layoutSpacing</name>
+    </property>
+    <vbox>
+        <property stdset="1">
+            <name>margin</name>
+            <number>2</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>2</number>
+        </property>
+        <widget>
+            <class>QFrame</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>Frame11</cstring>
+            </property>
+            <property stdset="1">
+                <name>frameShape</name>
+                <enum>StyledPanel</enum>
+            </property>
+            <property stdset="1">
+                <name>frameShadow</name>
+                <enum>Raised</enum>
+            </property>
+            <property>
+                <name>layoutMargin</name>
+            </property>
+            <vbox>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>2</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>1</number>
+                </property>
+                <widget>
+                    <class>QCheckBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>mEnabledCheck</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Filter enabled</string>
+                    </property>
+                </widget>
+                <widget>
+                    <class>QComboBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>mSelectionCombo</cstring>
+                    </property>
+                </widget>
+            </vbox>
+        </widget>
+        <widget>
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>mEditButton</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Edit Filters</string>
+            </property>
+        </widget>
+    </vbox>
+</widget>
+</UI>

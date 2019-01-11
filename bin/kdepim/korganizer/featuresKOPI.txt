@@ -1,0 +1,263 @@
+Features of KO/Pi and hints for usage of KO/Pi
+(www.rogowski.info)
+
+A) General features
+    0) Main features
+    1) Import - export - connection - syncing
+    2) Filter
+    3) Managing categories:
+    4) Cancelling of items:
+    5) Addressbook access:
+    6) Quick editing:
+    7) Fast navigation:
+    8) Printing:
+    9) Configuration:
+   10) Language:
+   11) Alarm:
+   12) What'sThis Help:
+
+B) Useful features, that are not straighforward to see
+    1) Right mouse click on Zaurus
+    2) Moving of items in the agenda view
+    3) Creating exceptions for recurring events
+    4) Navigation in month view
+    5) Navigation in agenda view
+    6) Monthview as week view
+    7) Switching display mode in date edit
+    8) Recurring todos
+
+
+******************************************************
+A) General features
+******************************************************
+Features of KO/Pi 2.0.8:
+0)
+Main features:
+KO/Pi makes synchronizing your data easy!
+Details in 1) and the sync HowTos.
+With KO/Pi you can manage your events/todos/journals.
+Todos may have subtodos.
+Todos may recur ( details: B)8) Recurring todos)
+A subtodo can be changed to a parent root todo.
+A (sub)todo can be reparented to make it a subtodo of another todo.
+KO/Pi has a monthview, a What's Next view, an event list view, a small and big todo-view and an agenda view to display 1-42 days.
+KO/Pi is Qt-only based and runs on Sharp Zaurus PDA, Linux and Windows.
+1) 
+Import - export - connection - syncing:
+KO/Pi on Windows can import calendar data easyly from Outlook directly via OLE.
+  Recurring events with exceptions and attendee lists of meetings are imported properly.
+KO/Pi can import/export ics and vcs files.
+KO/Pi can save/load ics backup files.
+KO/Pi can send ics and vcs files via infrared, with and without timezone settings.( Zaurus only )
+KO/Pi can receive files via infrared directly, after beam receive is enabled.( Zaurus only )
+  Via the search function you can send any number/selection of events/tasks/journal via infrared.
+Via the search function you can export and save any number/selection of events/tasks/journal to an ics file.
+Via the search function you can export and save any number/selection of journals and descriptions of events/todos to a plain text file.
+KO/Pi can import xml calendar/todo data from Opie/old Qtopia environment.
+KO/Pi can sync calendar/todo data with new Sharp Rom DTM model PIM applications, found on Zaurus 7x0/860 and Sharp Rom 3.1 (and above) for 5x00 series.
+(Hint: Rename  /home/QtPalmtop/bin/datebook to e.g. /home/QtPalmtop/bin/datebookwech
+to prevent alarm notification by the Sharp calendar app)
+KO/Pi can sync calendar/todo/journal data with any local ics file. 
+In KO/Pi you can create a specific profile for each device to sync with.
+  KO/Pi can automatically down/upload a remote ics file to a temp file via user specified system command (e.g. ssh/scp, ftp, ...) to sync with.
+  KO/Pi can ask you, if a conflict while syncing is detected and displays a detailed view of both events/todos. 
+  Multiple sync with many profiles at once is supported. Read "Multi Sync HowTo".
+  KO/Pi can sync after an easy and quick setup via network in the "Pi-Sync" mode with another running instance of KO/Pi with "Pi-Sync" enabled. 
+  KO/Pi on Linux can sync with KDE calendar data. 
+  KO/Pi on the Zaurus can sync with KDE calendar data on desktop via Pi-Sync. Read "KDE-Sync HowTo".
+  KO/Pi can sync and export data to mobile phones. Supported models are depending of the used lib, libgammu.
+  If KO/Pi detects that the saved file on disk has changed,(e.g. a remote sync from somewhere has happened),
+    it asks you, if you want to overwrite the file or if you want to sync with the file. Such that no data is lost.
+KO/Pi can save/load templates for events/todos.
+2)
+Filter:
+You can define filters for displaying/not displaying specified categories.
+Quick access to the first 20 filters via hotkeys 1-0 and <ctrl>1-0
+3)
+Managing categories:
+After importing/loading/syncing there may be new categories in events or todos which are not in the category list.
+  You can choose what to do with these categories: 
+  -Add to category list
+  -Or remove them from events/todos
+In the list view/search dialog you can quickly assign categories to all selected items.
+  You can choose
+  -to add a selection of categories to the list of categories
+  -to set a selection of categories as the new list of categories
+You can specify a color to every categorie.
+  The events/tasks of this categorie are  displayed with this color in the agenda view.
+  You can configure, if the events/tasks categorie color is shown in todo view/month view as well.
+4)
+Cancelling of items:
+You can cancel an event/todo without deleting them.
+The cancelled event/todo is then displayed stricked out.
+5)
+Addressbook access:
+You can access address entries stored in KA/Pi. 
+You cam import birtdays from KA/Pi.
+In KA/Pi you can configure a new resource to get read-only acces to Opie addressbook data.
+6)
+Quick editing:
+You can quickly clone, move, cancel, beam events/todos.
+When dragging a recurrent event in agenda view, this recurrence is automatically added to the list of recurrence exceptions and a non-recurring clone is created.
+If you click on a day number in month view, a new edit event dialog pops up.
+7)
+Fast navigation:
+There are many shortcuts for fast changing the view. Please refer to shortcut-key description.
+If you click on the week number in month view, this week is shown in agenda view.
+8)
+Printing:
+On the desktop version, you can print out a vertical range of the agenda view "as you see it".
+And you can print on the desktop version a day view, three kinds of a week view and a month view. 
+You can print the todo list as well.
+9)
+Configuration:
+There are many advanced configuration possibilities.
+You can configure for every item in the toolbar, whether it should be shown or not.
+There are two item sizes for toolbar icons available. (Useful for 5x00 user and small display).
+You can configure the font/fontsize for every view.
+10)
+Language:
+KO/Pi is available in English, German, French and Italian.
+11)
+Alarm:
+For Zaurus there is an alarm applet available with additional timer functionality.
+This alarm applet will make the Zaurus wake up, if the device is in suspend mode.
+On the desktop (e.g. Windows) you can enable in KO/Pi the internal alarm notification, 
+such that you are informed about an alarm, if the program is running.
+12)
+What'sThis Help:
+To use the What'sThis Help, you have to enable the What'sThis icon in the toolbar.
+(Choose menu: ME-Toolbar or Action-Configure Toolbar ).
+(You have to restart to reload the changed toolbar config).
+Now click on the QWhat'sThis Icon 
+in the top right corner of KO/Pi.
+Then click now after that on an item in the Agenda View or in the month view
+you will get a detailed display of the items content.
+
+
+
+******************************************************
+B) Useful features, that are not straighforward to see
+******************************************************
+
+1) Right mouse click on Zaurus
+2) Moving of items in the agenda view
+3) Creating exceptions for recurring events
+4) Navigation in month view
+5) Navigation in agenda view
+6) Monthview as week view
+7) Switching display mode in date edit
+8) Recurring todos
+
+1) 
+Right mouse click on Zaurus:
+In KO/Pi on the desktop a right mouse click will popup an menu on some items.
+On the Zaurus there can only the stylus be used.
+To simulte a right mouse click with the stylus press is and hold it down
+for 1-2 seconds. If you release it then, a menu pops up, if there is
+a menu available for this particular item.
+On some places the menu pops up without releasing the stylus.
+That bevaviour is not a bug, it is caused by the the behaviour of the
+single left click on the item.
+
+2)
+Moving of items in the agenda view:
+In the agenda view you can move an item by clicking on it and holding
+the mouse down.
+You have to move the mouse some distance before the items actually 
+starts to move. That is not abug, that is a feature to prevent
+you to make unwanted moves of the item when you click on it(and moving the
+mouse only a small distance with this click)
+
+3)
+Creating exceptions for recurring events:
+To create an exception for a recurring event,
+move this event in the agenda view. 
+This recurrence is automatically added to the list 
+of recurrence exceptions and a non-recurring clone is created.
+To cancel a single recurrence, create an exception by moving it
+and then move it back and cancel it.
+
+4) 
+Navigation in month view:
+If you select the month view with the icon in the toolbar,
+the selected data range in the date navigator
+is set automatically to the complete month. 
+(Click on month view and then the space bar to see the 
+selected data range in the date navigator).
+If you select in the data navigator
+(automatically by clicking on the month view or manually)
+a date range from the first of the month to the
+28.-31. of the month (the 28.-31. is valid for every month!)
+then the (month-)navigation keys will select automatically the
+complete next month as date range.
+
+5)
+Navigation in agenda view:
+If you select (as an example) 4 days in the date navigator
+the (week-) navigation key will select the same 4 days in the next week.
+If you want to get the next 4 days after the selected 4 days selected,
+you have to switch the navigation mode to "next days mode" 
+by clicking on the next days icons.
+Now the next days from today are selected, but after selecting
+4 days in the day navigator the (week-) navigation key 
+will select the next 4 days.
+The "next days mode" is turned off by clicking on the
+week view, work week view or day view button.
+The agenda view has "time labels" on the left, which displays the hours from 0-24.
+If you press the mouse on the timelabels and move it up/down you can 
+increase/decrease the agenda size quickly. 
+    In the agenda view you can click on the day labels (e.g. Mon 14)
+to see the selected date in single day mode. 
+If you click in single day mode the day label you will switch back to
+the previously selected date range.
+Right of the day labels is a ">" button.
+If you click this button, you will go one day ahead.
+Left of the day labels is the month name displayed.
+If you click this button, the month view is shown. 
+
+6) 
+Monthview as week view:
+On the left side of the monthview are the week number labels displayed.
+If you click on these labels, the month view will show this week zoomed.
+To go back to monthly view click the left label again.
+You can quickly select a week number by clicking the black triangle
+on top of the week number labels.
+
+7) 
+Switching display mode in date edit:
+On several places is a date edit used.
+You can scroll the dates by selecting the part of the date (month, day, year)
+in the lineedit and pressing the key up/key down key.
+The display mode of a date edit is initially short date mode.
+(I.e. weekday names are not displayed)
+If you doubleclick in the lineedit the mode switches to long date mode.
+Now the weekday names are displayed for better overview.
+To switch back simply doubleclick again in the line edit.
+   
+8) 
+Recurring todos:
+In KO/Pi you can define recurring todos.
+(You may replace in the following date by datetime).
+A recurring todo must have a due date and a start date.
+The recurrence is computed from the start date.
+As usual, in the views is shown the due date.
+If you set a reccuring todo to complete, is it shown as complete
+and the next recurrence is computed automatically.
+You can now set the todo back to uncomplete.
+If you do not set it back to uncomplete,
+it will be automatically set back to 
+(after the next update of a view in KO/Pi)
+uncomplete when the current datetime passes the
+start date of the todo.
+To set the start/due back to other dates simply change the
+start/due values in the todo editor.
+Recurring todos are not deleted on a "purge completed".
+
+
+
+
+
+
+
+

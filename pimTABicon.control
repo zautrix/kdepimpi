@@ -1,0 +1,9 @@
+Files:  apps/Pim/.directory  pics/ko24ti.png
+Priority: optional
+Section: qpe/pim
+Maintainer: Lutz Rogowski <zautrix@rogowski.info>
+Architecture: arm
+Version: $KDEPIM_VERSION
+License: GPL
+Description: Icon for Pim TAB
+    for Zaurus PDA and microkde

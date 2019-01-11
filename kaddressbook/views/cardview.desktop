@@ -1,0 +1,18 @@
+[Desktop Entry]
+Encoding=UTF-8
+X-KDE-Library=libkaddrbk_cardview
+Name=Card View
+Name[be]=У выглядзе картак
+Name[ca]=Vista de targeta
+Name[da]=Kort-visning
+Name[el]=Προβολή καρτών
+Name[es]=Vista de tarjeta
+Name[hu]=Kártyanézet
+Name[pt_BR]=Visualização de Cartão
+Name[ru]=Карточка
+Name[sk]=Prezeranie karty
+Name[sv]=Kortvy
+Name[tr]=Kart Görünümü
+Name[zh_CN]=卡片视图
+Type=Service
+ServiceTypes=KAddressBook/View

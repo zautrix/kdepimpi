@@ -1,0 +1,1516 @@
+Info about the changes in new versions of KDE-Pim/Pi
+
+********** VERSION 2.2.0 ************
+
+New stable release!
+Fixed some minor usability problems.
+Added writing of next alarm to a file for usage on pdaXrom.
+
+********** VERSION 2.1.19 ************
+
+Fixed a crash in journal view.
+Fixed a crash at setting a todo to stopped if KO/Pi saved the file while "stop todo" dialog was shown.
+Fixed a minor problem with the marcus bains line (whatever that is).
+Fixed a crash when setting a todo to complete from the show dialog which was called from the What's Next View.
+
+********** VERSION 2.1.18 ************
+
+Pi-Sync mode:
+The "Write back file" status dialog was updated too often such that writing back the file on the Z was very slow. Fixed.
+
+KO/Pi:
+Fixed a layout problem on the Z 5500 with the calender box right of the location box in the event/todo editor. Thanks to Andrew, who found, reported and fixed this problem ( I did not get that problem - it was working on my 5500 ).
+
+Fixed a problem when (imported or added from other applications) events or todos did have attachments.
+Fixed a really ugly and hidden problem in the management of the parent/child relationchip of todos.
+
+
+********** VERSION 2.1.17 ************
+
+KO/Pi:
+Added option to display times in What's Next View on two lines.
+(Useful for display on the Zaurus with 240x320 screen)
+Removed "Allday" for allday events of one day duration in What's Next View.
+Added date range for allday events of more than one day duration in What's Next View.
+Fixed two problems in the data importing from Outlook:
+  Fixed the duplicated import if the summary, location or description had whitespaces at the end.
+  Fixed a problem importing certain recurrence rules.  
+
+A journal in an ics file may have no dtStart value (as files from KNotes, which stores its notes in an ics journal file).
+If now a journal has no dtStart value the dtStart value is set to the created value of the journal when loading the file. That makes it possible to view and edit "notes" from KNotes. Simply add another Resource in KO/Pi which is a copy of the ics file from KNotes. You will find the "notes" in KO/Pi as a journal entry on the date you created it.
+
+And some minor fixes in KO/Pi.
+
+
+********** VERSION 2.1.16 ************
+
+Fixed a problem with the menu bar in KO/Pi and using the "Menu" hardware key on the Zaurus.
+Added columns for datetime in todo view: Last modified, created and last modified subtodo
+Fixed a bug in agenda view displaying recurring multiday events which are longer than two days.
+Made conflict detection up to 4 times faster.
+
+********** VERSION 2.1.15 ************
+
+Fixed two layout problems on the Z:
+Made the with of the newly added buttons on the Quick-Todo smaller.
+Made listweek layout in 2 columns on the Z760 in portait screen and full menubar visible.
+
+
+********** VERSION 2.1.14 ************
+
+Added some buttons to the KO/Pi Quick-todo line to make it possible to quickly access some todo view layout settings like display all flat/open/close and hide/show running/done.
+Added a button to add a subtodo quickly.
+
+Added a possibility to search for conflicting events. (In the Action menu. Keyboard shortcut "q", shift+q or ctrl +q ).
+Added an option to change the layout of the list week to column mode.
+
+Fixed some usability problems in pi-sync mode by adding some progress information about file transfer.
+
+Fixed pi-sync problems with the new multi calendar feature.
+Now pi-sync behaviour should be:
+1) Local sends file request ( as usual )
+2) Remote sends file which contains data of all enabled ( the calendar where the "eye" column is checked ) calendars.
+3) Local syncs with data, adds new entries to default calendar and sends file back ( as usual ).
+   If the data which local receives contains entries which are on disabled calendars on local this entries are updated and not added as duplicates to the default calendar.
+4) Remote updates the data and adds new entries to default calendar. Readonly entries are not changed on remote.
+   If the data which remote receives contains entries which are on disabled calendars on remote this entries are updated and not added as duplicates to the default calendar.
+
+Summary: 
+No new item ( new created after the last sync ) in a disabled calendar is propagated to the sync partner. Readonly items are synced and added/changed on the sync partner if it is not readonly on the sync partner.
+If you have different calendars on remote and local and some of them disabled you may get some "strange" bahaviour.
+Well, the syncing has become quite complicated ... you should have no problems if you enable all calendars. 
+
+********** VERSION 2.1.13 ************
+
+Fixed a problem in KA/Pi search.
+Fixed some minor problems in KO/Pi.
+Added calendar selection possibility to the todo view popup and to the event/todo/journal editor.
+
+Fixed memory usage problems in KA/Pi:
+When loading data KA/Pi did load the file data twice.
+Example:
+  A 600k file did consume 1200k memory during loading process.
+  This is fixed, it does now consume only  600k during loading process.
+When saving data KA/Pi did consume a lot of memory for the data parsing during the save process.
+This is fixed.
+Example:
+  Before saving a 600k file KA/Pi did consume 21.7 Meg of Ram.
+  When saving  KA/Pi did consume 28.6 Meg of Ram. That causes a crash on the Zaurus because there was no memeory left in the system.
+  Now  KA/Pi is consuming on saving the same data 22.0 Meg of Ram during the save process. 
+Note: The memory usage of KA/Pi after the data is loaded/saved has not changed.
+The saving of data may be a bit slower now.
+
+Fixed memory usage problems in KO/Pi:
+When KO/Pi did save the data to file, it did not release the used buffers after saving.
+The used buffer was released after saving the next time, but there was new buffer space allocated again on that save operation.
+This is fixed.
+Example:
+  When saving a 400k file KO/Pi do now use 400k less memory now.
+
+Optimized memory usage in KO/Pi Agenda view:
+KO/Pi is storing some paint information in extra buffers for faster repainting of the agenda view.
+These buffers were not made smaller (i.e. downsized)  because of performance reasons.
+The handling of these buffers are now much smarter:
+Two (of six) buffers are removed completely.
+The remaing four buffers are now downsized after not using the agenda view for 45 seconds.
+Such that the memory usage of KO/Pi is smaller now in general ( because 2 buffers are removed) and is much smaller when not using the agenda view. That is very important when using fastload for KO/Pi.
+
+Worst case example ( for a maximum size agenda content):
+  When resizing the agenda content to a large scale, KO/Pi did use 17Meg of mem ( and did not use less memory until it was stopped). Now KO/Pi is using on the same operation only 14.3 Meg of mem and after 45 seconds not using the agenda view it uses only 9.4 Meg of mem.
+
+When switching to an unused Agenda view now KO/Pi is upizing the buffers again. This takes less than a second. Such that switching to Agenda view (after not using it for more than 45 seconds) is now a bit slower. 
+
+Summary:
+Many memory wasting problems of KA/Pi and KO/Pi fixed such that it is better to use on the Zaurus.
+
+********** VERSION 2.1.12 ************
+
+KO/Pi:
+Many small usability fixes, e.g. rearranged the popup menus such that they are better to use on the Zaurus.
+Fixed a problem with the month view when file was saved but KO/Pi was not the active window.
+Fixed some problems in the resource config dialog (e.g. added a warning if you set all calendars to read-only).
+Fixed some other small problems.
+
+********** VERSION 2.1.11 ************
+
+KO/Pi:
+Because we can have many calendars now in KO/Pi we can have more than one journal entry per day.
+Added features to handle (and add ) more than one journal entry per day.
+Added option for a journal title.
+
+Added info about the calendar, the item belongs to, to the event/todo/journal viewer. 
+Fixed a problem of the alarm of completed recurring todos.
+Added to the event/todo editor to set quickly the category of an item.
+
+
+Fixed some problems when calling KO/Pi or KA/Pi from the alarm applet.
+
+Added KA/Pi multi sync to the multi sync called from the alarm applet.
+ 
+********** VERSION 2.1.10 ************
+
+KO/Pi:
+Importing Birthdays will now create another file resource "Birthdays" and import the birthday data from KA/Pi into that file.
+When a multidayevent is selected in monthview all occurences of this event in the monthview are now hightlighted.
+Fixed a bug in searching for a small timerange, i.e. one day.
+
+KA/Pi:
+Fixed two problems in csv export.
+Fixed problems when calling the contact selection dialog from KO/Pi or OM/Pi.
+
+********** VERSION 2.1.9 ************
+
+KO/Pi:
+Fixed some problems of the new search options in the search dialog.
+Fixed some problems in the new resource config options.
+Changed the recurrence edit of events and todos such that the recurrence edit page now is notified about a change of the start date on the first page.
+Fixed a problem creating new events in the agenda view if at the day/time is already an agenda item shown:
+Now you can click on the bottom/top of an allday agenda item or on the left/right side of an agenda item to get the "new todo/new event" popup.
+
+Fixed a problem in recurrence range in syncing with DTM.
+
+KA/Pi:
+Made it posiible to show in the contact overview the details of all data available for that contact( e.g. office, spouse, children, nickname ...)
+
+PwM/Pi:
+Added "sec" to the timeout config settings to make it clear the timeout values are seconds.
+
+********** VERSION 2.1.8 ************
+
+KO/Pi:
+Added info about the completion state of a todo in the ListView/Searchdialog.
+If in TodoView is selected "do not show compledted todos" then completed todos are not shown in the ListView as well.
+Fixed some updating problems when changing the filter.
+
+KA/Pi:
+In the addressee selection dialog now the formatted name is shown, if not empty.
+Added a column "category" to the addressee selection dialog to make it possible to sort addressees after category.
+Now in the addressee selection dialog a selected contact is remove with a single click from the selected list.
+
+Fixed in the file selector on the Zaurus the problem that symbolic links to files/dirs were ignored.
+Fixed the sorting for size in the file selector on the Z.
+
+Changed the color selection dialog on the Zaurus to a more user friendly version.
+
+********** VERSION 2.1.7 ************
+
+KO/Pi:
+Fixed several problems in the new Resource handling.
+Added more options to the search dialog. 
+Fixed a problem in the Month view.  
+Added more options to the dialog when setting a todo to stopped.     
+
+Fixed two small problems in KO/Pi Alarm applet.
+
+********** VERSION 2.1.6 ************
+
+This release is for testing only.
+
+KO/Pi:
+Added to the list view (the list view is used in search dialog as well) the possibility to print it.
+Added to the list view the possibility to hide entries, if you do not want to print all entries of the list view.
+Added to the list view the possibility to add all subtodos of selected todos to an export/beam.
+Added to the search dialog the possibility to make an additive search such that you can get a better list for export/printout.
+Added to the search dialog the possibility to hide the checkboxes such that there is more space for the list view on the Zaurus.
+Fixed a problem in the AlarmTimer Applet: Now utf8 messages are displayed properly.
+
+Added support for multiple calendar files in KO/Pi. Only local ical (*.ics) files are supported as calendars.
+In the sync profile config it is still missing to specify a particular calendar to sync with this profile. That setting will be added later.
+Now on every sync the set of calendars is synced which are enabled in the resource view. 
+
+A calendar is enabled in the resource view if the "eye" column is checked. 
+You can set a calendar to be the default for new items( "+" column ).
+You can tell KO/Pi to ignore all alarm of a calendar ( "bell" column ) and you can set it readonly.
+To find out how to add a new calendar and how to remove a calendar is left as an exercise to the reader ...
+
+
+********** VERSION 2.1.5 ************
+
+This is the new stable version.
+Bugfix:
+Fixed a problem with agenda popup on the desktop in KO/Pi.
+Fixed a crash when reloading file, e.g. after a passive pi-sync synchronization.
+Added config option to not display completed todos in agenda view.
+Addressee view is now using the formatted name, if defined.
+That makes it possible to display "lastname, firstname" in that view now.
+To set the formatted name for all contacts, please use menu:
+Edit->Change->Set formatted name.
+Fixed the bug in KA/Pi that is was not possible to add images to a contact on Windows.
+
+********** VERSION 2.1.4 ************
+
+Fixed two more bugs in the KA/Pi CSV import dialog:
+Made it possible to read multi-line fields and import it to the "Note" field.
+Fixed a problem in mapping custom fields, whatever a custem field is...
+
+********** VERSION 2.1.3 ************
+
+Changed the menu structure of the alarm applet:
+Moved "Simulate" to " Play Beeps" submenu and re-added "Todo List".
+
+Fixed several problems in the KA/Pi CSV import dialog:
+Added "Category", made codec configureable and made it possible to map many fields to the "Note" field.
+
+
+********** VERSION 2.1.2 ************
+
+Fixed a problem closing the alarm dialog on Zaurus with "OK" button.
+
+Fixed a problem when importing data from Outlook with mutiple categories set.
+
+Changed display of days in datenavigator:
+Birthdays are now blue, not dark green.
+When todo view is shown, no birtdays are shown and days with due todos are shown blue.
+When journal view is shown, only holidays are shown and days with journals are blue. 
+
+Added Backup options to global config:
+You can create now x-daily backups for KO/Pi, KA/Pi (for file resources only, file resource is the standard type) and PwM/Pi ( all files you will open ). 
+It is recommended to use another HDD/Memory card for the backup directory. If (very useful on the Zaurus) the specified backup directory does not exist you are asked if you want to try again to create a backup. That makes it possible to insert your memory card in the Zaurus and then trying again.
+The backup is created when the application wants to save for the first time on a backup-day. You can specify the amount of backups and the day interval of backups.
+
+********** VERSION 2.1.1 ************
+
+Stable release 2.1.1!
+
+KO/Pi:
+Fixed one problem in the layout of the edit dialogs on the Zaurus with 640x480 display.
+
+********** VERSION 2.1.0 ************
+
+Stable release 2.1.0!
+
+Summary of changes/fixes compared to version 2.0.6:
+
+Many bugs of version 2.0.6 fixed.
+Most of them were small bugs, but some of them were important.
+It is recommended to use version 2.1.0 and not version 2.0.6.
+
+Important changes:
+
+Added recurring todos to KO/Pi.
+
+Added global application font settings (for all KDE-Pim/Pi apps) to the general settings.
+
+Made Passwordmanager PwM/Pi more userfriendly: Rearranged some toolbar icons, optimized setting of focus, fixed layout problems and more.
+
+Datenavigator can now display many months. Very useful on the desktop.
+
+KO/Pi alarm applet changed: Made buttons in alarm dialog much bigger and other usebility enhancements.
+
+Made alarm sound working on Linux desktop.
+
+Made KO/Pi and KA/Pi running from a memory stick. Please read storage HowTo for details.
+
+Added timetracking feature in KO/Pi todo view. Please read timetraker HowTo for details.
+
+Many other usebility enhancements.
+Special thanks to Ben for his suggestions!
+
+You can find the complete changelog 
+from version 1.7.7 to  2.1.0 
+in the source package or on 
+
+http://www.pi-sync.net/html/changelog.html
+
+********** VERSION 2.0.28 ************
+
+KO/Pi:
+Fixed two problems in KO/Pi timetracking.
+Added context menu to month view for creating new events/todos.
+Fixed some other small bugs.
+
+
+********** VERSION 2.0.27 ************
+
+More bugfixes.
+Added possibility to clone in KO/Pi a todo with all its subtodos.
+Added config option for alternate background in list views.
+
+Added a timetracker funtionality in KO/Pi for todos in the todo view.
+If a todo is set to started and then to stopped it is saving information about the runtime in
+<yourhome>/kdepim/apps/timetrackerdir.
+To read, display, print this information an external program is needed which will be developed.
+It will display the data in a Gantt timetable view with one row for each todo.
+It will have many possibilities sorting the data after category, parent todos, attendees, ... and for creating/printing status reports/summaries.
+Merging of data from different computers/users will be quite easy because every run is stored in a single file.
+
+********** VERSION 2.0.26 ************
+
+Added two more fields to the KA/Pi view config:
+A "Mobile (home)" and a "Mobile (work)" field.
+Fixed utf8 import (e.g. for Japaneese text) in KA/Pi.
+
+Some alarm applet enhancements, e.g. sound stops automatically if value of suspend spinbox changes.
+And again fixed some more small bugs.
+
+********** VERSION 2.0.25 ************
+
+And again fixed some bugs.
+
+********** VERSION 2.0.24 ************
+
+Fixed again a lot of small bugs.
+Some performance optimizations in date navigator.
+Month view displays now multi days events on top of each cell, such that it is more likely that all multi days items of one event are in the same row.
+
+********** VERSION 2.0.23 ************
+
+Fixed again a lot of small and strange  bugs, e.g. the missing toolbar of KA/Pi after a new installation.
+Fixed the (agenda) layout of KO/Pi on 5500er.
+Some usebility enhancements (e.g. reselection the current item of the todo view after some changes).
+
+********** VERSION 2.0.22 ************
+
+KO/Pi:
+Fix for creating events/todos via the abgenda context menu.
+Added option to split toolbar to 3 toolbars.
+(Toolbar moving s disabled for this option due to a bug in Qt somewhere). 
+Added option to show one small filter-view-toolbar.
+Added a print option to the desktop version:
+Now you can print out the view of the "Event Viewer".
+That means you can print all data of one particular event/todo.
+Added scaling options to printout of Event Viewer and What'sNext View.
+Fixed some problems in the month view in "week start sunday" mode.
+KA/Pi:
+Added two more config options.
+Fixed resizing problem of address request dialog when orientation was switched. 
+Cleaned up the menu structure.
+Fixed some more problems.
+
+Fixed the annoying problem that scrolling continued after the key was released in KO/Pi Monthview and the KA/Pi views.
+
+And, this is a really cool option (Ben did suggest it):
+Now KO/Pi and KA/Pi can be run from a USB stick:
+All data is read from and written to the stick.
+You can enable this in the global configure option TAB with:
+Save using LOCAL storage.
+Just put KDE-Pim/Pi on a memory stick and you can access all your PIM data on every computer with Windows XP. It will work with the ME and Linux versions as well. I will put a memory stick version for teh next stable release online.
+
+********** VERSION 2.0.21 ************
+
+Fixed another SMTP problem in OM/Pi.
+Some small changed in the new datenavigator in KO/Pi.
+Changed default setting for new filter in KA/Pi to "exclude categories".
+Changed the default font size for 640x480 display .
+Changed popup menu behaviour in agenda and list view.
+Fixed some layout problems of the date label size in the month view.
+Made month view update faster.
+Made first datenavigator repainting faster.
+Changed the title of the event/todo edit dialogs.
+Timelabels in agenga changed from 22:00 to 22 oo. ( the oo higher, of course).
+Many small usebility fixes in KO/Pi.
+Pressing the "Calendar" button on the Z switches now to the next view in KO/Pi.
+The set of possible "next views" are the views you have toolbar buttons for.
+
+Made alarm sound working on Linux.
+
+KO/Pi alarm applet changed:
+Made buttons in alarm dialog much bigger.
+Made setting of timer more user friendly by showing the actual timer fire time and making the buttons in the timer settings much bigger.
+The goal was it to make it possible to use a finger tip  ( and not the stylus ) on the touchscreen to adjust the settings.
+
+And because this version is realeased at Easter, I added an Easter-egg:
+With a new undocumented command you can get a message box about the next alarm.
+Good luck to find it!
+
+
+********** VERSION 2.0.20 ************
+
+Two small fixes in OM/Pi.
+
+Better resizing of  the  new datenavigator in KO/Pi.
+
+********** VERSION 2.0.19 ************
+KO/Pi:
+Enhancements and bugfixes in the new datenavigator.
+Bugfix in this changelog:
+The datenavigator was changed in version 2.0.18, not the datepicker.
+
+********** VERSION 2.0.18 ************
+KO/Pi:
+Fixed some minor problems.
+Cleaned up the KO/Pi config dialog.
+Fixed problem moving events in aganda view.
+Made datepicker scaleable, i.e. if the datenavigator shows now a 
+datenavigator matrix depending on its size.
+Birthdays are now displayed green in the datenavigator.
+What'sThis Help in datenavigator shows all events of the day. 
+
+OM/Pi:
+Updated the backend mail library to the latest version.
+Please backup your mail before using this version.
+
+********** VERSION 2.0.17 ************
+
+KO/Pi:
+Tooltips in month view were not sorted. Fixed.
+Daylabel in agenda view ( for display of one day ) was too short. Fixed.
+Conflict display dialog for syncing was not on top of other windows. Fixed.
+Fixed some minor problems.
+
+Fixed an endless loop when importing vcs file with RESOURCES entry.
+
+********** VERSION 2.0.16 ************
+OM/Pi:
+Fixed the SMTP account setting the option.
+Fixed something in mail sending.
+
+KO/Pi:
+Added possibility to export selected events/todos as vcal file.
+
+********** VERSION 2.0.15 ************
+
+PwM/Pi:
+Added keyboard shorcuts for 
+- toggling summary view (space bar)
+- delete item (delete + backspace key)
+- add new item ( i + n key)
+Fixed length of info in the title.
+
+KO/Pi-KA/Pi:
+Changed "ME" menu bar entry to an icon.
+
+KO/Pi:
+Fixed two minor bugs in displaying todos.
+If in month view a cell is selected, the key shortcut "d" shows now that date.
+Added complete info for a todo in month view as an icon left of the text.
+Fixed problems of displaying data when "<" or ">" are used in summary/location/description.
+Fixed problem of search dialog size when switching displays. 
+Cancel key now closes date picker.
+Rearranged KO/Pi file menu structure.
+
+OM/Pi:
+Added to the SMTP account setting the option
+"No secure connection".
+You have to configure your SMTP accounts again, sorry.
+
+KA/Pi:
+Added support for importing quoted-printable.
+Support was added by Peter P.. Thanks, Peter!
+
+
+********** VERSION 2.0.14 ************
+
+Made Passwordmanager PwM/Pi more userfriendly:
+Rearranged some toolbar icons, optimized setting of focus, fixed layout problems and more.
+Fixed bug in KO/Pi todo printing.
+Made Qtopia calendar import possible on desktop .
+
+********** VERSION 2.0.13 ************
+
+Fixed a problem in the addressee select dialog and made it more user friendly by adding a minimize splitter.
+
+In the search dialog you can switch now the focus from search line edit to the list view by pressing key "arrow down".  
+
+OM/Pi:
+Fixed a refresh problem of outgoing/sent/sendfailed folders after sending mails.
+Added missing German translation.
+Added warning if path is specified in local folder settings of account config.
+
+********** VERSION 2.0.12 ************
+
+KO/Pi:
+Fixed a bug in todo start/due date handling for non recurring todos with a start and due date.
+Fixed some layout problems in the KO/Pi agenda view when there were many conflicting itmes. 
+Fixed several problems of the keyboard focus in the desktop versions when opening the search dialog/event viewer.
+
+Fixed problem in pi-sync mode when wrong password was sent.
+
+OM/Pi:
+Fixed a crash when displaying mails with "Show mail as html" was checked in the config.
+Added a check before displaying the mail if the mail is in html format, if "Show mail as html" is enabled.
+
+********** VERSION 2.0.11 ************
+
+Fixed some problems in pi-sync mode
+(e.g. details of events were not synced properly)
+
+********** VERSION 2.0.10 ************
+
+KO/Pi:
+In the desktop versions the context menu in the search dialog was broken after introducing the What'sThis info for the list view.
+This is fixed.
+Changed the search dialog a bit to make it more user friendly.
+(E.g.: Removed message box about "no items found" and set key focus to search line edit after search).
+
+Added config option to hide the week number in KO/Pi toolbar.
+
+********** VERSION 2.0.9 ************
+
+Made month view icons for multiday events a bit nicer.
+Some minor fixes in KO/Pi
+(e.g. go to today did not work for new week view properly).
+
+
+********** VERSION 2.0.8 ************
+
+Fixed a problem in dependency info in the ipk files for the Zaurus.
+
+Added icon for the stealth new week view and made navigation more user friendly in monthview by adding a prev/next week button to the navigator bar.
+
+Added a "go today" button to the datepicker.
+
+Added "created" and "last modified" to event/todo viewer (and What'sThis viewer)
+and made it configureable to show these values.
+
+Fixed a problem for events (from external iCal files) that do have a duration but no end date.
+
+
+********** VERSION 2.0.7 ************
+
+Added global application font settings 
+(for all KDE-Pim/Pi apps) to the general settings.
+
+Fixed a problem in OM/Pi when trying to login to some IMAP servers
+(like the IMAP server of Apple: mail.mac.com )
+
+Added recurring todos to KO/Pi.
+
+
+********** VERSION 2.0.6 ************
+
+Some bugfixes in the pi-sync mode.
+Added German translation for pi-sync mode.
+
+KO/Pi:
+Made the todolist using alternate background.
+
+Other minor fixes in KO/Pi.
+
+
+********** VERSION 2.0.5 ************
+
+Bugfixes in KO/Pi.
+
+********** VERSION 2.0.4 ************
+
+KO/Pi:
+Fixed problem loading translations for summary/location edit boxes in event/todo editor.
+
+Added a general "select week number" to the toolbar.
+
+Fixed some small problem of the new features introduced in version 2.0.3.
+
+Made it possible to specify one specific category as category color,
+if more than one categories are selected.
+
+Fixed a bug in saving colors for categories with non-ascii characters.
+(Like, e.g. German Umlauts).
+Propably you have to set your colors again for those categories. 
+
+
+********** VERSION 2.0.3 ************
+
+KO/Pi:
+Added feature for changing alarm settings for many items at once:
+Open list view (or search dialog), select the desired items and choose in
+the popup menu: Set alarm for selected...
+
+Added to the event/todo viewer the option to send an email to 
+all attendees or all selected (with RSVP) attendees. 
+
+Made the week-month mode changing in month view faster.
+
+Made month view better useable with keyboard.
+Now TAB key jumps to next cell with an event/todo.
+Scroll in cell with coursor keys, scroll in time (next week) with
+Shift/Control + coursorkeys.
+
+Fixed bug that the todo view flat mode was reset after first view update.
+
+If a todo is displayed closed in the todo view, 
+it is now displayed in overdue/due today color depending on the subtodos overdue/due today properties.
+
+Added info about the numbers of years to the caption (title) information about a birthday event.
+
+Made completion date in todo editor editable.
+
+Added possibility to save/load templates for journals.
+(Which is just a simple "save text to file" or "insert text from file".
+
+********** VERSION 2.0.2 ************
+
+KO/Pi:
+Fixed the layout problem of the day label buttons 
+of the agenda view introduced in version 2.0.1.
+
+Added WhatsThis support for the todo view and the list view.
+
+Added a quite useful feature to the montview.
+Just click on the week numbers on the left.
+And in the top right corner of month view/agenda view 
+there is now a "week number quick selector".
+(Click on the black triangle).
+
+Made the quite difficult timezone change in KO/Pi easy.
+
+OM/Pi:
+Fixed too small icons on desktop.
+Fixed non visible icons in mainwindow on Z with fastload enabled.
+Added signature file setting to smtp account config.
+And the signature can be edited and saved in the edit mail dialog.
+That does mean:
+Simply edit the signature for the selected smtp account in the
+edit new mail dialog and press the "save signature" button there.
+Then the signature is saved to the file specified in the smtp account settings.
+If there is no file specified, it is saved automatically to the file
+kdepim/apps/kopiemail/<accountname>.sig.
+
+
+
+********** VERSION 2.0.1 ************
+
+Oooops ... I forgot to test on the Zaurus 5500 ...
+
+Fixed many problems of new (english) strings (and german translations)
+introduced in the latest versions, where the text was not fitting on the 
+240x320 display of the Zaurus 5500.
+
+KO/Pi:
+Added a popup menu ( press pen and hold to get popup ) to the agenda view
+with many useful items (add event/todo, show next week, two weeks, month, journal).
+
+Added items to the todolist popup menu for:
+Display all opened, all closed or all todos flat.
+The "flat" view makes is possible to sort all todos after ,e.g., prio or date.
+Made the reparenting of todos on the desktop possible via Drag&Drop.
+Fixed several bugs in setting the completed datetime for todos.
+Added info about completed datetime of todos to the todo viewer.
+Now displaying a completed todo (with completed datetime set) in the agenda view
+at the time of the completion. Such that now it is possible to see in the agenda view
+when what todo was completed.
+Fixed behaviour of automatic setting completion of todos with sub-todos/parent todos.
+Now the behaviour is:
+Setting a parent to complete  sets all (sub)childs to complete. 
+Setting a parent to uncomplete does not change the childs.
+Setting a child to uncomplete sets all parent to uncomplete.
+Setting a child to complete does not change the parents.
+
+Smart updating and double buffering of the daymatrix.
+Showing holidays in the day matrix.
+Many other small performance updates.
+
+Made day labels in agenda clickable. By clicking a label, the day is displayed in single day mode.
+
+Now the translation file usertranslation.txt is supposed to be in utf8 format.
+If you want to translate a language from western europe, just change the germantranslation.txt file. Please read the updated Usertranslation HowTo in KO/Pi Help menu.
+
+
+********** VERSION 2.0.0 ************
+
+Stable release 2.0.0!
+
+KO/Pi:
+Fixed problem in edit dialog recreation at startup.
+Made "toggle view*" menu items enabled context sensitive.
+Changed agenda size menu to items 1-10.
+Made it possible to change agenda size quickly by pressing mouse on timelabels in agenda view and move mouse up/down.
+Usebility enhancements in the KO/Pi menus.
+Birthday import now adds year to summary.
+What's Next view shows age in years for birthday.
+
+OM/Pi:
+Added three info lines to display subject, from and to of selected mails.
+
+KA/Pi:
+Fixed jump bar behaviour on Zaurus.
+Now KA/Pi search field supports searching for a range of starting characters.
+E.g. to search for all contact beginning with b to n, type 
+b-n
+in the search field.
+
+********** VERSION 1.9.20 ************
+
+KO/Pi:
+Added for the "dislplay one day" agenda mode 
+info in the caption and in the day lables:
+Now it is displayed, if the selected day is from "day before yesterday"
+to "day after tomorrow".
+Made it possible to delete a Todo, which has sub-todos.
+Fixed two small problems in the todo view.
+Added missing German translation for filter edit and print dialog.
+Made search dialog closeable by cancel key.
+
+Made it possible to select in the date picker the (ligt grey )
+dates of the prev./next month with the mouse.
+
+OM/Pi:
+"Delete mail" icon in main window now deletes all selected mails.
+Fixed the problem, that the state flag of imap mails was ignored.
+Now mails with "FLAG_SEEN" on the imap server get no icon in the list view
+to indecate that they are already seen.
+Fixed the problem that the body of some mails was not displayed in the
+mail viewer when fetching them from the imap server directly to read them.
+Made it (configurable) possible  to show the "To:" field in the list view.
+Added to the mail viewer the option "View Source" to make it possible to see the raw mail data.
+Added a "Download Mail" button to the mail viewer to quickly download the viewed mail to the
+local storage folder (specified in account settings) of the account of the mail.
+Removed some memory leaks in OM/Pi.
+
+
+********** VERSION 1.9.19 ************
+
+Added a lot of missing translations to KA/Pi, 
+Added some missing translations to KO/Pi and OM/Pi.
+
+Fixed some minor problems in KA/Pi + KO/Pi.
+
+Fixed a crash when closing PwM/Pi.
+Added German translation for PwM/Pi.
+
+Made view change and Month View update faster in KO/Pi.
+
+
+********** VERSION 1.9.18 ************
+
+FYI: The VERSION 1.9.17 was a testing release only.
+Please read the changelog of VERSION 1.9.17 as well.
+
+Cleaned up the syncing config dialog.
+Added sync config options for date range for events.
+Added sync config options for filters on incoming data.
+Added sync config options for filters on outgoing data.
+Please read the updated SyncHowTo about the new filter settings.
+These filter settings make it now possible to sync with shared
+calendars without writing back private or confidential data
+(via the outgoing filters).
+To sync only with particular parts of a shared calendar, 
+the incoming filter settings can be used.
+An example can be found in the SyncHowTo.
+Same for shared addressbooks.
+
+Added a setting for the global kdepim data storage.
+Usually the data is stored in (yourhomedir/kdepim).
+Now you can set in the Global config dialog TAB, subTAB "Data storage path"
+a directory where all the kdepim data is stored.
+That makes it easy to save all kdepim data on a SD card on the Z, for example.
+
+KO/Pi:
+The timeedit input has a pulldown list for times.
+If opened, this pulldown list should now has the right time highlighted.
+Added the possibility to exclude events/todos/journals in a filter.
+You should exclude journals, if you do not want them to sync with a  public calendar.
+
+KA/Pi:
+Added the possibility to in/exclude public/private/confidential contacts to a filter.
+If you have already defined filterrules in KA/Pi you have to adjust them all by setting the "include public/private/confidential" property manually. Sorry for that ...
+Added printing of card view and details view on desktop.
+Printing of list view is not working...
+Added button for removing pictures in contact editor.
+Parsing data fix of KA/Pi version 1.9.17.
+Fixed the "parse name automatically" problem of KA/Pi version 1.9.17.
+Fixed some syncing merging problems.
+
+
+********** VERSION 1.9.17 ************
+
+KO/Pi:
+Fixed that tooltips were not updated after moving an item in agenda view.
+Fixed a bug in sorting start date for recurring events in list view.
+Changed the left button in todo viewer from "Agenda" to "Set completed".
+This makes it possible to change a todo in the What's Next View quickly to the completed state without leaving the What's Next View.
+Added more info in the todo viewer: Startdate, parent/sub todos.
+ 
+
+KA/Pi:
+All fields search does now actually search all the (possible) fields, 
+not only those listed in the contact list.
+Made is possible to inline a picture in a vcard on the Z.
+This was only possible on the desktop, now is it possible on the Z as well.
+Fixed of missing save settings after filter configuration.
+Made saving of addressbook much faster.
+Fixed extension widget layout problem.
+Fixed saving of default formatted name settings.
+Fixed formatted name handling in edit dialog.
+Added an option for changing formatted names of many contacts
+(menu: File - Change - Set formatted name).
+
+QWhatsThis was not working on the Z ( only black rectangle was shown).
+This is Fixed.
+
+KDE-Sync:
+Now readonly KDE resources are synced as well.
+(They are not changed in KDE itself, of course).
+
+ 
+
+********** VERSION 1.9.16 ************
+
+KO/Pi:
+Fixed search dialog size on Z 6000 (480x640 display).
+Added setting to hide/show time in agenda items.
+Added setting to hide not running todos in todo view.
+Added columns for start date/time in todo view.
+Replaced the solid half-hour lines in agenda view by dot lines.
+Added possibility of printing the What's Next View on the desktop
+(i.e. Windows and Linux).
+Fixed a crash in KO/Pi when starting KO/Pi with What's Next view.
+Added tooltips in month view.(Tooltips only available on desktop)
+
+Fixed a strange problem in KO/Pi alarm applet.
+Did not find the actual problem, 
+such that now Qtopia reboots again if deinstalling the alarm applet.
+But the alarm applet should work again.
+
+KA/Pi:
+Fixed the problem, that internal pictures were not saved.
+
+Fixed a problem in the pi-sync mode by increasing the timeout for data transfer from 20 seconds to 5 minutes.
+
+Fixed some minor problems. (Like word wrap in help text windows).
+
+Fixed a compiling problem in microkde/kresources.
+
+KO/Pi is using zdbat (renamed to db2file) for syncing with Sharp DTM.
+This version now includes zdbat 1.0.0 (old version was zdbat 0.2.9)
+such that now syncing KO/Pi with Sharp DTM should work on the 
+Zaurus C 3000 model.
+
+********** VERSION 1.9.15 ************
+
+Usebilty enhancements in KO/Pi:
+When clicking on the date in a month view cell, the day view is shown.
+Old behaviour was, that the "new event" dialog popped up.
+
+Added a one step "undo delete" in KO/Pi (Accessable in the "Action" menu). 
+That means, you can restore the latest
+event/todo/journal you have deleted.
+A journal is deleted, if you clear all the text of the journal.
+
+Fixed the bug of the editor dialogs in KO/Pi of version 1.9.14.
+
+KA/Pi  starting in 480x640 resolution:
+Hide the filter action in toolbar
+and added icons for undo/delete/redo in toolbar.
+
+Change in OM/Pi ViewMail dialog:
+When clicking on the "delete" icon the mail is deleted after confirmation as usual. 
+But the edit dialog is not closed as before, now the next mail in the folder is shown automatically (if there is any).
+
+Fixed a crash when deleting mail-accounts in OM/Pi.
+
+
+********** VERSION 1.9.14 ************
+
+Fixed some problems with the dialog sizes when switching 
+portrait/landscape mode on 640x480 PDA display.
+
+Fixed some other small bugs in KA/Pi KO/Pi and OM/Pi and PwM/Pi.
+
+Fixed an ugly bug in KOpieMail: 
+KOpieMail was not able to write files (mails) to MSDOS file system, 
+like on an usual preformatted SD card. That should work now.
+To save your mail data on the Sd card do the following:
+Create a dir on the SD card:
+mkdir /mnt/card/localmail
+Go to your home dir:
+cd
+Go to kopiemail data storage dir:
+cd kdepim/apps/kopiemail
+Create a symlink to the SD card:
+ls -s /mnt/card/localmail
+Now KOpieMail will store all mails on the SD card.
+
+KO/Pi Monthview:
+Now "Go to Today" selects the current month from day 1-end,
+not the current date + some days.
+I.e. "Go to Today" shows now always
+the current month with first day of month in the first row. 
+
+Added missing German translation.
+
+Fixed icons of executeable on Wintendo.
+
+Added a "Show next Mail" button to the OM/Pi 
+mail viewer such that the mail below the current mail
+in the mail list view of the current folder
+can be read with a single click.
+
+
+********** VERSION 1.9.13 ************
+
+Fixed nasty PwM/Pi file reading bug, when
+the used hash algo of file is different then the global 
+hash algo.
+
+Added KA/Pi support for opie mailit mailapplication.
+
+Fixed some bugs in OM/Pi.
+Now character conversion tables are available for the Zaurus
+to make OM/Pi working properly.
+To get the character conversion in OM/Pi working, please download
+at the sourceforge project site the package
+sr-character-conversion_SharpROM_arm.ipk.zip
+(or oz-character-conversion_OZ-gcc3xx_arm.ipk.zip for OZ roms)
+from the section "general files for KDE/Pim"
+Instructions how to install this package are in a ReadMe in this file.
+
+
+Fixed the orientation change problem in KA/Pi when switching
+portrait/landscape mode.
+
+French translation available for KA/Pi and OM/Pi.
+
+Fixed some problems with categories in KO/Pi in DTM sync.
+
+Added selection dialog for export to phone in KA/Pi.
+
+If in KO/Pi is an attendee selected to add to a meeting and this
+attendee is already in the list of attendees, this person is not added
+again.
+
+Some menu cleanup in KA/Pi.
+
+********** VERSION 1.9.12 ************
+
+Fix for the bug in KO/Pi What's Next view of version 1.9.11.
+
+Bugfix: Licence file is now shown again.
+
+OM/Pi now supports Unicode (utf8 charset).
+Fixed some bugs in OM/Pi.
+
+KA/Pi has more German translation.
+
+
+********** VERSION 1.9.11 ************
+
+Fixed several problems in PWM/Pi, like
+asking the user, if unsaved changed are pending
+when closing the app.
+And PwM/Pi handles now different texts for the
+fields Description, Username, Password, configurable per category.
+
+Fixed a crash in KO/Pi , when importing/loading vcs files
+which have an entry with an attendee with state:
+NEEDS ACTION
+
+Fixed some problems in the German translation of OM/Pi,
+which makes some dialogs not fitting on the screen
+of the Z 5500.
+
+Fixed Qtopia crash, when disabling/deinstalling
+KO/Pi alarm applet.
+
+Implemented direct KDE<->KA/Pi sync for KA/Pi running 
+on Linux desktop.
+
+Added feature "remove sync info" to sync menu.
+
+Tweaked the KO/Pi What's next view a bit, added
+setting to hide events that are done.
+
+Disabled "beam receive enabled" on startup to 
+avoid problems if Fastload is enabled.
+Please set "beam receive enabled",
+if you want to receive data via IR.
+
+Fixed bug in  direct KDE<->KO/Pi sync for KO/Pi running 
+on Linux desktop.
+
+Made in KA/Pi scrolling possible, if details view is selected.
+(The keyboard focus is set automatically to the search line)
+
+Fixed a bug in DMT sync, that a new entry in DTM was added 
+on every sync to Kx/Pi.
+
+Fixed missing writing of KA/Pi categories to DMT entries when syncing.
+
+Fixed a bug in DMT sync with todos created in KO/Pi containing
+non-latin1 characters.
+
+Rearranged package contents of Sharp-ipks and made all
+packages installable on SD again.
+
+Fixed the writing of addressbook data in DTM sync.
+Empty fields in KA/Pi were not removed. 
+
+Added better category handling in KA/Pi:
+Added item 
+Edit Categories and
+Manage new categories
+to the settings menu.
+Possible to configure a view to display categories.
+
+Added detailed "KDE Sync Howto" and "Multi Sync Howto" to Help menu.
+
+Fixed displaying of "free" days and time in KO Monthview and Agendaview.
+
+... and many other bugfixes.
+
+********** VERSION 1.9.10 ************
+
+Many internal small bugfixes.
+And fix of the "big" bug in KO/Pi, 
+that after Syncing the appointments had an offset by several hours.
+That was a problem with the internal timezone setting,
+introduced by the changed timezone configuration settings.
+
+German translation for OM/Pi is now available.
+
+
+********** VERSION 1.9.9 ************
+
+KDE-Pim/Pi has a new Member!
+It is called PWM/Pi (Passwordmanager/platform-independent) 
+and it is available for the Zaurus.
+It is planned, that it will be available later for Windows.
+(And for Linux, of course).
+It is a port of the Passwordmanager of KDE.
+It will need the MicroKDElibs to run.
+
+Made loading of addressbooks in KA/Pi up to 7 times faster!
+The bigger your addressbook file, the more starting speed 
+will you gain. (relatively)
+
+The Qtopia addressbook connector is now platform independend
+as well and should work on any platform for importing/exporting
+Qtopia and Opie XML files.
+
+Added a +30min feature to the timezone settings to make 
+KDE-Pim/Pi useable in Australia and other parts on the 
+world with strange timezones ;-)
+
+German "Umlaute" should now be sorted correctly on the Z in KA/Pi.
+
+It is now possible to disable the
+"receive data via infrared" feature, such that syncing with
+Outlook is now possible again with Kx/Pi runing.
+Please disable it, before syncing Sharp DTM with Outlook.
+For your convenience, the "receive data via infrared" feature
+is disabled automatically, if you sync Kx/Pi with DTM.
+You have to enable it again manually after syncing.
+Enabling this feature makes it impossible to start the
+Sharp DTM apps. If this feature is enabled, you will only get the 
+alarm notification from KO/Pi and not from the Sharp calendar.
+This is very useful if you sync KO/Pi with Sharp DTM,
+because after syncing you usually would get notified about
+an alarm by KO/Pi and the Sharp Calendar.
+
+Together with the Linux desktop version of KO/Pi
+it is now possible to sync KO/Pi on the Zaurus
+with the complete KDE-desktop (3.3 or later)
+calendar data easily.
+That makes it possible to sync the Z with one 
+click of a mouse with the KDE-Desktop.
+This feature it available for all Zaurus platforms KO/Pi
+is running on.
+The only thing needed is a running KO/Pi on Linux and
+a compiled version of the small 
+KDE-Pim/Pi<->KDE-Desktop access command line program, 
+which is in the KDE-Pim/Pi sources available.
+
+The "KDE-desktop" syncing feature for KA/Pi will follow
+in the next releases.
+
+Fixed the vcard export bug, which had the version 1.9.8.
+
+Added missing GERMAN translation to KO/Pi.
+Hi PsionX, could you add the missing french translation?Thx!
+
+Translation files for KA/Pi are available as well.
+GERMAN translation will be available in the next release.
+PsionX ( yres, you again ;-) ), could you start translating
+KA/Pi? Thx!
+
+You can download the version 1.9.9 at
+
+http://sourceforge.net/project/showfiles.php?group_id=104103&package_id=112604
+
+Note:
+To run the mail program OM/Pi you need libopenssl.
+A link to a download loaction is available at
+ZSI at www.killefiz.de
+
+
+********** VERSION 1.9.8 ************
+
+Fixed character decoding in OM/Pi.
+(e.g. German "Umlaute" were not displayed properly.)
+
+Made is possible to reparent todos in KO/Pi.
+Use contextmenu or keys (look at Help-Keys + Colors) for that.
+
+Added the missing Sync-Howto and WhatsNew to the packages.
+
+KO/Pi on Linux desktop can now sync with KDE desktop.
+That means: When using KO/Pi on Linux desktop for syncing with
+KDE desktop and the Zaurus, the Zaurus can be synced now
+with all KDE-Calendar resources, not only with one local file.
+(That makes it possible to sync the Zaurus with the 
+calendar data on a Kolab server) 
+
+KA/Pi syncing with KDE desktop will be available in the next version.
+
+
+********** VERSION 1.9.7 ************
+
+KO/Pi - KA/Pi on Windows:
+Now a directory can be defined by the user, where the 
+application/config data should be saved.
+  Define your desired path in the evironment variable
+  MICROKDEHOME
+  before starting KO/Pi or KA/Pi.
+
+An easy Kx/Pi to Kx/Pi syncing is now possible 
+(it is called Pi-Sync) via network.
+Please look at the Sync Howto.
+
+Exporting of calendar data and contacts to mobile phones is now possible.
+The SyncHowto is updated with information howto
+access/sync mobile phones. 
+Please look at the Sync Howto.
+
+Now KO/Pi and KA/Pi on the Zaurus can receive data via infrared directly.
+Please disable Fastload for the original contact/calendar applications
+and close them.
+KO/Pi and KA/Pi must be running in order to receive the data.
+(KO/Pi and KA/Pi are always running if Fastload for them is enabled!)
+
+In the KA/Pi details view are now the preferred tel. numbers displayed on top 
+of the other data ( emails/tel.numbers/addresses)
+
+Fixed some syncing problems in KA/Pi.
+
+Added font settings for the KA/Pi details view.
+Added fields "children's name" and "gender" to KA/Pi.
+
+Made searching in KA/Pi better:
+Now the first item in a view is selected after a search automatically and
+the views can be scrolled up/down when the search input field has the keyboard focus.
+
+And, of course, fixed a bunch of reported bugs in KO/Pi and KA/Pi.
+
+
+********** VERSION 1.9.6 ************
+
+Changes in the external application communication on the Zaurus 
+in order to use less RAM when the apps are running.
+First syncing of addressbooks (KA/Pi) is possible.
+
+
+********** VERSION 1.9.5a ************
+
+Fixed a bug in KO/Pi in the SharpDTM sync of version 1.9.5.
+Fixed some small bugs.
+KA/Pi shows now the birthday in summary view.
+Now OM/Pi and KA/Pi are using the date format defined in KO/Pi
+for displaying dates.
+
+
+********** VERSION 1.9.5 ************
+
+There is still no Addressbook syncing!
+
+New in 1.9.5:
+
+Many bugfixes.
+Better searching in KA/Pi.
+You can configure in KA/Pi if you want to search only after 
+<return> key pressed.
+
+Better mail downloading in OM/Pi.
+
+First experimental alpha version of sync of KO/Pi with mobile phones.
+See gammu documentation for supported phones.
+You need to install the package kammu_1.9.5_arm.ipk for sync of KO/Pi with mobile phones. kammu_1.9.5_arm.ipk needs libbluetooth and libsdp.
+Quick hint how to use:
+NOTE: MOBILE PHONE SYNC IS EXPERIMENTAL!
+Install kammu_1.9.5_arm.ipk , libbluetooth and libsdp.
+Create syncprofile - mobile device
+Remove entry for model. (Leave empty ).
+Enable infrared on Zaurus and your Phone.
+Sync.
+To get a more detailed log, start kopi from konsole.
+
+********** VERSION 1.9.4 ************
+
+This is the version 1.9.4 of KDE-Pim/Pi for the Zaurus.
+
+WARNING:
+PLEASE BACKUP ALL YOUR DATA!
+We have changed a lot and maybe there are some unknown problems.
+
+SYNC HANDLING HAS CHANGED!
+Such that, if you sync now with an already synded device, you will duplicated entries after the first sync.
+(This change was introduced to make it possible to sync with mobile phones, which will be available later (maybe in 4 weeks).
+
+You need the kmicrokdelibs_1.9.4_arm.ipk as a base for the other programs.
+If you get the error: "Install only possible in main memory", just try it again to install it on SD card. That worked for me. And it was reported that rebooting Qtopia did help in this case as well. 
+
+As programs are available:
+KO/Pi (korganizer ipk) - a calendar program.
+KA/Pi (kaddressbook ipk ) - an addressbook
+OM/Pi (kopiemail ipk ) an email program with pop/smtp and IMAP support.
+
+An alarm notification program ( korganizer-alarm ipk ) for KO/Pi that notifies you about alarms, even if the Zaurus is in suspend mode.
+(If you do not see an icon in the taskbar after installing korganizer-alarm, please restart Qtopia)
+
+All the applications are installed in a "Pim" TAB.
+If this TAB is new on your system, you can get an icon in this TAB by installing pim_TAB_icon_1.9.4_arm.ipk
+
+All the application are integrated.
+Such that you can choose in KO/Pi the attendees of a  meeting from the addresses in KA/Pi. When you click in KA/Pi on the email address, OM/Pi is started to write the mail.
+
+HINT:
+If you install KPhone/Pi 0.9.7, it will be called, if you click in KA/Pi on a phone number.
+
+What's new?
+
+SYNC HANDLING HAS CHANGED!
+Such that, if you sync now with an already synded device, you will duplicated entries after the first sync.
+(This change was introduced to make it possible to sync with mobile phones, which will be available later (maybe in 4 weeks).
+
+New in OM/Pi:
+When copying(i.e. downloading mails) , you can specify, that only mails of a given size should be downloaded. Added mail copy possibility for selected mails.
+
+New in KO/Pi:
+French is now available for KO/Pi.
+Choose menu:Actions - Configure:TAB locale
+Syncing has changed.
+Phone sync available soon.
+Not much changes, I cannot remember them ...
+
+New in KA/Pi:
+Beaming possible.
+Sharp DTM readonly access possible( create a new DTM resource );
+Better searching possible.
+Search is performed only after pressing the return key.
+Use wildcard * to specify parts of a name.
+
+Better name/email selection dialog (called from KO/Pi or OM/Pi). In this dialog, now searching is possible. Like in KA/Pi, use return key and wildcard * .
+
+A big improvement is the new management of the contact access.
+In version 1.9.3, every application was using their own addressbook access data.
+That means, the addressbook was loaded up to three times in the memory, when accessed by  KA/Pi, KO/Pi and OM/Pi.
+That was wasting of memory, if you had several hundreds of contacts.
+
+Now only KA/Pi accesses the addressbook.
+If KO/Pi or OM/Pi want to get some name/email data, they request KA/Pi to open the  name/email selection dialog and send it back to them.
+If you click on an attendee in a meeting, its contact data is displayed in KA/Pi directly.
+That means, if KO/Pi or OM/Pi want to access contact data, KA/Pi is started first.
+
+New in the KO/Pi alarm applet:
+Configure your own timer popup menu!
+(Text and minutes for timer countdown)
+Just edit the file
+(yourhomedir)/.kopialarmtimerrc
+and start/stop a timer to get a new menu with the data of this file.
+
+********** VERSION 1.9.3 ************
+1)
+Now KO/Pi on Windows imports directly the calendar data of
+an installed Outlook. Should work with OL version >= 2000.
+ 
+********** VERSION 1.9.2 ************
+1)
+KDE-Pim/Pi has got a new member:
+KmicroMail (KM/Pi) is a mail program, 
+which can handle IMAP and POP mail access.
+It is based on Opie-Mail v3.
+All dependencies to the Opie libraries ar removed, 
+such that no additional Opie lib is needed.
+It is already integrated in KO/Pi and KA/Pi.
+It it now available for the Zaurus,probably it 
+will be available for other platforms later.
+Hint:
+Create your own contact (name + email)
+in KA/Pi, select this contact and choose menu:
+Settings - Set Who Am I.
+Now the settings of this contact are used as 
+the sender data in KM/Pi.
+2)
+KDE-Pim/Pi is split up in five different
+packages now precompiled for Sharp Zaurus:
+--kmicrokdelibs_1.9.2_arm.ipk
+The libs are needed for any 
+of the following programs:
+--kaddressbook_1.9.2_arm.ipk
+--kmicromail_1.9.2_arm.ipk
+--korganizer_1.9.2_arm.ipk
+Independ from that, there is the alarm applet
+available for KO/Pi, which also offers
+quick access for a new mail or
+showing the addressbook.:
+--korganizer-alarm_1.9.2_arm.ipk
+Independend means, that the alarm applet
+does not need any of the libs or programs above to run.
+But it would be quite useless without these programs.
+NOTE:
+If you get a
+"This application depends on other programs"
+during installation of 
+--kmicrokdelibs_1.9.2_arm.ipk
+you probably do not have to care about that.
+kmicrokdelibs_1.9.2 will come with some
+resource plugins, which needs additional libraries.
+(E.g. libopie1, if you want to use the 
+opie resource connector in KA/Pi).
+If you do not have this libraries installed,
+you simply cannot use the resource.
+To make it clear:
+If the libraries are missing, the applications
+using kmicrokdelibs will start, 
+because the resources are plugins.
+3)
+KO/Pi and friends are now installable on SD-Card!
+It is recommended to install all libs and apps
+on the SD card or all in the internal storage.
+There may be problems, if this is mixed.
+4)
+Fixed two bugs in the alarm notification on Windows.
+5)
+Great improvement!
+KO/Pi uses now the latest version of libical.
+Libical is the library which actually reads 
+the calendar files and extract the data from it.
+With the old version, there were problems
+(crashes or program hangs) when licical did read
+files, which were not stored from KO/Pi.
+I do not know, if the new libical works perfect,
+but actually it works much better than
+the old version.
+There are no problems with compatibility with 
+old calendar files of KO/Pi, of course!
+6)
+New in KA/Pi:
+Opie addressbook resource connector available!
+You will need libopie1 and the opie addressbook,
+of course.
+With the Opie addressbook resource connector,
+you can access the Opie addressbook readonly in KA/Pi.
+If you want to edit or import the data into KA/Pi,
+do this:
+a) Create an Opie resource.
+   (Menu: Settings-Configure Resources).
+After configuration and restarting KA/Pi you should see
+the Opie contacts in KA/Pi.
+b) Select some or all Opie contacts.
+(NOTE: +++++
+To know exactly, what contacts are Opie contacts, 
+do this: Choose menu: 
+View-Modify View - TAB Fields.
+Select in the above list "Resource" and click
+down arrow to add it to the "Selected fields".
+Click OK.
+Now you have a new column "Resource" in your list,
+where you can see, what an Opie resource is.
+++++ NOTE end.)
+Ok, we do have now some Opie contacts seleted.
+(Use SHIFT or CTRL key in order to multiple select).
+c) Choose menu: Edit-Copy.
+d) Choose menu: Edit-Paste.
+e) Select the resource, you want to add the contacts to.
+Congrats! Now you have read/write access to the copied 
+opie contacts as "real" KA/Pi contacts.
+
+
+********** VERSION 1.9.1 ************
+1)
+       +++ IMPORTANT 1 +++
+
+The storing place of the default calendar 
+file has changed!
+The default calendar file was
+Applications/korganizer/mycalendar.ics 
+on Zaurus and 
+(yourHomeDir)/korganizer/mycalendar.ics 
+on Windows/Linux desktop. Now it is
+(yourHomeDir)/kdepim/korganizer/mycalendar.ics
+on Zaurus, Windows and Linux.
+To load the old file, choose menu
+File-Load calendar backup.
+(It should be loaded automatically
+at startup with a warning message displayed).
+The place of the configuration file has changed too.
+If you want to use your old KO/Pi config,
+copy it to 
+(yourHomeDir)/kdepim/config/korganizerrc
+Please read VERSION 1.9.0 - topic 3) as well!
+
+       +++ IMPORTANT 2 +++
+
+Because of the new paths, you will need
+a new version of the KO/Pi alarm applet
+for Zaurus.
+Use version >= 1.9.1
+
+2)
+Now the QWhat'sThis Icon works for items
+in the month view as well.
+(See VERSION 1.7.8 Topic 1) ).
+3)
+You can import birtsdays/anniversaries
+from KA/Pi into KO/Pi.
+Choose menu File-Import birthdays.
+If you import twice, already imported items
+will not be imported again, if they 
+have not been changed in KO/Pi.
+4)
+When syncing with sharp DTM, now a progress 
+is shown, when the data is written back.
+If there is much data in KO/Pi and no data
+in DTM, that can take a long time.
+(But only for the first time ).
+5)
+In the search dialog, you can search 
+now for the name/email of an attendee
+of an event/todo.
+To get more space for displaying
+search results, the buttons
+for "search" and "close" on the 
+bottom are removed in the PDA version. 
+You have to click OK in the top right
+corner to do a search.
+6)
+Now it is possible to disable the displaying
+of todo items in the Allday part of the Agenda.
+Choose Menu Action-Configure,
+TAB Todo View, checkbox
+"Allday Agenda view shows todos"
+7)
+If FastLoad is enabled, now the settings and the 
+calendar data are saved, when KO/Pi is closed.
+(If no Fastload is enabled, KO/Pi saves
+the data as well, of course)
+8)
+The Agenda View has a minimize-splitter now,
+such that the height of the allday part can be
+changed quickly.
+
+********** VERSION 1.9.0 ************
+1)
+KO/Pi is now merged with the new microKDE from KA/Pi.
+KO/Pi accesses now KA/Pi as the addressbook.
+The other ddressbook-plugins are not working any longer.
+(It is planned, that later KA/Pi itself uses these plugins)
+New versions of KO/Pi are only available
+together with KA/Pi as the KDE-Pim/Pi package. 
+2)
+If you click on an attendee of a meeting in the
+event viewer, a detailed summary of the 
+attendee is shown.
+3)
+The place of the configuration file has changed.
+If you want to use your old KO/Pi config, copy
+Applications/korganizer/config_korganizerrc
+to
+Applications/korganizer/config/korganizerrc
+
+********** VERSION 1.7.8 ************
+1)
+Now the QWhat'sThis ist working.
+Enable the QWhat'sThis icon in the toolbar.
+(You have to restart to reload the changed toolbar config).
+Now click on the QWhat'sThis Icon 
+in the top right corner of KO/Pi.
+Then click on an item in the Agenda View:
+You will get a detailed display of the items content.
+2)
+Some other very minor changes.
+But I have forgotten the details ...
+For that reason I start this log here:
+To document my changes, when I am doing it.
+
+********** VERSION 1.7.7 ************
+Stable Version of KO/Pi

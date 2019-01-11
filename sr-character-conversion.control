@@ -1,0 +1,8 @@
+Files: lib/gconv/*
+Priority: optional
+Section: qpe/applications
+Maintainer: Lutz Rogowski <zautrix@rogowski.info>
+Architecture: arm
+Version: SharpROM
+License: GPL
+Description: Character conversion tables, needed by OM/Pi.

@@ -1,0 +1,57 @@
+/****************************************************************************
+** Form interface generated from reading ui file 'filteredit_base.ui'
+**
+** Created: Do Jan 22 23:56:38 2004
+**      by: The User Interface Compiler ($Id: filteredit_base.h.emb,v 1.1.1.1 2004/06/26 19:03:10 zautrix Exp $)
+**
+** WARNING! All changes made in this file will be lost!
+****************************************************************************/
+
+#ifndef FILTEREDIT_BASE_H
+#define FILTEREDIT_BASE_H
+
+#include <qvariant.h>
+#include <qwidget.h>
+
+class QVBoxLayout;
+class QHBoxLayout;
+class QGridLayout;
+class QFrame;
+class QButtonGroup;
+class QRadioButton;
+class QListBox;
+class QListBoxItem;
+class QPushButton;
+class QCheckBox;
+
+class FilterEdit_base : public QWidget
+{
+    Q_OBJECT
+
+public:
+    FilterEdit_base( QWidget* parent = 0, const char* name = 0, WFlags fl = 0 );
+    ~FilterEdit_base();
+
+    QFrame* mCriteriaFrame;
+    QButtonGroup* ButtonGroup1;
+    QRadioButton* mCatShowCheck;
+    QRadioButton* mCatHideCheck;
+    QListBox* mCatList;
+    QPushButton* mCatEditButton;
+    QCheckBox* mRecurringCheck;
+    QCheckBox* mCompletedCheck;
+
+public slots:
+    virtual void updateFilter();
+
+protected:
+    QVBoxLayout* FilterEdit_baseLayout;
+    QVBoxLayout* mCriteriaFrameLayout;
+    QVBoxLayout* ButtonGroup1Layout;
+
+protected slots:
+    virtual void languageChange();
+
+};
+
+#endif // FILTEREDIT_BASE_H

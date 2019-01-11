@@ -1,0 +1,327 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>findWnd</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>findWnd</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>381</width>
+            <height>269</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Find</string>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>textLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>20</y>
+                <width>340</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="frameShape">
+            <enum>NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+            <enum>Plain</enum>
+        </property>
+        <property name="text">
+            <string>Find:</string>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>findLineEdit</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>40</y>
+                <width>340</width>
+                <height>20</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>findButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>230</y>
+                <width>107</width>
+                <height>27</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Find</string>
+        </property>
+        <property name="accel">
+            <string>Alt+F</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>closeButton</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>250</x>
+                <y>230</y>
+                <width>107</width>
+                <height>27</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Close</string>
+        </property>
+        <property name="accel">
+            <string>Alt+C</string>
+        </property>
+    </widget>
+    <widget class="QCheckBox">
+        <property name="name">
+            <cstring>exactCheckBox</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>200</y>
+                <width>340</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Exact match</string>
+        </property>
+        <property name="accel">
+            <string>Alt+E</string>
+        </property>
+    </widget>
+    <widget class="QCheckBox">
+        <property name="name">
+            <cstring>caseSensCheckBox</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>180</y>
+                <width>340</width>
+                <height>20</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Case sensitive</string>
+        </property>
+        <property name="accel">
+            <string>Alt+C</string>
+        </property>
+    </widget>
+    <widget class="QButtonGroup">
+        <property name="name">
+            <cstring>buttonGroup1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>20</x>
+                <y>70</y>
+                <width>340</width>
+                <height>90</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Search in Column</string>
+        </property>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>descRadioButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>20</y>
+                    <width>150</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>&amp;Description</string>
+            </property>
+            <property name="checked">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>pwRadioButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>180</x>
+                    <y>20</y>
+                    <width>150</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>&amp;Password</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>commentRadioButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>180</x>
+                    <y>40</y>
+                    <width>150</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>C&amp;omment</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>nameRadioButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>40</y>
+                    <width>150</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>&amp;Username</string>
+            </property>
+            <property name="accel">
+                <string>Alt+U</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>urlRadioButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>60</y>
+                    <width>150</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>U&amp;RL</string>
+            </property>
+            <property name="accel">
+                <string>Alt+R</string>
+            </property>
+        </widget>
+        <widget class="QRadioButton">
+            <property name="name">
+                <cstring>launcherRadioButton</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>180</x>
+                    <y>60</y>
+                    <width>150</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>&amp;Launcher</string>
+            </property>
+            <property name="accel">
+                <string>Alt+L</string>
+            </property>
+        </widget>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>findButton</sender>
+        <signal>clicked()</signal>
+        <receiver>findWnd</receiver>
+        <slot>findButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>closeButton</sender>
+        <signal>clicked()</signal>
+        <receiver>findWnd</receiver>
+        <slot>closeButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>descRadioButton</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>findWnd</receiver>
+        <slot>selectionChanged_slot()</slot>
+    </connection>
+    <connection>
+        <sender>nameRadioButton</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>findWnd</receiver>
+        <slot>selectionChanged_slot()</slot>
+    </connection>
+    <connection>
+        <sender>pwRadioButton</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>findWnd</receiver>
+        <slot>selectionChanged_slot()</slot>
+    </connection>
+    <connection>
+        <sender>commentRadioButton</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>findWnd</receiver>
+        <slot>selectionChanged_slot()</slot>
+    </connection>
+    <connection>
+        <sender>findLineEdit</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>findWnd</receiver>
+        <slot>selectionChanged_slot()</slot>
+    </connection>
+    <connection>
+        <sender>caseSensCheckBox</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>findWnd</receiver>
+        <slot>selectionChanged_slot()</slot>
+    </connection>
+    <connection>
+        <sender>exactCheckBox</sender>
+        <signal>stateChanged(int)</signal>
+        <receiver>findWnd</receiver>
+        <slot>selectionChanged_slot()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>findLineEdit</tabstop>
+    <tabstop>descRadioButton</tabstop>
+    <tabstop>caseSensCheckBox</tabstop>
+    <tabstop>exactCheckBox</tabstop>
+    <tabstop>findButton</tabstop>
+    <tabstop>closeButton</tabstop>
+    <tabstop>nameRadioButton</tabstop>
+    <tabstop>pwRadioButton</tabstop>
+    <tabstop>commentRadioButton</tabstop>
+</tabstops>
+<slots>
+    <slot>findButton_slot()</slot>
+    <slot>selectionChanged_slot()</slot>
+    <slot>closeButton_slot()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

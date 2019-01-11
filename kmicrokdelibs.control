@@ -1,0 +1,12 @@
+Files: pics/kdepim/*.txt lib/libmicroqt* lib/libmicrokde*
+Priority: optional
+Section: qpe
+Maintainer: Lutz Rogowski <zautrix@rogowski.info>
+Architecture: arm
+Version: $KDEPIM_VERSION
+License: GPL
+Description:  Needed libs help and licence files for 
+    KOrganizer/Pi (KO/Pi) and 
+    Kaddressbook/Pi (KA/Pi) and 
+    KOpieMail/Pi (OM/Pi) and
+    PasswordManager/Pi (PwM/Pi)

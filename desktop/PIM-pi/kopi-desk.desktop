@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=
+Comment=A calendar/todo manager
+Comment[de]=Kalender/Todo Manager
+Exec=/opt/kdepimpi/kopi
+GenericName=
+GenericName[de]=
+Icon=/opt/kdepimpi/kdepim/korganizer/korganizer.png
+MimeType=
+Name=KOrganizer/Pi
+Name[de]=KOrganizer/Pi
+ServiceTypes=Application
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+TryExec=/opt/kdepimpi/kopi
+Type=Application
+X-DCOP-ServiceType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

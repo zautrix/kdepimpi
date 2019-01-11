@@ -1,0 +1,10 @@
+Files:  bin/db2file lib/libmicrokabc_sharp*
+Priority: optional
+Section: qpe/pim
+Maintainer: Lutz Rogowski <zautrix@rogowski.info>
+Architecture: arm
+Version: $KDEPIM_VERSION
+License: GPL
+Depends: kmicrokdelibs
+Description: Program/lib needed to access 
+    Sharp DTM PIM from KDE-Pim/Pi programs. 

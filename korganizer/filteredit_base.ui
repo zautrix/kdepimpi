@@ -1,0 +1,247 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>FilterEdit_base</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>FilterEdit_base</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>324</width>
+            <height>281</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>FilterEditor</string>
+    </property>
+    <property name="layoutMargin" stdset="0">
+    </property>
+    <property name="layoutSpacing" stdset="0">
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <property name="spacing">
+            <number>0</number>
+        </property>
+        <widget class="QFrame">
+            <property name="name">
+                <cstring>mCriteriaFrame</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <property name="layoutMargin" stdset="0">
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>2</number>
+                </property>
+                <widget class="QButtonGroup">
+                    <property name="name">
+                        <cstring>ButtonGroup1</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Categories</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>6</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QLayoutWidget" row="0" column="0">
+                            <property name="name">
+                                <cstring>layout4</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QRadioButton">
+                                    <property name="name">
+                                        <cstring>mCatShowCheck</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Include</string>
+                                    </property>
+                                </widget>
+                                <widget class="QRadioButton">
+                                    <property name="name">
+                                        <cstring>mCatHideCheck</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Exclude</string>
+                                    </property>
+                                </widget>
+                                <widget class="QPushButton">
+                                    <property name="name">
+                                        <cstring>mCatEditButton</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Edit Selection...</string>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                        <widget class="QListBox" row="1" column="0">
+                            <property name="name">
+                                <cstring>mCatList</cstring>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout7</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Exclude</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>mRecurringCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>recurring events</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>mCompletedCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>completed to-dos</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout9</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1_2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Exclude</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>mEventCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>events</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>mTodoCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>todos</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>mJournalCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>journals</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout2</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Include</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>mPublicCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>public</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>mPrivateCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>private</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>mConfidentialCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>confidential</string>
+                            </property>
+                            <property name="checked">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
+    </vbox>
+</widget>
+<includes>
+    <include location="local" impldecl="in implementation">tr.h</include>
+</includes>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

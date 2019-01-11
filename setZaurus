@@ -1,0 +1,20 @@
+# copy this dir to /opt/Qtopia/examples/
+# Now this file should be in the path  /opt/Qtopia/examples/kdepim/setZaurus
+# add the following line to ~/.bashrc without leading #
+# alias cz='source /opt/Qtopia/examples/kdepim/setZaurus'
+# then type in terminal cz<return> to set the variables
+# for cross-compiling
+export QPEDIR=/opt/Qtopia/sharp
+export OPIEDIR=/kde_dev/opie
+export BUILD_NO_OPIE_PLUGIN=1
+#export BUILD_NO_SHARP_PLUGIN=1
+#export BUILD_NO_GAMMU=1
+#export BUILD_NO_PWMANAGER=1
+export QTDIR=/opt/Qtopia/sharp
+export PATH=$QTDIR/bin:/opt/Embedix/tools/bin:$PATH
+export TMAKEPATH=/opt/Qtopia/tmake/lib/qws/linux-sharp-g++
+export PLATFORM=zaurus 
+export RELEASE_DEBUG=release
+export LIBICAL_PATH=/zaurus
+export SHARPDTMSDK=/opt/dtm
+#export RELEASE_DEBUG=debug

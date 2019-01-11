@@ -1,0 +1,55 @@
+<=========================>
+<  Format of PwM-KeyCard  >
+<=========================>
+cardformat version: 0x01
+
+The keycard has a small header area and a key-data body.
+
+The header is built with the following scheme:
+
+PWMKEYCARD
+[CARDVER]
+[CARD-ID]
+[KEYDATA-LENGTH]
+
+
+After this header, the key-data-body with the length
+[KEYDATA-LENGTH] follows.
+
+Explanation of the header-fields:
+
+PWMKEYCARD is a magic string at the beginning of the card
+to indentify the chipcard as a "pwm-keycard".
+
+[CARDVER] is one byte for holding the card-format version.
+
+[CARD-ID] are 4 bytes (an unsigned BIG-ENDIAN value)
+to hold an ID number for the card.
+
+[KEYDATA-LENGTH] are 2 bytes (an unsigned short) for holding
+the length of the key-data in BIG-ENDIAN format.
+
+
+*******************************
+* KeyCard backup-image format *
+*******************************
+backup image version: 0x01
+
+PWMKEYCARD_BACKUPIMAGE
+[IMAGEVER]
+[CARD-ID]
+[KEYDATA]
+
+
+PWMKEYCARD_BACKUPIMAGE
+magic header.
+
+[IMAGEVER]
+version indentifier of the backup-image.
+
+[CARD-ID]
+card-ID. see keycard-format.
+
+[KEYDATA]
+All data after CARD-ID until the end of the file
+is treated as the key itself.

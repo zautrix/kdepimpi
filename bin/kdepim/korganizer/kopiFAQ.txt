@@ -1,0 +1,339 @@
+
+Q:  
+For which platform KO/Pi is available?
+Q:  
+What files/data can KO/Pi import or export?
+Q:  
+How can I sync via ssh?
+Q:  
+How can I get my data from Outlook?
+Q:  
+I sync with Outlook via the Sharp DTM.
+But, now, whenever I get an alarm I get notified by both KO/Pi 
+and the Sharp Calendar app. 
+How could I disable Sharp Calendar app?
+Q:  
+Why does not KO/Pi import several .isc files at once?
+Q:  
+Why does not KO/Pi sync directly with Outlook?
+Q: 
+Why does KO/Pi start up on restarts on the Zaurus?
+Q:  
+Do I have to deinstall the KO/Pi alarm applet, when I update KO/Pi?
+Q:  
+I have problems updating KO/Pi. Any hints?
+Q:  
+Why do I have two pim tabs?
+Q:  
+When installing kmicrokdelibs_1.9.2_arm.ipk (or newer version)
+I get a "This application depends on other programs".
+What programs I am missing? 
+Q:
+How do I change the timezone? All my appointments do show 6 hours ahead.
+Q:
+I want to send appointments via Infrared (IR) to a mobile device. 
+What format I have to choose?
+Q:
+Can I receive contacts via infrared (IR) directly with KO/Pi?
+Q:
+I want to send a friend all the public holidays in my calendar. Can I do that?
+Q:
+I want to get another alarm sound than the default. What I have to change?
+Q:
+Is there a solution to get an alarm on Windows?
+Q:
+I have Zaurus 5600 and I want to get wav alarm instead of the buzzer.
+Is that possible?
+Q:
+In the alarm applet settings "auto suspend" seems not to work. 
+Am I doing something wrong?
+Q:
+I can not install KO/Pi on the SD card (ext2 formated), 
+it can be installed only in the internal memory. 
+What can I do ? 
+
+*************************************************************************
+Q:  
+For which platform KO/Pi is available?
+A: 
+KO/Pi is the platform-independend version of KOrganizer and it 
+includes a replacement for the KDE libraries called microkde.
+It can be compiled to any platform, where Qt is available.
+The source code  compiles without modifications on Windows, 
+Linux Desktop and Sharp Zaurus PDA. 
+Precompiled versions and the source code cvs can be found at:
+http://sourceforge.net/projects/kdepimpi/
+*************************************************************************
+Q:  
+What files/data can KO/Pi import or export?
+A: 
+KO/Pi saves its data in iCalandar format (*.ics) 
+You can import .ics (used by KDE KOrganizer/Mozillas/Appli iCal) or .vcs files.
+You can import xml based PIMs (Opie, old Sharp and old TKC).
+You can sync with the newer Sharp DTM PIMs directly.
+(Note: If you have many contacts in KO/Pi which are
+not in DTM, the very first sync may take some time)
+You can sync with any local .ics file or remote with a .ics file via ssh.
+KO/Pi on Windows can import calendar data from Outlook directly via OLE.
+Recurring events with exceptions and attendee lists of meetings are imported properly.
+*************************************************************************
+Q:  
+How can I sync via ssh?
+A:
+You must have installed a ssh client on the machine KO/Pi is running.
+You must have a ssh server running on the remote machine.
+You must have configured your access to the server such that you can 
+log in from console on the server without a password.
+For that reason you have to put some keys on the servers home dir.
+Please read docu of ssh how to do that.
+There is a  detailed ssh howto available at
+http://oek.fbl.fh-wiesbaden.de/zaurus/
+*************************************************************************
+Q:  
+How can I get my data from Outlook?
+A:
+Well you can sync Outlook with Sharp-DTM Pims 
+and then sync KO/Pi with Sharp-DTM.
+Voila - you have your Outlook data in KO/Pi.
+On Windows, KO/Pi can import calendar data from Outlook directly via OLE.
+Recurring events with exceptions and attendee lists of meetings are imported properly.
+*************************************************************************
+Q:  
+I sync with Outlook via the Sharp DTM.
+But, now, whenever I get an alarm I get notified by both KO/Pi 
+and the Sharp Calendar app. 
+How could I disable Sharp Calendar app?
+A:
+You have to rename datebook (the Sharp Calendar app)
+such that it cannot be automatically started by the system alarm daemon.
+If you rename it and you do not delete it, 
+you can do revert your changes easily.
+For example, rename
+/home/QtPalmtop/bin/datebook
+to
+/home/QtPalmtop/bin/datebookwech
+Then you can sync KO/Pi with the database 
+and then the database with outlook without problems.
+An event( with alarm ) created on outlook make KO/Pi alarm goes off,
+but there will be no datebook alarm :-)
+*************************************************************************
+Q:  
+Why does not KO/Pi import several .isc files at once?
+A:
+Because it is not yet implemented.
+*************************************************************************
+Q:  
+Why does not KO/Pi sync directly with Outlook?
+A:
+On Windows, KO/Pi can import calendar data from Outlook directly via OLE.
+Recurring events with exceptions and attendee lists of meetings are imported properly.
+It would be difficult to implememt an actual syncing.
+This will be implemented later.
+*************************************************************************
+Q:  
+Why does KO/Pi start up on restarts on the Zaurus?
+A:
+Fastload causes KO/Pi to startup when Qtopia starts.
+*************************************************************************
+Q:  
+Do I have to deinstall the KO/Pi alarm applet, when I update KO/Pi?
+A:
+No, the KO/Pi alarm applet runs completely independend of KO/Pi.
+That means, it does not need KO/Pi or libraries of KO/Pi for being
+executed. But the applet itself is not very useful without KO/Pi.
+It notifies KO/Pi to start via system calls.
+It needs KO/Pi to get the next alarm from the system alarm daemon.
+Such that the KO/Pi alarm alone may be used only as a timer application.
+Files of KO/Pi are ( with /home/QtPalmtop as base dir): 
+bin/kopi bin/db2file apps/Pim/korganizer.desktop pics/kdepim/korganizer/* lib/libmicro*
+*************************************************************************
+Q:  
+I have problems updating KO/Pi. Any hints?
+A:
+When deinstalling KO/Pi alarm applet, Qtopia reboots.
+Please do not deinstall KO/Pi alarm applet and KO/Pi together.
+It may be that because of the reboot  KO/Pi itself is not deinstalled properly.
+*************************************************************************
+Q:  
+I installed the qtopiaKABC plugin, 
+but I can't access the addressbook when adding attendees.
+A:
+NOTE: KO/Pi versions > 1.9.0 do not support addressbook plugins any more.
+The addressbook data is accessed via KA/Pi only.
+
+The qtopiaKABC plug-in is for old non DTM Qtopia Pims only.
+This plug-in works with xml based addressbooks.  
+There is no solution currently for the DTM addressbook.
+On a newer Sharp Rom (using DTM), you can install 
+Opie(for Sharp Rom) libs+adressbook and the opieKABC plug-in.
+That works with KO/Pi.
+*************************************************************************
+Q:  
+Why do I have two pim tabs?
+A:  
+The original tab has the 'PIM' tab and kopi is installed in the 'Pim' tab.  
+The difference in capitalization keeps them separate.
+That is no packaging bug.
+This is a feature.
+The author of KO/Pi has a Tab 'Pim'.
+
+*************************************************************************
+*************************************************************************
+*************************************************************************
+
+Q:
+How do I change the timezone? All my appointments do show 6 hours ahead.
+A:
+The default timezone in KO/Pi is CET. 
+CET is (GMT +01:00) or (UTC +01:00), i.e GMT=UTC .
+To adjust the time of your appointments, 
+you have to change the timezone and reload your calendar without closing 
+the application and without saving the data.
+"Without saving the data" is very important. 
+Note that KO/Pi has build in auto saving. 
+If auto saving is performed after changing the timezone and before 
+reloading your calendar no  times will be changed.
+Example:
+Selected timezone in KO/Pi is (+01:00 Oslo).
+You have an appointment shown at 8:00. But it should be at 14:00.
+Your timezone is -05:00 US/Eastern.
+You have to do:
+Select timezone +07:00 Asia/Bangok in config dialog.
+Close dialog with ok button.
+Choose menu: File-Load Calendar Backup.
+Choose file: (your home path)/Applications/korganizer/mycalendar.ics
+(on Windows: file: (your home path)/korganizer/mycalendar.ics).
+Load file.
+Now your appointment is at 14:00.
+Select timezone -05:00 US/Eastern  in config dialog.
+Close KO/Pi (file is saved when closing and changes are not yet saved).
+Restart KO/Pi.
+Your timezone is -05:00 US/Eastern.
+Your appointment is at 14:00.
+Everything is ok.
+*************************************************************************
+Q:
+I want to send appointments via Infrared (IR) to a mobile device. 
+What format I have to choose?
+A:
+You can send data as vcs (vCalendar) or as ics (iCalendar) files. 
+With and without timezone settings( Local time ).
+Usually small mobile devices like mobile phones do not know anything about timezones.
+Choosing vcs and  Local time should work with most mobile phones.
+Most mobile devices should be able to recieve vcs files.
+If it is a smartphone or pda, the device may be able to handle timezones.
+Try vcs and with timezones.
+If you send the data to a laptop it depends on the application.
+If you have a windows laptop and want to get data into an 
+installed KO/Pi on windows, you should choose ics and with timezone. 
+Simply try it out, what data the device does understand.
+*************************************************************************
+Q:
+Can I receive contacts via infrared (IR) directly with KO/Pi?
+A:
+Yes, KO/Pi can receice data via IR when it is running!
+
+You have to do:
+- disable FastLoad for the original calendar+todo application and close it
+- start KO/Pi
+- enable IR beam/receive
+
+Note: When FastLoad is enabled for KO/Pi, KO/Pi is always running and
+you do not need to "start" KO/Pi.
+
+*************************************************************************
+Q:
+I want to send a friend all the public holidays in my calendar. Can I do that?
+A:
+Yes.
+Choose search dialog.
+Search there for the events you want to send.
+Make sure, you get all wanted events and maybe some more.
+Maybe sort the items and select all items you want to send.
+With a 'right' mouse click 
+(hold pen down for a while and then relase) you get a popup menu.
+Choose there 'Save selected to file'.
+Now all selected entries are saved.
+Send the file to your friend, he can import them in his calendar now.
+*************************************************************************
+Q:
+I want to get another alarm sound than the default. What I have to change?
+A:
+The default alarm sound is a wav file:
+It is  (QPEDIR)/pics/korganizer/koalarm.wav.
+(Usually QPEDIR=/home/QtPalmtop).
+(On the desktop, the path is:
+(installdir)/kdepim/korganizer/koalarm.wav)
+Just replace this file by another one und do a 
+'simulate alarm' to ckeck, if it works.
+('Simulate alarm' not available on the desktop,
+because it is in the alarm applet)
+Wav files can have different sampling data. 
+(e.g. 16/8bit, stereo/mono, 22kHz/11kHz/...)
+Note: It seems to be that there are problems with particular
+combination of these settings.
+If one file is not replayed properly, 
+just try another file/ another sampling data.
+*************************************************************************
+Q:
+Is there a solution to get an alarm on Windows?
+A:
+Yes, but KO/Pi has to be running to notify you about an alarm.
+Choose menu: Action - Configure.
+There the TAB alarm.
+Check "Use internal alarm notification" to get the alarm on
+Windows and Linux desktop.
+You can configure the behaviour of the alarm there. 
+*************************************************************************
+Q:
+I have Zaurus 5600 and I want to get wav alarm instead of the buzzer.
+Is that possible?
+A:
+Yes.
+The default alarm kind is determined from the screen resolution.
+For all 320x240 displays the buzzer alarm is the default.
+To change this, set in the alarm applet popup menu
+Play beeps- Replay-*.wav-file
+Note:
+If a 5500 user will choose this, 
+he will get no alarm sound from the speaker.
+He will get only the wav sound from the headphone connector.
+*************************************************************************
+Q:
+In the alarm applet settings "auto suspend" seems not to work. 
+Am I doing something wrong?
+A:
+Probably!
+The lenght of an alarm is determined from settings in
+Play beeps and the interval of each beep.
+E.g. Play beeps = 10 and interval = 10 means, 
+the alarm has a duration of 100 secs.
+The "auto suspend" can only work, if the system is 
+not suspended itself when playing back the alarm.
+E.g. if you have set your system suspend time to 1 min (= 60 sec)
+the system is suspended during playback of alarm and 
+there is no new "suspend alarm notification" stored in the system.
+Solution:
+Make sure your alarm duration is less then your 
+system suspend time.
+*************************************************************************
+Q:
+I can not install KO/Pi on the SD card (ext2 formated), 
+it can be installed only in the internal memory. 
+What can I do ? 
+A:
+KO/Pi and friends are now installable on SD-Card!
+It is recommended to install all libs and apps
+on the SD card or all in the internal storage.
+There may be problems, if this is mixed.
+If you get an error when installing,
+simply install the other packages and try again.
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,363 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>pwGenWnd</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>pwGenWnd</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>450</width>
+            <height>349</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Password generator</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>groupBox1</cstring>
+            </property>
+            <property name="title">
+                <string>Character set:</string>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout2</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>int_charLowerCheckBox</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Lowercase:</string>
+                            </property>
+                            <property name="checked">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer1</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>40</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel4</cstring>
+                            </property>
+                            <property name="text">
+                                <string>abc</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout3</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>int_charUpperCheckBox</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Uppercase:</string>
+                            </property>
+                            <property name="checked">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer2</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>40</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel5</cstring>
+                            </property>
+                            <property name="text">
+                                <string>ABC</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout4</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>int_charNumCheckBox</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Numbers:</string>
+                            </property>
+                            <property name="checked">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer3</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>40</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel6</cstring>
+                            </property>
+                            <property name="text">
+                                <string>123</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout6</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>int_charSpecCheckBox</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Special characters:</string>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer4</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>40</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel7</cstring>
+                            </property>
+                            <property name="text">
+                                <string>!"§$%&amp;/()=?,.-;:_+</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>int_charBlankCheckBox</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Spaces (blank characters)</string>
+                    </property>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout7</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>int_charUserCheckBox</cstring>
+                            </property>
+                            <property name="text">
+                                <string>User defined:</string>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer5</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>40</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>int_userDefLineEdit</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout8</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Password Length:</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox">
+                    <property name="name">
+                        <cstring>int_lenSpinBox</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>9999</number>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>8</number>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QCheckBox">
+            <property name="name">
+                <cstring>int_filterCheckBox</cstring>
+            </property>
+            <property name="text">
+                <string>Enable Filtering to get better passwords</string>
+            </property>
+            <property name="checked">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout1</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>genButton</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Generate now</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>cancelButton</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Cancel</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<connections>
+    <connection>
+        <sender>int_charUserCheckBox</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>int_userDefLineEdit</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>cancelButton</sender>
+        <signal>clicked()</signal>
+        <receiver>pwGenWnd</receiver>
+        <slot>cancelButton_slot()</slot>
+    </connection>
+    <connection>
+        <sender>genButton</sender>
+        <signal>clicked()</signal>
+        <receiver>pwGenWnd</receiver>
+        <slot>genButton_slot()</slot>
+    </connection>
+</connections>
+<slots>
+    <slot>cancelButton_slot()</slot>
+    <slot>genButton_slot()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
